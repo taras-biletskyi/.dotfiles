@@ -1,0 +1,15 @@
+{
+  "defaultViewMode": "preview",
+  "showFrontmatter": true,
+  "showLineNumber": true,
+  "spellcheck": true,
+  "vimMode": true,
+  "trashOption": "local",
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "newLinkFormat": "absolute",
+  "attachmentFolderPath": "./att",
+  "legacyEditor": false,
+  "livePreview": false,
+  "useTab": false
+}
