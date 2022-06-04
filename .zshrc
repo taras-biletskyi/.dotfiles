@@ -86,7 +86,7 @@ plugins=(
     zsh-syntax-highlighting
     history-substring-search
     # Correct previos command with ESC ESC
-    thefuck
+    # thefuck
     npm
 )
 
