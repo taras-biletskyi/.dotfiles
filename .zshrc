@@ -85,6 +85,9 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     history-substring-search
+    # Correct previos command with ESC ESC
+    thefuck
+    npm
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -93,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -120,15 +123,18 @@ source $ZSH/oh-my-zsh.sh
 
 ###### My additions ######
 
+alias python="python3"
+
 HISTSIZE=100000
 SAVEHIST=100000
 
 export VISUAL='nvim'
 export EDITOR='nvim'
 export TERM="xterm-256color"
+export FPATH="/usr/local/opt/curl/share/zsh/site-functions:$FPATH"
 
 
-autoload -U compinit && compinit
+autoload -Uz compinit && compinit
 
 # Change zsh-autosuggestions hotkey
 bindkey '^ ' autosuggest-accept
