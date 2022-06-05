@@ -87,7 +87,7 @@ plugins=(
     history-substring-search
     # Correct previos command with ESC ESC
     # thefuck
-    npm
+    # npm
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src

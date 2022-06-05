@@ -217,6 +217,26 @@
                                 },
                                 "to": [
                                     {
+                                        "key_code": "0",
+                                        "modifiers": "right_shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "g",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_option"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
                                         "key_code": "left_arrow"
                                     }
                                 ],
@@ -535,6 +555,55 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "fn -> hyper",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "fn",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "meh -> fn",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "fn",
+                                        "modifiers": "any"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
@@ -675,7 +744,7 @@
                     ]
                 }
             ],
-            "name": "Default profile",
+            "name": "qwerty",
             "parameters": {
                 "delay_milliseconds_before_open_device": 1000
             },
@@ -4829,6 +4898,52 @@
                                     }
                                 ],
                                 "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "fn -> hyper",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "keyboard_fn",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "meh -> fn",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": [
+                                        "left_control",
+                                        "left_option"
+                                    ],
+                                    "to": [
+                                        {
+                                            "key_code": "keyboard_fn"
+                                        }
+                                    ],
+                                    "type": "basic"
+                                }
                             }
                         ]
                     }
