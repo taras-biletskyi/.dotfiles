@@ -58,6 +58,7 @@ Plug 'tpope/vim-repeat'
 Plug 'sbdchd/neoformat'
 " DOcument GEnerator
 Plug 'kkoomen/vim-doge' " After PlugInstall - :call doge#install()
+Plug 'mbbill/undotree'
 call plug#end()
 
 " Makes tmux work with vim
@@ -625,7 +626,12 @@ let g:doge_doc_standard_python = 'numpy'
 let g:doge_comment_jump_modes = ['n', 's']
 let g:doge_mapping = '<Leader>doge'
 " =====END===== kkoomen/vim-doge ==========
+" mbbill/undotree
 
+" =====START===== mbbill/undotree ==========
+nnoremap <Leader>u :UndotreeToggle <CR> :UndotreeFocus <CR>
+" =====END===== mbbill/undotree ==========
+"
 " Usefull vim stuff
     " Commands:
         " = - auto-indent
