@@ -30,6 +30,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-emoji'
 Plug 'hrsh7th/cmp-cmdline'
+" hrsh7th/cmp-nvim-lua
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'onsails/lspkind-nvim'
@@ -51,6 +52,7 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'mfussenegger/nvim-dap-python'
+Plug 'rcarriga/cmp-dap'
 " Helps to restore vim session after reboot
 " Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
@@ -170,6 +172,8 @@ nnoremap <leader>qn :cnext<cr>
 nnoremap <leader>qp :cprevious<cr>
 nnoremap <leader>qf :cfirst<cr>
 nnoremap <leader>ql :clast<cr>
+" For Go errors
+nnoremap <Leader>err oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>
 " ---------------------------- COLORSCHEME
 " syntax enable
 filetype plugin indent on
@@ -399,8 +403,17 @@ cmp.setup {
             })[entry.source.name]
             return vim_item
         end
+    },
+    -- this is for rcarriga/cmp-dap
+    -- nvim-cmp by defaults disables autocomplete for prompt buffers
+    enabled = function()
+        return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+    end,
+    sources = {
+        {name = "dap"}
     }
 }
+
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(
     "/",
@@ -418,10 +431,13 @@ cmp.setup.cmdline(
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources(
             {
+                {name = "cmdline"}
+            },
+            {
                 {name = "path"}
             },
             {
-                {name = "cmdline"}
+                {name = "buffer"}
             }
         )
     }
@@ -453,7 +469,13 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+    vim.api.nvim_buf_set_keymap(
+        bufnr,
+        "n",
+        "<leader>wl",
+        "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+        opts
+    )
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
@@ -474,7 +496,7 @@ for _, lsp in pairs(servers) do
         }
     }
 
-vim.cmd [[
+    vim.cmd [[
   highlight! DiagnosticSignError guibg=none guifg=#fb4934
   highlight! DiagnosticSignWarn guibg=none guifg=#d79921
   highlight! DiagnosticSignInfo guibg=none guifg=#83a598
@@ -629,7 +651,7 @@ let g:doge_mapping = '<Leader>doge'
 " mbbill/undotree
 
 " =====START===== mbbill/undotree ==========
-nnoremap <Leader>u :UndotreeToggle <CR> :UndotreeFocus <CR>
+nnoremap <Leader>u : UndotreeToggle <bar> :UndotreeFocus <CR>
 " =====END===== mbbill/undotree ==========
 "
 " Usefull vim stuff
