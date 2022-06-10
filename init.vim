@@ -7,6 +7,10 @@ Plug 'gruvbox-community/gruvbox'
 " Status bar at the bottom
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Try new buffer/tabline if switching to lua config? It says its
+    " faster(airline is the slowest plugin here); and more minimalistic
+        " nvim-lualine/lualine.nvim
+        " kdheepak/tabline.nvim
 " displaying thin vertical lines at each indentation level for code indented with spaces
 " Plug 'Yggdroot/indentLine'
 " colors for codes
@@ -18,6 +22,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 " Symbols outline plugin
 Plug 'simrat39/symbols-outline.nvim'
+" ctags thing for code outline
+Plug 'preservim/tagbar'
 " Start screen
 Plug 'mhinz/vim-startify'
 " Plugin for commenting code
@@ -43,6 +49,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Code highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Shows sticky context at the top of the buffer; much awesome
+Plug 'nvim-treesitter/nvim-treesitter-context'
 " Shortcuts cheat sheet
 Plug 'folke/which-key.nvim'
 " Debuger
@@ -211,8 +219,8 @@ nmap <leader>gp <Plug>(GitGutterPrevHunk)
 nmap <leader>ghh <Plug>(GitGutterPreviewHunk)
 noremap <leader>gs <Plug>(GitGutterStageHunk)
 noremap <leader>gu <Plug>(GitGutterUndoHunk)
-noremap <leader>ghb :GitGutterQuickFixCurrentFile<cr>
-noremap <leader>ghw :GitGutterQuickFix<cr>
+noremap <leader>ghb :GitGutterQuickFixCurrentFile <bar> :lopen <CR>
+noremap <leader>ghw :GitGutterQuickFix <bar> :copen <CR>
 highlight GitGutterAdd    ctermfg=none
 highlight GitGutterChange ctermfg=none
 highlight GitGutterDelete ctermfg=none
@@ -249,6 +257,7 @@ let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#nvimlsp#enabled = 1
 let g:airline#extensions#keymap#enabled = 0
 let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#tagbar#enabled = 0
 " let g:airline_skip_empty_sections = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -502,11 +511,11 @@ for _, lsp in pairs(servers) do
         }
     }
 
-    vim.cmd [[
+vim.cmd [[
   highlight! DiagnosticSignError guibg=none guifg=#fb4934
-  highlight! DiagnosticSignWarn guibg=none guifg=#d79921
+  highlight! DiagnosticSignWarn guibg=none guifg=#fabd2f
   highlight! DiagnosticSignInfo guibg=none guifg=#83a598
-  highlight! DiagnosticSignHint guibg=none guifg=#689d9a
+  highlight! DiagnosticSignHint guibg=none guifg=#8ec07c
 
   sign define DiagnosticSignError text=E texthl=DiagnosticSignError
   sign define DiagnosticSignWarn text=W texthl=DiagnosticSignWarn
@@ -577,12 +586,6 @@ let g:neoformat_enabled_c = ['clangformat']
 let g:neoformat_enabled_toml = ['taplo']
 " =====END===== Neo ==========
 
-" =====START===== puremourning/vimspector ==========
-" https://github.com/puremourning/vimspector#visual-studio--vscode
-" let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-" let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
-" =====END===== puremourning/vimspector ==========
-
 " =====START===== mfussenegger/nvim-dap ==========
 " Docs: https://github.com/mfussenegger/nvim-dap/blob/master/doc/dap.txt
 nnoremap <silent> <F5> <Cmd>lua require'dap'.continue()<CR>
@@ -646,6 +649,7 @@ EOF
 " =====START===== nvim-telescope/telescope-dap.nvim ==========
 lua << EOF
 require('telescope').load_extension('dap')
+vim.keymap.set('n', '<Leader>dc', function() require('telescope').extensions.dap.commands() end)
 EOF
 " =====END===== nvim-telescope/telescope-dap.nvim ==========
 
@@ -657,9 +661,51 @@ let g:doge_mapping = '<Leader>doge'
 " mbbill/undotree
 
 " =====START===== mbbill/undotree ==========
-nnoremap <Leader>u : UndotreeToggle <bar> :UndotreeFocus <CR>
+nnoremap <Leader>u :UndotreeToggle <bar> :UndotreeFocus <CR>
 " =====END===== mbbill/undotree ==========
-"
+"nvim-treesitter/nvim-treesitter-context
+
+" =====START===== nvim-treesitter/nvim-treesitter-context ==========
+lua << EOF
+require'treesitter-context'.setup{
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+    throttle = true, -- Throttles plugin updates (may improve performance)
+    patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+        -- For all filetypes
+        -- Note that setting an entry here replaces all other patterns for this entry.
+        -- By setting the 'default' entry below, you can control which nodes you want to
+        -- appear in the context window.
+        default = {
+            'class',
+            'function',
+            'method',
+            'for', -- These won't appear in the context
+            'while',
+            'if',
+            'switch',
+            'case',
+        },
+    },
+    exact_patterns = {
+        -- Example for a specific filetype with Lua patterns
+        -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
+        -- exactly match "impl_item" only)
+        -- rust = true,
+    },
+
+    -- [!] The options below are exposed but shouldn't require your attention,
+    --     you can safely ignore them.
+
+    zindex = 20, -- The Z-index of the context window
+}
+EOF
+" =====END===== nvim-treesitter/nvim-treesitter-context ==========
+
+" =====START===== preservim/tagbar ==========
+nmap <F8> :TagbarToggle jf <CR>
+" =====END===== preservim/tagbar ==========
+
 " Usefull vim stuff
     " Commands:
         " = - auto-indent
