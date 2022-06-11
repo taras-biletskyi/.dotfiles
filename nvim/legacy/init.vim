@@ -189,6 +189,7 @@ vnoremap K :m '<-2<CR>gv=gv
 " always center on search
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
 " ---------------------------- COLORSCHEME
 " syntax enable
 filetype plugin indent on
@@ -227,6 +228,7 @@ highlight GitGutterDelete ctermfg=none
 highlight! GitGutterChangeDelete guifg='#8ec07c'
 " let g:gitgutter_set_sign_backgrounds=1
 hi SignColumn guibg=none ctermbg=none
+
 " Status bar
 " ***************************************************************************************
 " Needed to install special fonts for airline plugin -- https://github.com/powerline/fonts
@@ -316,7 +318,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDAltDelims_python = 1
 " Align line-wise comment delimiters flush left instead
 " of following code indentation
-let g:NERDDefaultAlign = 'left'
+" let g:NERDDefaultAlign = 'left'
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 " =====END===== preservim/nerdcommenter  ==========
@@ -428,7 +430,6 @@ end,
         end
     },
 }
-
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(
     "/",
@@ -484,16 +485,10 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(
-        bufnr,
-        "n",
-        "<leader>wl",
-        "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-        opts
-    )
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ka", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     -- vim.lsp.buf.incoming_calls()
@@ -510,13 +505,11 @@ for _, lsp in pairs(servers) do
             debounce_text_changes = 150
         }
     }
-
 vim.cmd [[
   highlight! DiagnosticSignError guibg=none guifg=#fb4934
   highlight! DiagnosticSignWarn guibg=none guifg=#fabd2f
   highlight! DiagnosticSignInfo guibg=none guifg=#83a598
   highlight! DiagnosticSignHint guibg=none guifg=#8ec07c
-
   sign define DiagnosticSignError text=E texthl=DiagnosticSignError
   sign define DiagnosticSignWarn text=W texthl=DiagnosticSignWarn
   sign define DiagnosticSignInfo text=I texthl=DiagnosticSignInfo
@@ -594,11 +587,9 @@ let g:neoformat_python_black = {
             \ 'args': ['-l 80', '-'],
             \ 'stdin': 1,
             \ }
-
 let g:neoformat_enabled_python = ['black']
 " To format sh files with shfmt
 let g:shfmt_opt="-ci"
-
 let g:neoformat_c_clangformat = {
             \ 'exe': 'clang-format',
             \ 'args': ['-style="{BasedOnStyle: google, IndentWidth: 4}"'],

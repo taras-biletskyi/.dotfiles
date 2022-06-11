@@ -1,0 +1,21 @@
+-- TODO: make this in Lua
+vim.cmd [[
+let g:neoformat_python_black = {
+            \ 'exe': 'black',
+            \ 'args': ['-l 80', '-'],
+            \ 'stdin': 1,
+            \ }
+
+let g:neoformat_enabled_python = ['black']
+" To format sh files with shfmt
+let g:shfmt_opt="-ci"
+
+let g:neoformat_c_clangformat = {
+            \ 'exe': 'clang-format',
+            \ 'args': ['-style="{BasedOnStyle: google, IndentWidth: 4}"'],
+            \ 'stdin': 1
+            \ }
+let g:neoformat_enabled_c = ['clangformat']
+" for TOML files
+let g:neoformat_enabled_toml = ['taplo']
+]]
