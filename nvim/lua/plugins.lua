@@ -2,17 +2,11 @@ return require('packer').startup(function(use, run)
     use 'wbthomason/packer.nvim'
     -- Colortheme
     use {'gruvbox-community/gruvbox'}
-    -- Status bar at the bottom
-    use {'vim-airline/vim-airline'}
-    use {'vim-airline/vim-airline-themes'}
-    -- Try new buffer/tabline if switching to lua config? It says its
-        -- faster(airline is the slowest plugin here); and more minimalistic
-            -- nvim-lualine/lualine.nvim
-            -- kdheepak/tabline.nvim
+    -- buffer line & tabline
+    use {'nvim-lualine/lualine.nvim'}
     -- displaying thin vertical lines at each indentation level for code indented with spaces
     -- use 'Yggdroot/indentLine'
-    -- colors for codes
-    -- use 'ap/vim-css-color'
+    -- color the color codes 🤷
     use {'norcalli/nvim-colorizer.lua'}
     -- Auto pairings
     use {'jiangmiao/auto-pairs'}
@@ -45,8 +39,8 @@ return require('packer').startup(function(use, run)
     -- Telescope plugins
     use {'nvim-lua/plenary.nvim'}
     use {
-      'nvim-telescope/telescope.nvim',
-      requires = { {'nvim-lua/plenary.nvim'} }
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/plenary.nvim'}}
     }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     -- Code highlighting
@@ -72,9 +66,3 @@ return require('packer').startup(function(use, run)
     use {'kkoomen/vim-doge', run ':call doge#install()'} -- After PlugInstall - :call doge#install()
     use {'mbbill/undotree'}
 end)
-
-
--- vim.cmd[[
--- au FocusGained * silent redraw!
--- au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}
--- ]]

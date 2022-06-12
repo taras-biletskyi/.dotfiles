@@ -14,9 +14,12 @@ function _G.project_files()
     local opts = {} -- define here if you want to define something
     local ok = pcall(require "telescope.builtin".git_files, {show_untracked = true})
     if not ok then
-        require "telescope.builtin".find_files(
-            require("telescope.themes").get_ivy({hidden = false, follow = true, no_ignore = false})
-        )
+        require"telescope.builtin".find_files(
+            require("telescope.themes").get_ivy({
+                hidden = false,
+                follow = true,
+                no_ignore = false
+            }))
     end
 end
 
