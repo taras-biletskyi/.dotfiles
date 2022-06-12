@@ -11,10 +11,11 @@ map ("n", "<leader>gu", "<Plug>(GitGutterUndoHunk)", {noremap = true})
 map ("n", "<leader>ghb", ":GitGutterQuickFixCurrentFile <bar> :lopen <CR>)", {noremap = true})
 map ("n", "<leader>ghw", ":GitGutterQuickFix <bar> :copen <CR>", {noremap = true})
 vim.cmd [[
-highlight GitGutterAdd    ctermfg=none
-highlight GitGutterChange ctermfg=none
-highlight GitGutterDelete ctermfg=none
-highlight! GitGutterChangeDelete guifg='#8ec07c'
+
+highlight GitGutterAdd    ctermfg=none guibg=none
+highlight GitGutterChange ctermfg=none guibg=none
+highlight GitGutterDelete ctermfg=none guibg=none
+highlight! GitGutterChangeDelete guifg='#8ec07c' guibg=none
 ]]
 vim.cmd [[
 hi SignColumn guibg=none ctermbg=none
