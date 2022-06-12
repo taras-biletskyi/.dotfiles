@@ -13,6 +13,7 @@ return require('packer').startup(function(use, run)
     -- use 'Yggdroot/indentLine'
     -- colors for codes
     -- use 'ap/vim-css-color'
+    use {'norcalli/nvim-colorizer.lua'}
     -- Auto pairings
     use {'jiangmiao/auto-pairs'}
     -- Gutter to the right of line numbers
