@@ -80,7 +80,7 @@ require('lualine').setup {
     extensions = {}
 }
 
-opts = {noremap = true, silent = true}
+local opts = {noremap = true, silent = true}
 vim.api.nvim_set_keymap("n", "g1", ":LualineBuffersJump 1 <CR>", opts)
 vim.api.nvim_set_keymap("n", "g2", ":LualineBuffersJump 2 <CR>", opts)
 vim.api.nvim_set_keymap("n", "g3", ":LualineBuffersJump 3 <CR>", opts)
