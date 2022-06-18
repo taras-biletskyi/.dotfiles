@@ -72,3 +72,10 @@ vim.o.wildignore = vim.o.wildignore .. "**/android/*"
 vim.o.wildignore = vim.o.wildignore .. "**/ios/*"
 vim.o.wildignore = vim.o.wildignore .. "**/.git/*"
 vim.o.wildignore = vim.o.wildignore .. "**/debug/*"
+-- fold markdown files
+vim.cmd [[
+augroup Markdown
+  autocmd!
+  autocmd FileType markdown set wrap
+augroup END
+]]

@@ -124,7 +124,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 ###### My additions ######
 
 alias py="python3"
-alias rm="rm -i"
+alias rm="rm -iv"
+alias mv="mv -iv"
+alias cp="cp -iv"
 
 HISTSIZE=100000
 SAVEHIST=100000
