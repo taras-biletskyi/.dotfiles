@@ -8,8 +8,8 @@ require'treesitter-context'.setup {
         -- By setting the 'default' entry below, you can control which nodes you want to
         -- appear in the context window.
         default = {
-            'class', 'function', 'method', 'for', -- These won't appear in the context
-            'while', 'if', 'switch', 'case'
+            'class', 'function', 'method', 'for',
+            'while', 'if', 'switch', 'case', 'try', 'except'
         },
         json = {'pair'},
         yaml = {'block_mapping_pair'}
