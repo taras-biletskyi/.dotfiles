@@ -10,3 +10,5 @@ vim.g.NERDAltDelims_python = 1
 -- let g:NERDDefaultAlign = 'left'
 -- Enable NERDCommenterToggle to check all selected lines is commented or not
 vim.g.NERDToggleCheckAllLines = 1
+vim.g.NERDCommentEmptyLines = 1
+vim.g.NERDDefaultAlign = "left"
