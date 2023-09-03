@@ -24,6 +24,7 @@ require('plugins.autopairs')
 require('plugins.firenvim')
 require('plugins.yaml_companion')
 require('plugins.diffview')
+-- require('plugins.todo_comments')
 
 -- Makes tmux work with vim
 -- https://github.com/tmux-plugins/vim-tmux-focus-events/issues/2#issuecomment-87863831

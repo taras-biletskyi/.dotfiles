@@ -88,4 +88,5 @@ require('packer').startup(function(use, run)
         end
     }
     use {'xiyaowong/telescope-emoji.nvim'}
+    -- use {'folke/todo-comments.nvim'}
 end)
