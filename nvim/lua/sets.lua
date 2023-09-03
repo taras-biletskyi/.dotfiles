@@ -62,12 +62,12 @@ vim.api.nvim_create_autocmd("FileType", {
 -- set autoindent
 vim.o.smartindent = true
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"markdown", "text"},
-    callback = function() vim.opt_local.wrap = true end
-})
-vim.api.nvim_create_autocmd("FileType", {
     pattern = {"*"},
     callback = function() vim.opt_local.wrap = false end
+})
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"markdown", "text"},
+    callback = function() vim.opt_local.wrap = true end
 })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"gitcommit", "markdown"},
