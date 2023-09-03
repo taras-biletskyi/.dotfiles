@@ -3,6 +3,7 @@ vim.o.splitright = true
 vim.o.cursorline = true
 vim.o.guicursor = "a:block"
 vim.o.scrolloff = 10
+vim.o.sidescrolloff = 20
 -- Sets the match mode for command-line completions
 vim.o.wildmenu = true
 vim.o.wildmode = "longest:full,full"
