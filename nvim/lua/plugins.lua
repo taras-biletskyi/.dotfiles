@@ -87,8 +87,6 @@ require("lazy").setup({
         build = function() vim.fn['firenvim#install'](0) end
     },
     -- caches for nvim startup
-    -- TODO: run `lua vim.loader.enable()` instead. Part of nvim 0.9 now
-    -- "lewis6991/impatient.nvim",
     -- visualises '--startup' nvim arg
     -- {'dstein64/vim-startuptime'},
     {

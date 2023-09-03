@@ -12,8 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- impatient needs to be at the top of init.lua
--- require('impatient')
 require('plugins')
 
 require('sets')
