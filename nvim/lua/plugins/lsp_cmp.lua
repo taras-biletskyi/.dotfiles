@@ -133,7 +133,7 @@ local on_attach = function(client, bufnr)
     -- ka instead of ca???? wtf is wrong with me
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ka", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     -- vim.lsp.buf.incoming_calls()
     -- vim.lsp.buf.outgoing_calls()
 end
