@@ -88,6 +88,6 @@ require('packer').startup(function(use, run)
             require("telescope").load_extension("yaml_schema")
         end
     }
-    use {'xiyaowong/telescope-emoji.nvim'}
+    use {'nvim-telescope/telescope-symbols.nvim'}
     -- use {'folke/todo-comments.nvim'}
 end)
