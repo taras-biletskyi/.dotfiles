@@ -20,7 +20,7 @@ require('packer').startup(function(use, run)
     use {'airblade/vim-gitgutter'}
     use {'tpope/vim-fugitive'}
     -- Symbols outline plugin
-    use {'simrat39/symbols-outline.nvim'}
+    -- use {'simrat39/symbols-outline.nvim'}
     -- ctags thing for code outline
     use {'preservim/tagbar'}
     -- Start screen

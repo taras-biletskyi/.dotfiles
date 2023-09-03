@@ -34,7 +34,17 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 -- set autoindent
 vim.o.smartindent = true
-vim.wo.wrap = false
+vim.cmd [[
+augroup autowrap
+  autocmd!
+  autocmd FileType markdown set wrap
+  autocmd FileType text set wrap
+  autocmd FileType sql set nowrap
+  autocmd FileType qf set nowrap
+  autocmd FileType python set nowrap
+augroup END
+]]
+vim.opt.wrap = false
 vim.o.smarttab = true
 vim.o.laststatus = 3
 vim.o.backup = false
@@ -75,13 +85,5 @@ vim.opt.wildignore:append { "**/.git/*"}
 vim.opt.wildignore:append { "**/debug/*"}
 vim.g.python3_host_prog = '/usr/local/bin/python3'
 -- fold markdown files
-vim.cmd [[
-augroup Markdown
-  autocmd!
-  autocmd FileType markdown set wrap
-  autocmd FileType text set wrap
-  autocmd FileType sql set nowrap
-augroup END
-]]
 vim.o.mmp = 200000
 vim.o.history = 10000
