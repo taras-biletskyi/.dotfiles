@@ -33,10 +33,12 @@ require("lazy").setup({
     "hrsh7th/cmp-cmdline",
 
     -- these two go together
-    "L3MON4D3/LuaSnip",
+    {
+        "L3MON4D3/LuaSnip",
+        -- this one has snippets for LuaSnip
+        dependencies = { "rafamadriz/friendly-snippets" },
+    },
     "saadparwaiz1/cmp_luasnip",
-    -- this one has snippets for LuaSnip
-    "rafamadriz/friendly-snippets",
 
     "rcarriga/cmp-dap",
     "onsails/lspkind-nvim",
