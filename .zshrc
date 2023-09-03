@@ -115,7 +115,7 @@ plugins=(
     gcloud
     kubectl
     # kubectx
-    # golang
+    golang
 )
 
 ### My addition
@@ -259,3 +259,5 @@ source /usr/local/etc/bash_completion.d/az
 # source ~/.minikube-completion
 # for mysql CLI client
 export PATH="/opt/homebrew/Cellar/mysql-client/8.0.32/bin:$PATH"
+# for go executables
+export PATH="/Users/tmp/go/bin:$PATH"

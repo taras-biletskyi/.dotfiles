@@ -13,6 +13,8 @@ local luasnip = require "luasnip"
 local cmp = require "cmp"
 local lspkind = require('lspkind')
 cmp.setup {
+    -- this makes the preselection stay at 1st item always
+    preselect = cmp.PreselectMode.None,
     -- this is for rcarriga/cmp-dap
     -- nvim-cmp by defaults disables autocomplete for prompt buffers
     enabled = function()
@@ -54,14 +56,17 @@ cmp.setup {
         end, {"i", "s"})
     }),
     sources = cmp.config.sources({
-        {name = "nvim_lsp"}, {name = "path"}, {
+        {name = "nvim_lsp"},
+        {name = "luasnip"},
+        {name = "path"}, {
             name = "buffer",
             options = {
                 get_bufnrs = function()
                     return vim.api.nvim_list_bufs()
                 end
             }
-        }, {name = "dap"}, {name = "luasnip"}
+        },
+        {name = "dap"}
     }),
     formatting = {
       format = lspkind.cmp_format({
@@ -209,6 +214,22 @@ require'lspconfig'.lua_ls.setup {
             telemetry = {enable = false}
         }
     }
+}
+
+require'lspconfig'.gopls.setup{
+  cmd = {'gopls'},
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
+    },
+  },
 }
 
 vim.diagnostic.config{
