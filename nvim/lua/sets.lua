@@ -73,6 +73,7 @@ vim.opt.wildignore:append { "**/android/*"}
 vim.opt.wildignore:append { "**/ios/*"}
 vim.opt.wildignore:append { "**/.git/*"}
 vim.opt.wildignore:append { "**/debug/*"}
+vim.g.python3_host_prog = '/usr/local/bin/python3'
 -- fold markdown files
 vim.cmd [[
 augroup Markdown

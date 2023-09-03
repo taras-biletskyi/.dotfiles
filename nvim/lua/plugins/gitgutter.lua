@@ -14,7 +14,7 @@ vim.cmd [[
 
 highlight GitGutterAdd    guifg='#98971A' guibg=none
 highlight GitGutterChange guifg='#FABD2F' guibg=none
-highlight GitGutterDelete guifg='#CC241D' guibg=none
+highlight GitGutterDelete guifg='#FB4934' guibg=none
 highlight! GitGutterChangeDelete guifg='#8EC07C' guibg=none
 ]]
 vim.cmd [[

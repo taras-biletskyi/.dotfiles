@@ -124,10 +124,10 @@ _G.packer_plugins = {
     path = "/Users/tmp/.local/share/nvim/site/pack/packer/start/file-line",
     url = "https://github.com/bogado/file-line"
   },
-  gruvbox = {
+  ["gruvbox.nvim"] = {
     loaded = true,
-    path = "/Users/tmp/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/gruvbox-community/gruvbox"
+    path = "/Users/tmp/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
