@@ -59,3 +59,9 @@ customCommands:
       attach: true
       command: 'docker exec -it {{ .Container.ID }} bash'
       serviceNames: []
+        # docker exec -u 0 -it mycontainer bash
+    - name: shell root
+      attach: true
+      command: 'docker exec -u 0 -it {{ .Container.ID }} bash'
+      serviceNames: []
+
