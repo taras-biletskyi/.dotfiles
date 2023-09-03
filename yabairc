@@ -11,6 +11,9 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 yabai -m rule --add label="Firfox PIP" app="Firefox" title="^(Picture-in-Picture)$" manage=off
+yabai -m rule --add app="FirefoxCP Isolated Web Content" manage=off
+yabai -m rule --add app="FirefoxCP WebExtensions" manage=off
+yabai -m rule --add app="FirefoxCP Isolated Web Content" manage=off
 yabai -m rule --add app="LibreOffice" manage=off
 yabai -m rule --add app="ClearVPN" manage=off
 yabai -m rule --add app="DBeaver" manage=off
