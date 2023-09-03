@@ -121,3 +121,8 @@ vim.o.mmp = 200000
 vim.o.history = 10000
 vim.o.synmaxcol = 200
 vim.opt.fillchars = { diff = '/' }
+-- Remove trailing whitespace on buff write
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+    pattern = "*",
+    command = "%s/\\s\\+$//e",
+})

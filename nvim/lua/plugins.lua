@@ -46,13 +46,8 @@ require('packer').startup(function(use, run)
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     -- Code highlighting
     use {
-        'nvim-treesitter/nvim-treesitter'
-        -- run = function()
-            -- local ts_update = require('nvim-treesitter.install').update({
-                -- with_sync = true
-            -- })
-            -- ts_update()
-        -- end
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
     }
     -- Shows sticky context at the top of the buffer; much awesome
     use {'nvim-treesitter/nvim-treesitter-context'}
