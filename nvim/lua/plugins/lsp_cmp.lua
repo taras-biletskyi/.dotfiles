@@ -142,6 +142,28 @@ local on_attach = function(client, bufnr)
     -- vim.lsp.buf.incoming_calls()
     -- vim.lsp.buf.outgoing_calls()
 end
+-- change float window back/foreground &  borders for hover and signature help
+local border = {
+      {"╭", "FloatBorder"},
+      {"─", "FloatBorder"},
+      {"╮", "FloatBorder"},
+      {"│", "FloatBorder"},
+      {"╯", "FloatBorder"},
+      {"─", "FloatBorder"},
+      {"╰", "FloatBorder"},
+      {"│", "FloatBorder"},
+}
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or border
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+vim.cmd [[
+  highlight! NormalFloat guibg=#1d2021
+  highlight! FloatBorder guifg=#ebdbb2 guibg=#1d2021
+]]
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 for _, lsp in pairs(servers) do
@@ -188,4 +210,14 @@ require'lspconfig'.sumneko_lua.setup {
             telemetry = {enable = false}
         }
     }
+}
+
+vim.diagnostic.config{
+    severity_sort = true,
+    virtual_text = {
+        source = "always",  -- Or "if_many"
+    },
+    float = {
+        source = "always",  -- Or "if_many"
+    },
 }
