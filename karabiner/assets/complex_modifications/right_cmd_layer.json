@@ -513,6 +513,25 @@
             }
           ],
           "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "slash",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "0"
+            }
+          ],
+          "type": "basic"
         }
       ]
     },
@@ -563,6 +582,251 @@
               "modifiers": "any"
             }
           ]
+        }
+      ]
+    },
+    {
+      "description": "numbers_fn_layer",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "1",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f1",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "2",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f2",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "3",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f3",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "4",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f4",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "5",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f5",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "6",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f6",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "7",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f7",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "8",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f8",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "9",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f9",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "0",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f10",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "hyphen",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f11",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "equal_sign",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f12",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
         }
       ]
     }
