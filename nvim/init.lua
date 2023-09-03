@@ -18,6 +18,7 @@ require('plugins.doge')
 require('plugins.tree_context')
 require('plugins.tagbar')
 require('plugins.autopairs')
+require('plugins.firenvim')
 
 -- Makes tmux work with vim
 -- https://github.com/tmux-plugins/vim-tmux-focus-events/issues/2#issuecomment-87863831

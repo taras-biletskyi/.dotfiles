@@ -34,16 +34,24 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 -- set autoindent
 vim.o.smartindent = true
-vim.cmd [[
-augroup autowrap
-  autocmd!
-  autocmd FileType markdown set wrap
-  autocmd FileType text set wrap
-  autocmd FileType sql set nowrap
-  autocmd FileType qf set nowrap
-  autocmd FileType python set nowrap
-augroup END
-]]
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"markdown", "text"},
+    callback = function()
+        vim.opt.wrap = true
+    end
+})
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"sql", "qf", "python", "c", "go"},
+    callback = function()
+        vim.opt.wrap = false
+    end
+})
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "gitcommit",
+    callback = function()
+        vim.cmd('set spell')
+    end
+})
 vim.opt.wrap = false
 vim.o.smarttab = true
 vim.o.laststatus = 3

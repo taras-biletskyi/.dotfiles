@@ -3,7 +3,12 @@ local map = vim.api.nvim_set_keymap
 function _G.project_files()
     local in_git_repo = vim.fn.systemlist"git rev-parse --is-inside-work-tree"[1] == 'true'
     if in_git_repo then
-        require("telescope.builtin").git_files({show_untracked = true})
+        -- require("telescope.builtin").git_files({show_untracked = true})
+        require("telescope.builtin").git_files(
+            require("telescope.themes").get_ivy({
+                show_untracked = true
+            })
+        )
     else
         require("telescope.builtin").find_files(
             require("telescope.themes").get_ivy({
