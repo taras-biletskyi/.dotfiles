@@ -18,7 +18,8 @@ require('packer').startup(function(use, run)
     -- Gutter to the right of line numbers
     use {'lewis6991/gitsigns.nvim'}
     use {'tpope/vim-fugitive'}
-    use {'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim'}
+    use {'nvim-lua/plenary.nvim'}
+    use {'sindrets/diffview.nvim'}
     -- ctags thing for code outline
     use {'preservim/tagbar'}
     -- Plugin for commenting code
@@ -31,17 +32,17 @@ require('packer').startup(function(use, run)
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-emoji'}
     use {'hrsh7th/cmp-cmdline'}
+
+    -- these two go together
     use {'L3MON4D3/LuaSnip'}
     use {'saadparwaiz1/cmp_luasnip'}
+
     use {'rcarriga/cmp-dap'}
     use {'onsails/lspkind-nvim'}
     -- Code actions lightbulb working with nvim-lspconfig
     use {'kosayoda/nvim-lightbulb'}
     -- Telescope plugins
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/plenary.nvim'}}
-    }
+    use {'nvim-telescope/telescope.nvim'}
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     -- Code highlighting
     use {
@@ -87,12 +88,7 @@ require('packer').startup(function(use, run)
     use {'lewis6991/impatient.nvim'}
     -- visualises '--startup' nvim arg
     -- use {'dstein64/vim-startuptime'}
-    use {
-        "someone-stole-my-name/yaml-companion.nvim",
-        requires = {
-            {"neovim/nvim-lspconfig"}, {"nvim-lua/plenary.nvim"},
-            {"nvim-telescope/telescope.nvim"}
-        },
+    use {"someone-stole-my-name/yaml-companion.nvim",
         config = function()
             require("telescope").load_extension("yaml_schema")
         end

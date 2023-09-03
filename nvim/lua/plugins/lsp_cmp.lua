@@ -1,30 +1,17 @@
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-local lspconfig = require("lspconfig")
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = {
-    "clangd", "gopls", "pyright", "vimls", "sumneko_lua", "jsonls", "dockerls",
-    "yamlls", "bashls", "cmake", "taplo"
-}
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        -- on_attach = my_custom_on_attach,
-        capabilities = capabilities
-    }
+
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
--- lspkind setup to show icons in completion menu
-local function get_kind(kind_item)
-    local prsnt, lspkind = pcall(require, "lspkind")
-    if not prsnt then
-        return kind_icons
-    else
-        return lspkind.presets.default[kind_item]
-    end
-end
+
 -- luasnip setup
 local luasnip = require "luasnip"
 local cmp = require "cmp"
+local lspkind = require('lspkind')
 cmp.setup {
     -- this is for rcarriga/cmp-dap
     -- nvim-cmp by defaults disables autocomplete for prompt buffers
@@ -32,8 +19,13 @@ cmp.setup {
         return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or
                    require("cmp_dap").is_dap_buffer()
     end,
-    snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
-    window = {},
+
+    snippet = {expand = function(args) require('luasnip').lsp_expand(args.body) end},
+    window = {
+      -- documentation = true,
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
     mapping = cmp.mapping.preset.insert({
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -45,6 +37,8 @@ cmp.setup {
                 cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
+            elseif has_words_before() then
+                cmp.complete()
             else
                 fallback()
             end
@@ -70,25 +64,26 @@ cmp.setup {
         }, {name = "dap"}, {name = "luasnip"}, {name = "emoji"}
     }),
     formatting = {
-        format = function(entry, vim_item)
-            vim_item.kind = string.format("%s %s", get_kind(vim_item.kind),
-                                          vim_item.kind)
-            vim_item.menu = ({
-                nvim_lsp = "[Lsp]",
-                luasnip = "[Snp]",
-                path = "[Pth]",
-                buffer = "[Buf]",
-                nvim_lua = "[Lua]",
-                calc = "[Clc]",
-                emoji = "[Emj]",
-                dap = "[Dap]"
-            })[entry.source.name]
-            return vim_item
-        end
+      format = lspkind.cmp_format({
+          mode = 'symbol_text', -- show only symbol annotations
+          maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+          ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+          menu = ({
+              nvim_lsp = "[Lsp]",
+              luasnip = "[Snp]",
+              path = "[Pth]",
+              buffer = "[Buf]",
+              nvim_lua = "[Lua]",
+              calc = "[Clc]",
+              emoji = "[Emj]",
+              dap = "[Dap]"
+          })
+
+      })
     }
 }
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline("/", {
+cmp.setup.cmdline({"/", "?"}, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {{name = "buffer"}}
 })
@@ -98,9 +93,20 @@ cmp.setup.cmdline(":", {
     sources = cmp.config.sources({{name = "cmdline"}}, {{name = "path"}},
                                  {{name = "buffer"}})
 })
+-- If you want insert `(` after select function or method item
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 -- =====END===== hrsh7th/nvim-cmp  ==========
 
 -- =====START===== neovim/nvim-lspconfig  ==========
+-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+local servers = {
+    "clangd", "gopls", "pyright", "vimls", "sumneko_lua", "jsonls", "dockerls",
+    "yamlls", "bashls", "cmake", "taplo"
+}
 -- Initializes pyright, rust_analyzer lsp server
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -146,17 +152,22 @@ for _, lsp in pairs(servers) do
             debounce_text_changes = 150
         }
     }
+end
 vim.cmd [[
   highlight! DiagnosticSignError guibg=none guifg=#fb4934
   highlight! DiagnosticSignWarn guibg=none guifg=#fabd2f
   highlight! DiagnosticSignInfo guibg=none guifg=#83a598
   highlight! DiagnosticSignHint guibg=none guifg=#8ec07c
-  sign define DiagnosticSignError text=E texthl=DiagnosticSignError
-  sign define DiagnosticSignWarn text=W texthl=DiagnosticSignWarn
-  sign define DiagnosticSignInfo text=I texthl=DiagnosticSignInfo
-  sign define DiagnosticSignHint text=H texthl=DiagnosticSignHint
 ]]
+-- This changes gutter signs 👇
+-- { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl }) -- numhl = hl
+
 end
+
 -- this is for lua lsp to work with neovim api
 require'lspconfig'.sumneko_lua.setup {
     settings = {
