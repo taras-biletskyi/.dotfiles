@@ -10,6 +10,8 @@
 
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
+# yabai -m query --windows -- shows current active apps and their properties for
+    # the bellow rules
 yabai -m rule --add label="Firfox PIP" app="Firefox" title="^(Picture-in-Picture)$" manage=off
 yabai -m rule --add app="FirefoxCP Isolated Web Content" manage=off
 yabai -m rule --add app="FirefoxCP WebExtensions" manage=off
@@ -17,7 +19,9 @@ yabai -m rule --add app="FirefoxCP Isolated Web Content" manage=off
 yabai -m rule --add app="LibreOffice" manage=off
 yabai -m rule --add app="ClearVPN" manage=off
 yabai -m rule --add app="DBeaver" manage=off
-yabai -m rule --add app="Slack" manage=off
+# yabai -m rule --add app="Slack" manage=off
+yabai -m rule --add app="Workplace Chat" manage=off
+yabai -m rule --add app="^Microsoft" manage=off
 
 # Closing focused window gives focus to remaining window
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
