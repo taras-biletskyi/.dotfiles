@@ -16,7 +16,7 @@ export ZSH=$HOME/.oh-my-zsh
 export FZF_BASE=/usr/local/Cellar/fzf/0.34.0
 export FZF_DEFAULT_OPTS="-m -0 -1 --height 40% --min-height=10 --layout=reverse
     --border --scroll-off=5 --info=inline --history-size=100000 --no-unicode --tabstop=4
-    --margin 1.5% --bind ctrl-space:toggle --bind tab:down --bind shift-tab:up"
+    --margin 1.5% --bind ctrl-space:toggle+down --bind tab:down --bind shift-tab:up"
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
     --color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
