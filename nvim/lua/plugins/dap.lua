@@ -2,6 +2,8 @@
 local map = vim.api.nvim_set_keymap
 local opts = {noremap = true}
 
+require('dap-go').setup()
+
 require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 
 -- silent for all

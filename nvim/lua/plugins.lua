@@ -59,6 +59,7 @@ require('packer').startup(function(use, run)
     use {'theHamsta/nvim-dap-virtual-text'}
     use {'nvim-telescope/telescope-dap.nvim'}
     use {'mfussenegger/nvim-dap-python'}
+    use {'leoluz/nvim-dap-go'}
     -- Helps to restore vim session after reboot
     use 'tpope/vim-obsession'
     use {'tpope/vim-surround'}
