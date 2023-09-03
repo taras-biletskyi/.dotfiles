@@ -36,7 +36,7 @@ map("n", "<leader>qf", ":cfirst<cr>", {noremap = true})
 map("n", "<leader>ql", ":clast<cr>", {noremap = true})
 -- For Go errors
 map("n", "<Leader>err",
-    "oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>",
+    "oif err != nil {<CR>return nil, err<CR>}<esc>k2w",
     {noremap = true}
 )
 -- move lines up & down in visual
