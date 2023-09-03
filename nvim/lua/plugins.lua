@@ -77,4 +77,8 @@ require('packer').startup(function(use, run)
     use {'kkoomen/vim-doge', run ':call doge#install()'} -- After PlugInstall - :call doge#install()
     use {'mbbill/undotree'}
     use {'bogado/file-line'}
+    use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+    })
 end)
