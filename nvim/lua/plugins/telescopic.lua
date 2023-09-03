@@ -24,4 +24,5 @@ vim.keymap.set('n', '<leader>tg', function() Builtin.live_grep(ivy_theme) end, {
 vim.keymap.set('n', '<leader>tb', function() Builtin.buffers(ivy_theme) end, {})
 vim.keymap.set('n', '<leader>td', function() Builtin.git_files(require('telescope.themes').get_ivy({prompt_title = ".dotfiles", cwd = "~/.dotfiles/", show_untracked = true})) end, {})
 vim.keymap.set('n', '<leader>th', function() Builtin.help_tags(ivy_theme) end, {})
-vim.keymap.set('n', '<leader>te', ":lua require'telescope.builtin'.symbols{ sources = {'emoji', 'kaomoji', 'gitmoji'} } <CR>", {})
+vim.keymap.set('n', '<leader>te', function() Builtin.symbols(ivy_theme) end, {})
+vim.keymap.set('n', '<leader>ts', function() Builtin.lsp_dynamic_workspace_symbols(ivy_theme) end, {})
