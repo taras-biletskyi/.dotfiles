@@ -18,6 +18,7 @@ require('packer').startup(function(use, run)
     -- Gutter to the right of line numbers
     use {'airblade/vim-gitgutter'}
     use {'tpope/vim-fugitive'}
+    use {'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim'}
     -- ctags thing for code outline
     use {'preservim/tagbar'}
     -- Plugin for commenting code

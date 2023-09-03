@@ -94,3 +94,4 @@ end
 vim.o.mmp = 200000
 vim.o.history = 10000
 vim.o.synmaxcol = 200
+vim.opt.fillchars = { diff = '/' }
