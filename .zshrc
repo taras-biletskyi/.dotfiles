@@ -78,6 +78,7 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
     git
     python
     pip
@@ -85,6 +86,12 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     history-substring-search
+    colored-man-pages
+    docker
+    docker-compose
+    # kubectl
+    # kubectx
+    # golang
     # Correct previos command with ESC ESC
     # thefuck
     # npm
@@ -123,10 +130,14 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 ###### My additions ######
 
+# 1Password comletions
+eval "$(op completion zsh)"; compdef _op op
+
 alias py="python3"
 alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -iv"
+alias lg=lazygit
 
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -147,7 +158,6 @@ bindkey '^ ' autosuggest-accept
   # exec startx
 # fi
 
-alias lg=lazygit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
