@@ -180,6 +180,8 @@ n ()
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
+# No dir auto-enter during "/" filtering
+export NNN_OPTS="A"
 
 # Remap right Command to right Option & Right Option to right Control
 # `hidutil property --get "UserKeyMapping" -- checks for current remaping;

@@ -43,6 +43,11 @@ require('lualine').setup {
         always_divide_middle = true,
         globalstatus = true
     },
+    refresh = {
+        statusline = 200,
+        tabline = 200,
+        winbar = 200,
+    },
     sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
