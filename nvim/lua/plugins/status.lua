@@ -75,7 +75,8 @@ require('lualine').setup {
             {
                 'buffers',
                 mode = 2,
-                symbols = {modified = "[+]", alternate_file = "#"}
+                symbols = {modified = "[+]", alternate_file = "#"},
+                max_length = vim.o.columns * 0.90 ,
             }
         },
         lualine_b = {},

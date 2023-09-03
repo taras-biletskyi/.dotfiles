@@ -19,11 +19,11 @@ vim.o.encoding = "utf-8"
 vim.o.number = true
 vim.o.relativenumber = true
 -- shows a symbol for lines that are wraped
-vim.cmd[[set showbreak=↪\]]
+vim.cmd [[set showbreak=↪\]]
 -- specifies characters for set list to show
 -- eol:↲
 -- set listchars=tab:→\,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
-vim.cmd[[set listchars=tab:→\ ,trail:•,extends:⟩,precedes:⟨]]
+vim.cmd [[set listchars=tab:→\ ,trail:•,extends:⟩,precedes:⟨]]
 vim.o.list = true
 vim.o.signcolumn = "auto:1-3"
 vim.o.tabstop = 4
@@ -36,21 +36,15 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"markdown", "text"},
-    callback = function()
-        vim.opt.wrap = true
-    end
+    callback = function() vim.opt.wrap = true end
 })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"sql", "qf", "python", "c", "go"},
-    callback = function()
-        vim.opt.wrap = false
-    end
+    callback = function() vim.opt.wrap = false end
 })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "gitcommit",
-    callback = function()
-        vim.cmd('set spell')
-    end
+    callback = function() vim.cmd('set spell') end
 })
 vim.opt.wrap = false
 vim.o.smarttab = true
@@ -58,7 +52,7 @@ vim.o.laststatus = 3
 vim.o.backup = false
 -- Does not show which mode is on on a separate line
 vim.o.showmode = false
-vim.opt.colorcolumn='80'
+vim.opt.colorcolumn = '80'
 -- Highlight matching search patterns
 vim.o.hlsearch = true
 -- Enable incremental search
@@ -72,7 +66,7 @@ vim.o.undofile = true
 vim.o.completeopt = "menu,menuone,noselect"
 -- This does not really work
     -- vim.opt.undodir = os.getenv("HOME") .. '/.vim/undodir'
-vim.cmd[[set undodir=~/.vim/undodir]]
+vim.cmd [[set undodir=~/.vim/undodir]]
 -- Do not conceal any symbols (works in .md)
 vim.o.conceallevel = 0
 vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
@@ -81,16 +75,16 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_fastbrowse = 0
 vim.g.netrw_bufsettings = "noma nomod nu rnu nowrap ro nobl"
 -- Ignore files in vimgrep, atleast
-vim.opt.wildignore:append { "*.pyc"}
-vim.opt.wildignore:append { "**/venv/*"}
-vim.opt.wildignore:append { "**/data/*"}
-vim.opt.wildignore:append { "*_build/*"}
-vim.opt.wildignore:append { "**/coverage/*"}
-vim.opt.wildignore:append { "**/node_modules/*"}
-vim.opt.wildignore:append { "**/android/*"}
-vim.opt.wildignore:append { "**/ios/*"}
-vim.opt.wildignore:append { "**/.git/*"}
-vim.opt.wildignore:append { "**/debug/*"}
+vim.opt.wildignore:append{"*.pyc"}
+vim.opt.wildignore:append{"**/venv/*"}
+vim.opt.wildignore:append{"**/data/*"}
+vim.opt.wildignore:append{"*_build/*"}
+vim.opt.wildignore:append{"**/coverage/*"}
+vim.opt.wildignore:append{"**/node_modules/*"}
+vim.opt.wildignore:append{"**/android/*"}
+vim.opt.wildignore:append{"**/ios/*"}
+vim.opt.wildignore:append{"**/.git/*"}
+vim.opt.wildignore:append{"**/debug/*"}
 vim.g.python3_host_prog = '/usr/local/bin/python3'
 -- fold markdown files
 vim.o.mmp = 200000

@@ -6,12 +6,11 @@ require('packer').startup(function(use, run)
     use {"ellisonleao/gruvbox.nvim"}
     -- buffer line & tabline
     use {'nvim-lualine/lualine.nvim'}
-    -- use {'arkav/lualine-lsp-progress'}
+    use {'arkav/lualine-lsp-progress'}
     -- displaying thin vertical lines at each indentation level for code indented with spaces
     -- use 'Yggdroot/indentLine'
     -- color the color codes 🤷
     -- use {'norcalli/nvim-colorizer.lua'}
-    -- Auto pairings
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
@@ -19,8 +18,6 @@ require('packer').startup(function(use, run)
     -- Gutter to the right of line numbers
     use {'airblade/vim-gitgutter'}
     use {'tpope/vim-fugitive'}
-    -- Symbols outline plugin
-    -- use {'simrat39/symbols-outline.nvim'}
     -- ctags thing for code outline
     use {'preservim/tagbar'}
     -- Start screen
@@ -35,7 +32,6 @@ require('packer').startup(function(use, run)
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-emoji'}
     use {'hrsh7th/cmp-cmdline'}
-    -- hrsh7th/cmp-nvim-lua
     use {'L3MON4D3/LuaSnip'}
     use {'saadparwaiz1/cmp_luasnip'}
     use {'rcarriga/cmp-dap'}
@@ -43,7 +39,6 @@ require('packer').startup(function(use, run)
     -- Code actions lightbulb working with nvim-lspconfig
     use {'kosayoda/nvim-lightbulb'}
     -- Telescope plugins
-    -- use {'nvim-lua/plenary.nvim'}
     use {
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/plenary.nvim'}}
@@ -51,7 +46,7 @@ require('packer').startup(function(use, run)
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     -- Code highlighting
     use {
-        'nvim-treesitter/nvim-treesitter',
+        'nvim-treesitter/nvim-treesitter'
         -- run = function()
             -- local ts_update = require('nvim-treesitter.install').update({
                 -- with_sync = true
@@ -64,7 +59,6 @@ require('packer').startup(function(use, run)
     -- Shortcuts cheat sheet
     use {'folke/which-key.nvim'}
     -- Debuger
-    -- use 'puremourning/vimspector'
     -- Plugins for nvim-dap debugger
     use {'mfussenegger/nvim-dap'}
     use {'rcarriga/nvim-dap-ui'}
@@ -77,13 +71,17 @@ require('packer').startup(function(use, run)
     use {'tpope/vim-repeat'}
     use {'sbdchd/neoformat'}
     -- DOcument GEnerator
-    -- INFO: does not work on M1
-    -- use {'kkoomen/vim-doge', run ':call doge#install()'} -- After PlugInstall - :call doge#install()
     use {"danymat/neogen"}
     use {'mbbill/undotree'}
     use {'bogado/file-line'}
-    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-    use {'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function() vim.g.mkdp_filetypes = {"markdown"} end,
+        ft = {"markdown"}
+    })
+    use {
+        'glacambre/firenvim',
+        run = function() vim.fn['firenvim#install'](0) end
     }
 end)

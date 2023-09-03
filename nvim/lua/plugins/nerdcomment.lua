@@ -1,4 +1,3 @@
-
 -- =====START===== preservim/nerdcommenter  ==========
 -- Add spaces after comment delimiters by default
 vim.g.NERDCreateDefaultMappings = 1

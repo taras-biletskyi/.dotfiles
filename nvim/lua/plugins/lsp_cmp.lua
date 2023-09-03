@@ -1,12 +1,11 @@
--- TODO: make this prettier
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-local lspkind = require("lspkind")
 local lspconfig = require("lspconfig")
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = {
-    "clangd", "gopls", "pyright", "vimls", "sumneko_lua", "jsonls", "dockerls", "yamlls", "bashls", "cmake", "taplo"
+    "clangd", "gopls", "pyright", "vimls", "sumneko_lua", "jsonls", "dockerls",
+    "yamlls", "bashls", "cmake", "taplo"
 }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
@@ -139,9 +138,6 @@ local on_attach = function(client, bufnr)
 end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {
-    "pyright", "gopls", "vimls", "clangd", "sumneko_lua", "jsonls", "dockerls", "yamlls", "bashls", "cmake", "taplo"
-}
 for _, lsp in pairs(servers) do
     require("lspconfig")[lsp].setup {
         on_attach = on_attach,

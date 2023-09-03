@@ -256,4 +256,4 @@ fd() {
 # completions for Azure CLI
 source /usr/local/etc/bash_completion.d/az
 # https://minikube.sigs.k8s.io/docs/commands/completion/
-source ~/.minikube-completion
+# source ~/.minikube-completion

@@ -11,7 +11,6 @@ map ("n", "<leader>gu", "<Plug>(GitGutterUndoHunk)", {noremap = true})
 map ("n", "<leader>ghb", ":GitGutterQuickFixCurrentFile <bar> :copen <CR>)", {noremap = true})
 map ("n", "<leader>ghw", ":GitGutterQuickFix <bar> :copen <CR>", {noremap = true})
 vim.cmd [[
-
 highlight GitGutterAdd    guifg='#98971A' guibg=none
 highlight GitGutterChange guifg='#FABD2F' guibg=none
 highlight GitGutterDelete guifg='#FB4934' guibg=none
