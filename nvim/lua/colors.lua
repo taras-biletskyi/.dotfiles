@@ -45,4 +45,4 @@ vim.cmd("colorscheme gruvbox")
 
 vim.cmd('highlight netrwDir guifg=#e4717a')
 -- TODO: move this somewhere else?
-require'colorizer'.setup()
+--require'colorizer'.setup()

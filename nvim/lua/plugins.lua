@@ -1,16 +1,16 @@
-return require('packer').startup(function(use, run)
+require('packer').startup(function(use, run)
     use 'wbthomason/packer.nvim'
     -- Colortheme
     -- use {'gruvbox-community/gruvbox'}
     -- this one is in Lua but does not support treesitter as well
-    use { "ellisonleao/gruvbox.nvim" }
+    use {"ellisonleao/gruvbox.nvim"}
     -- buffer line & tabline
     use {'nvim-lualine/lualine.nvim'}
-    use {'arkav/lualine-lsp-progress'}
+    -- use {'arkav/lualine-lsp-progress'}
     -- displaying thin vertical lines at each indentation level for code indented with spaces
     -- use 'Yggdroot/indentLine'
     -- color the color codes 🤷
-    use {'norcalli/nvim-colorizer.lua'}
+    -- use {'norcalli/nvim-colorizer.lua'}
     -- Auto pairings
     use {'jiangmiao/auto-pairs'}
     -- Gutter to the right of line numbers
@@ -47,7 +47,15 @@ return require('packer').startup(function(use, run)
     }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     -- Code highlighting
-    use {'nvim-treesitter/nvim-treesitter', run ':TSUpdate'}
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({
+                with_sync = true
+            })
+            ts_update()
+        end
+    }
     -- Shows sticky context at the top of the buffer; much awesome
     use {'nvim-treesitter/nvim-treesitter-context'}
     -- Shortcuts cheat sheet

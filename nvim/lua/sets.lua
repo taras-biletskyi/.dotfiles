@@ -79,5 +79,7 @@ vim.cmd [[
 augroup Markdown
   autocmd!
   autocmd FileType markdown set wrap
+  autocmd FileType text set wrap
 augroup END
 ]]
+vim.o.mmp = 200000

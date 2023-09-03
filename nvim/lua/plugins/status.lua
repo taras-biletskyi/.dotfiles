@@ -1,37 +1,38 @@
-local function mixed_indent()
-    local space_pat = [[\v^ +]]
-    local tab_pat = [[\v^\t+]]
-    local space_indent = vim.fn.search(space_pat, 'nwc')
-    local tab_indent = vim.fn.search(tab_pat, 'nwc')
-    local mixed = (space_indent > 0 and tab_indent > 0)
-    local mixed_same_line
-    if not mixed then
-        mixed_same_line = vim.fn.search([[\v^(\t+ | +\t)]], 'nwc')
-        mixed = mixed_same_line > 0
-    end
-    if not mixed then return '' end
-    if mixed_same_line ~= nil and mixed_same_line > 0 then
-        return 'MI:' .. mixed_same_line
-    end
-    local space_indent_cnt = vim.fn.searchcount({
-        pattern = space_pat,
-        max_count = 1e3
-    }).total
-    local tab_indent_cnt = vim.fn.searchcount({
-        pattern = tab_pat,
-        max_count = 1e3
-    }).total
-    if space_indent_cnt > tab_indent_cnt then
-        return 'MI:' .. tab_indent
-    else
-        return 'MI:' .. space_indent
-    end
-end
+-- !!! These custom functions slow down nvim a lot. Especially with large files. !!!
+-- local function mixed_indent()
+    -- local space_pat = [[\v^ +]]
+    -- local tab_pat = [[\v^\t+]]
+    -- local space_indent = vim.fn.search(space_pat, 'nwc')
+    -- local tab_indent = vim.fn.search(tab_pat, 'nwc')
+    -- local mixed = (space_indent > 0 and tab_indent > 0)
+    -- local mixed_same_line
+    -- if not mixed then
+        -- mixed_same_line = vim.fn.search([[\v^(\t+ | +\t)]], 'nwc')
+        -- mixed = mixed_same_line > 0
+    -- end
+    -- if not mixed then return '' end
+    -- if mixed_same_line ~= nil and mixed_same_line > 0 then
+        -- return 'MI:' .. mixed_same_line
+    -- end
+    -- local space_indent_cnt = vim.fn.searchcount({
+        -- pattern = space_pat,
+        -- max_count = 1e3
+    -- }).total
+    -- local tab_indent_cnt = vim.fn.searchcount({
+        -- pattern = tab_pat,
+        -- max_count = 1e3
+    -- }).total
+    -- if space_indent_cnt > tab_indent_cnt then
+        -- return 'MI:' .. tab_indent
+    -- else
+        -- return 'MI:' .. space_indent
+    -- end
+-- end
 
-local function trail_white()
-    local space = vim.fn.search([[\s\+$]], 'nwc')
-    return space ~= 0 and "TW:" .. space or ""
-end
+-- local function trail_white()
+    -- local space = vim.fn.search([[\s\+$]], 'nwc')
+    -- return space ~= 0 and "TW:" .. space or ""
+-- end
 
 require('lualine').setup {
     options = {
@@ -55,7 +56,8 @@ require('lualine').setup {
         lualine_x = {'lsp_progress', 'encoding', 'fileformat'},
         -- trail_white shows TW:line_number
         -- mixed_indent shows MI:line_number
-        lualine_y = {mixed_indent, trail_white},
+        -- !!! These custom functions slow down nvim a lot. Especially with large files. !!!
+        -- lualine_y = {mixed_indent, trail_white},
         -- :h 'statusline'
         lualine_z = {'%0l/%0L|%-0v'}
     },
