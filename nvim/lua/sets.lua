@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function() vim.opt.wrap = false end
 })
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "gitcommit",
+    pattern = {"gitcommit", "markdown"},
     callback = function() vim.cmd('set spell') end
 })
 vim.opt.wrap = false
