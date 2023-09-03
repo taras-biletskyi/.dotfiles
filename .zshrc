@@ -159,8 +159,6 @@ export MANPATH="/usr/local/man:$MANPATH"
 precmd () {
   echo -n -e "\a"
 }
-# 1Password comletions
-eval "$(op completion zsh)"; compdef _op op
 
 alias py="python3"
 alias rm="rm -iv"
