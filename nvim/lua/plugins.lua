@@ -43,7 +43,10 @@ return require('packer').startup(function(use, run)
     use {'kosayoda/nvim-lightbulb'}
     -- Telescope plugins
     use {'nvim-lua/plenary.nvim'}
-    use {'nvim-telescope/telescope.nvim'}
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     -- Code highlighting
     use {'nvim-treesitter/nvim-treesitter', run ':TSUpdate'}

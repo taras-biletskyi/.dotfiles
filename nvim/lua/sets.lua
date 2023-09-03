@@ -51,7 +51,8 @@ vim.o.incsearch = true
 vim.o.sidescroll = 1
 vim.o.undofile = true
 vim.o.completeopt = "menu,menuone,noselect"
-vim.o.undodir = "~/.vim/undodir"
+vim.opt.undodir = os.getenv("HOME") .. '/.vim/undodir'
+-- vim.o.undodir = "~/.vim/undodir"
 -- Do not conceal any symbols (works in .md)
 vim.o.conceallevel = 0
 vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}

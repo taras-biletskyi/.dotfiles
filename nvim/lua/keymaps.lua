@@ -43,3 +43,10 @@ map("v", "K", ":m <-2<CR>gv=gv", {noremap = true})
 map("n", "n", "nzzzv", {noremap = true})
 map("n", "N", "Nzzzv", {noremap = true})
 
+
+
+map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus <CR>" , {noremap = true})
+
+
+map("n", "<F8>", ":TagbarToggle jf <CR>", {})
+
