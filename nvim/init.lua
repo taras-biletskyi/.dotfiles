@@ -23,6 +23,13 @@ vim.cmd [[
 au FocusGained * silent redraw!
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}
 ]]
+-- fold markdown files
+vim.cmd [[
+augroup Markdown
+  autocmd!
+  autocmd FileType markdown set wrap
+augroup END
+]]
 
 
 

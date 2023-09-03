@@ -1,7 +1,7 @@
 -- TODO: it' a mess
 local map = vim.api.nvim_set_keymap
 
-opts = {noremap = true, silent = true}
+opts = {noremap = true}
 
 require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 

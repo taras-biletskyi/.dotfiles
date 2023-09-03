@@ -39,7 +39,7 @@ vim.o.laststatus = 3
 vim.o.backup = false
 -- Does not show which mode is on on a separate line
 vim.o.showmode = false
-vim.o.colorcolumn = 80
+vim.opt.colorcolumn='80'
 -- Highlight matching search patterns
 vim.o.hlsearch = true
 -- Enable incremental search
@@ -71,3 +71,4 @@ vim.o.wildignore = vim.o.wildignore .. "**/node_modules/*"
 vim.o.wildignore = vim.o.wildignore .. "**/android/*"
 vim.o.wildignore = vim.o.wildignore .. "**/ios/*"
 vim.o.wildignore = vim.o.wildignore .. "**/.git/*"
+vim.o.wildignore = vim.o.wildignore .. "**/debug/*"

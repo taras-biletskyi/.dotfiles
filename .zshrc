@@ -124,6 +124,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 ###### My additions ######
 
 alias py="python3"
+alias rm="rm -i"
 
 HISTSIZE=100000
 SAVEHIST=100000
@@ -143,7 +144,6 @@ bindkey '^ ' autosuggest-accept
 # if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   # exec startx
 # fi
-###### My additions ######
 
 alias lg=lazygit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
