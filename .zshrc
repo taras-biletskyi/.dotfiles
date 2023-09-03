@@ -109,6 +109,7 @@ plugins=(
     docker-compose
     fzf
     fzf-tab
+    gcloud
     # kubectl
     # kubectx
     # golang
@@ -237,3 +238,5 @@ fd() {
     # source <(kubectl completion zsh | sed 's#${requestComp} 2>/dev/null#${requestComp} 2>/dev/null | head -n -1 | fzf  --multi=0 #g')
 # }
 ############### fzf snippents ###############
+# autoload bashcompinit && bashcompinit
+source /usr/local/etc/bash_completion.d/az
