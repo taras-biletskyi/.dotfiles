@@ -1,3 +1,4 @@
 .DS_Store
 /nvim/plugin/
 Session.vim
+nvim/lua/.luarc.json

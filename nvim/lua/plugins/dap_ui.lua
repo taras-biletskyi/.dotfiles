@@ -7,9 +7,7 @@
 --        repl = "r",
 --        toggle = "t",
 --    }
--- TODO: this line spawns a dap-repl buffer each time on nvim startup;
-    -- maybe this will get fixed some day.
--- require("dapui").setup()
+require("dapui").setup()
 -- initialize the UI on dap startup
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] =

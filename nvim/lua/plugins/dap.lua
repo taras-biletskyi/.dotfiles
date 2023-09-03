@@ -62,19 +62,14 @@ dap.configurations.cpp = {
         -- runInTerminal = false,
     }
 }
-env = function()
-    local variables = {}
-    for k, v in pairs(vim.fn.environ()) do
-        table.insert(variables, string.format("%s=%s", k, v))
-    end
-    return variables
-end
 -- If you want to use this for Rust and C, add something like this:
 dap.configurations.c = dap.configurations.cpp
 -- =====END===== mfussenegger/nvim-dap ==========
 
 -- =====START===== theHamsta/nvim-dap-virtual-text ==========
-require("nvim-dap-virtual-text").setup()
+require("nvim-dap-virtual-text").setup{
+    all_frames = true,
+}
 -- =====END===== theHamsta/nvim-dap-virtual-text ==========
 
 -- =====START===== nvim-telescope/telescope-dap.nvim ==========
