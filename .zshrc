@@ -123,7 +123,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 ###### My additions ######
 
-alias python="python3"
+alias py="python3"
 
 HISTSIZE=100000
 SAVEHIST=100000
