@@ -71,7 +71,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"gitcommit", "markdown"},
-    callback = function() vim.cmd('set spell') end
+    callback = function() vim.cmd('setlocal spell') end
 })
 vim.opt.wrap = false
 vim.o.smarttab = true
