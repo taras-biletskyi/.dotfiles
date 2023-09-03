@@ -39,6 +39,7 @@ require('plugins.diffview')
 require('plugins.todo_comments')
 require('plugins.luasnip')
 require('plugins.obsidian')
+require('plugins.tree_textobjects')
 
 -- Makes tmux work with vim
 -- https://github.com/tmux-plugins/vim-tmux-focus-events/issues/2#issuecomment-87863831

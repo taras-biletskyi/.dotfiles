@@ -57,6 +57,8 @@ require("lazy").setup({
     },
     -- Shows sticky context at the top of the buffer; much awesome
     "nvim-treesitter/nvim-treesitter-context",
+    -- Additional maps based on treesitter
+    "nvim-treesitter/nvim-treesitter-textobjects",
     -- Shortcuts cheat sheet
     "folke/which-key.nvim",
     -- Debuger
