@@ -10,7 +10,9 @@ require'treesitter-context'.setup {
         default = {
             'class', 'function', 'method', 'for', -- These won't appear in the context
             'while', 'if', 'switch', 'case'
-        }
+        },
+        json = {'pair'},
+        yaml = {'block_mapping_pair'}
     },
     exact_patterns = {
         -- Example for a specific filetype with Lua patterns

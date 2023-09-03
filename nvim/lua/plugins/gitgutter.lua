@@ -12,10 +12,10 @@ map ("n", "<leader>ghb", ":GitGutterQuickFixCurrentFile <bar> :copen <CR>)", {no
 map ("n", "<leader>ghw", ":GitGutterQuickFix <bar> :copen <CR>", {noremap = true})
 vim.cmd [[
 
-highlight GitGutterAdd    ctermfg=none guibg=none
-highlight GitGutterChange ctermfg=none guibg=none
-highlight GitGutterDelete ctermfg=none guibg=none
-highlight! GitGutterChangeDelete guifg='#8ec07c' guibg=none
+highlight GitGutterAdd    guifg='#98971A' guibg=none
+highlight GitGutterChange guifg='#FABD2F' guibg=none
+highlight GitGutterDelete guifg='#CC241D' guibg=none
+highlight! GitGutterChangeDelete guifg='#8EC07C' guibg=none
 ]]
 vim.cmd [[
 hi SignColumn guibg=none ctermbg=none

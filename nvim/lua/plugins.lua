@@ -1,9 +1,9 @@
 return require('packer').startup(function(use, run)
     use 'wbthomason/packer.nvim'
     -- Colortheme
-    use {'gruvbox-community/gruvbox'}
+    -- use {'gruvbox-community/gruvbox'}
     -- this one is in Lua but does not support treesitter as well
-    -- use { "ellisonleao/gruvbox.nvim" }
+    use { "ellisonleao/gruvbox.nvim" }
     -- buffer line & tabline
     use {'nvim-lualine/lualine.nvim'}
     use {'arkav/lualine-lsp-progress'}
