@@ -40,7 +40,7 @@ return require('packer').startup(function(use, run)
     -- Code actions lightbulb working with nvim-lspconfig
     use {'kosayoda/nvim-lightbulb'}
     -- Telescope plugins
-    use {'nvim-lua/plenary.nvim'}
+    -- use {'nvim-lua/plenary.nvim'}
     use {
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/plenary.nvim'}}

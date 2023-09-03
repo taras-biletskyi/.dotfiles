@@ -13,22 +13,16 @@ map("n", "<F10>", "<cmd> lua require('dap').step_over()<CR>", opts)
 map("n", "<F11>", "<cmd> lua require('dap').step_into()<CR>", opts)
 map("n", "<F12>", "<cmd> lua require('dap').step_out()<CR>", opts)
 map("n", "<Leader>dbb", "<cmd>lua require('dap').toggle_breakpoint()<CR>", opts)
-map("n", "<Leader>dbc",
-    "<cmd> lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-    opts)
-map("n", "<Leader>dbl",
-    "<cmd> lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-    opts)
+map("n", "<Leader>dbc", "<cmd> lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+map("n", "<Leader>dbl", "<cmd> lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
 map("n", "<Leader>dr", "<cmd> lua require('dap').repl.toggle()<CR>", opts)
 -- nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
 map("n", "<Leader>dtc", "<cmd> lua require('dap').run_to_cursor()<CR>", opts)
 -- run_to_cursor() This temporarily removes all breakpoints, sets a breakpoint at the cursor, resumes execution and then adds back all breakpoints again.
 -- from mfussenegger/nvim-dap-python
-map("n", "<leader>dtm", "<cmd> lua require('dap-python').test_method()<CR>",
-    opts)
+map("n", "<leader>dtm", "<cmd> lua require('dap-python').test_method()<CR>", opts)
 map("n", "<leader>dtc", "<cmd> lua require('dap-python').test_class()<CR>", opts)
-map("v", "<leader>ds", "<cmd> lua require('dap-python').debug_selection()<CR>",
-    opts)
+map("v", "<leader>ds", "<cmd> lua require('dap-python').debug_selection()<CR>", opts)
 -- trigger REPL compoletions automatically
 vim.cmd [[
 au FileType dap-repl lua require('dap.ext.autocompl').attach()
@@ -73,7 +67,7 @@ local dap = require('dap')
 -- Via lldb-vscode (it just works better)
 dap.adapters.lldb = {
     type = 'executable',
-    command = '/usr/local/Cellar/llvm/14.0.6_1/bin/lldb-vscode', -- adjust as needed, must be absolute path
+    command = '/usr/local/Cellar/llvm/15.0.3/bin/lldb-vscode', -- adjust as needed, must be absolute path
     name = 'lldb'
 }
 dap.configurations.cpp = {

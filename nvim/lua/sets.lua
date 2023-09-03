@@ -34,7 +34,7 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 -- set autoindent
 vim.o.smartindent = true
-vim.o.wrap = false
+vim.wo.wrap = false
 vim.o.smarttab = true
 vim.o.laststatus = 3
 vim.o.backup = false
@@ -63,16 +63,16 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_fastbrowse = 0
 vim.g.netrw_bufsettings = "noma nomod nu rnu nowrap ro nobl"
 -- Ignore files in vimgrep, atleast
-vim.o.wildignore = vim.o.wildignore .. "*.pyc"
-vim.o.wildignore = vim.o.wildignore .. "**/venv/*"
-vim.o.wildignore = vim.o.wildignore .. "**/data/*"
-vim.o.wildignore = vim.o.wildignore .. "*_build/*"
-vim.o.wildignore = vim.o.wildignore .. "**/coverage/*"
-vim.o.wildignore = vim.o.wildignore .. "**/node_modules/*"
-vim.o.wildignore = vim.o.wildignore .. "**/android/*"
-vim.o.wildignore = vim.o.wildignore .. "**/ios/*"
-vim.o.wildignore = vim.o.wildignore .. "**/.git/*"
-vim.o.wildignore = vim.o.wildignore .. "**/debug/*"
+vim.opt.wildignore:append { "*.pyc"}
+vim.opt.wildignore:append { "**/venv/*"}
+vim.opt.wildignore:append { "**/data/*"}
+vim.opt.wildignore:append { "*_build/*"}
+vim.opt.wildignore:append { "**/coverage/*"}
+vim.opt.wildignore:append { "**/node_modules/*"}
+vim.opt.wildignore:append { "**/android/*"}
+vim.opt.wildignore:append { "**/ios/*"}
+vim.opt.wildignore:append { "**/.git/*"}
+vim.opt.wildignore:append { "**/debug/*"}
 -- fold markdown files
 vim.cmd [[
 augroup Markdown
