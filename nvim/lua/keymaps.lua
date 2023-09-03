@@ -46,4 +46,3 @@ map("n", "N", "Nzzzv", {noremap = true})
 map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus <CR>", {noremap = true})
 
 map("n", "<F8>", ":TagbarToggle jf <CR>", {})
-vim.cmd[[let g:AutoPairsShortcutToggle = '']]

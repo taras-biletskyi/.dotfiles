@@ -12,7 +12,10 @@ require('packer').startup(function(use, run)
     -- color the color codes 🤷
     -- use {'norcalli/nvim-colorizer.lua'}
     -- Auto pairings
-    use {'jiangmiao/auto-pairs'}
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
     -- Gutter to the right of line numbers
     use {'airblade/vim-gitgutter'}
     use {'tpope/vim-fugitive'}
