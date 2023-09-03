@@ -25,4 +25,4 @@ require("todo-comments").setup {
     }
 }
 
-vim.keymap.set('n', '<leader>tt', ":TodoTelescope<CR>")
+vim.keymap.set('n', '<leader>tt', ":TodoTelescope theme=ivy previewer=false<CR>")
