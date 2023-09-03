@@ -28,5 +28,5 @@ require'treesitter-context'.setup {
 }
 
 vim.cmd [[
-  highlight link TreesitterContext Pmenu
+  highlight! link TreesitterContext Pmenu
 ]]
