@@ -36,11 +36,11 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"markdown", "text"},
-    callback = function() vim.opt.wrap = true end
+    callback = function() vim.opt_local.wrap = true end
 })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"sql", "qf", "python", "c", "go"},
-    callback = function() vim.opt.wrap = false end
+    callback = function() vim.opt_local.wrap = false end
 })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"gitcommit", "markdown"},
@@ -90,7 +90,6 @@ if io.popen('uname -m','r'):read('*l') == 'arm64' then
 else
     vim.g.python3_host_prog = '/usr/local/bin/python3'
 end
--- fold markdown files
 vim.o.mmp = 200000
 vim.o.history = 10000
 vim.o.synmaxcol = 200
