@@ -23,7 +23,7 @@ require("lazy").setup({
     -- ctags thing for code outline
     "preservim/tagbar",
     -- Plugin for commenting code
-    "preservim/nerdcommenter",
+    "numToStr/Comment.nvim",
     -- Completions to come along with neovim/nvim-lspconfig
     "neovim/nvim-lspconfig",
     "hrsh7th/nvim-cmp",
