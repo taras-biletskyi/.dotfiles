@@ -92,4 +92,5 @@ require('packer').startup(function(use, run)
     }
     use {'nvim-telescope/telescope-symbols.nvim'}
     use {'folke/todo-comments.nvim'}
+    use({"epwalsh/obsidian.nvim"})
 end)

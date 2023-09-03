@@ -35,3 +35,5 @@ vim.keymap.set('n', '<leader>tls', function() Builtin.lsp_dynamic_workspace_symb
 vim.keymap.set('n', '<leader>tlr', function() Builtin.lsp_references(opts) end, {})
 vim.keymap.set('n', '<leader>tli', function() Builtin.lsp_incoming_calls(opts) end, {})
 vim.keymap.set('n', '<leader>tlo', function() Builtin.lsp_outgoing_calls(opts) end, {})
+
+--TODO: remape sending selectiond of file to quickfix fot tf and tg and td
