@@ -52,12 +52,12 @@ require('packer').startup(function(use, run)
     -- Code highlighting
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = function()
-            local ts_update = require('nvim-treesitter.install').update({
-                with_sync = true
-            })
-            ts_update()
-        end
+        -- run = function()
+            -- local ts_update = require('nvim-treesitter.install').update({
+                -- with_sync = true
+            -- })
+            -- ts_update()
+        -- end
     }
     -- Shows sticky context at the top of the buffer; much awesome
     use {'nvim-treesitter/nvim-treesitter-context'}
@@ -77,11 +77,13 @@ require('packer').startup(function(use, run)
     use {'tpope/vim-repeat'}
     use {'sbdchd/neoformat'}
     -- DOcument GEnerator
-    use {'kkoomen/vim-doge', run ':call doge#install()'} -- After PlugInstall - :call doge#install()
+    -- INFO: does not work on M1
+    -- use {'kkoomen/vim-doge', run ':call doge#install()'} -- After PlugInstall - :call doge#install()
+    use {"danymat/neogen"}
     use {'mbbill/undotree'}
     use {'bogado/file-line'}
     use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
     })
 end)
