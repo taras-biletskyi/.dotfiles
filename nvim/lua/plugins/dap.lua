@@ -71,6 +71,7 @@ dap.configurations.c = dap.configurations.cpp
 -- =====START===== theHamsta/nvim-dap-virtual-text ==========
 require("nvim-dap-virtual-text").setup{
     all_frames = true,
+    highlight_new_as_changed = true,
 }
 -- =====END===== theHamsta/nvim-dap-virtual-text ==========
 
