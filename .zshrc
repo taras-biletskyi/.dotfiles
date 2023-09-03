@@ -120,6 +120,8 @@ plugins=(
 ### My addition
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 fpath+=/Users/tb_reply/.config/completion
+# for brew ocmpletion
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 source $ZSH/oh-my-zsh.sh
 
