@@ -86,4 +86,14 @@ require('packer').startup(function(use, run)
     use {'lewis6991/impatient.nvim'}
     -- visualises '--startup' nvim arg
     -- use {'dstein64/vim-startuptime'}
+    use {
+        "someone-stole-my-name/yaml-companion.nvim",
+        requires = {
+            {"neovim/nvim-lspconfig"}, {"nvim-lua/plenary.nvim"},
+            {"nvim-telescope/telescope.nvim"}
+        },
+        config = function()
+            require("telescope").load_extension("yaml_schema")
+        end
+    }
 end)
