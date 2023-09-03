@@ -6,5 +6,5 @@ require"nvim-treesitter.configs".setup {
         enable = false,
         keymaps = {init_selection = "grrrrr"}
     },
-    textobjects = {enable = true}
+    -- textobjects = {enable = true}
 }

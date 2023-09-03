@@ -84,4 +84,8 @@ require('packer').startup(function(use, run)
         'glacambre/firenvim',
         run = function() vim.fn['firenvim#install'](0) end
     }
+    -- caches for nvim startup
+    use {'lewis6991/impatient.nvim'}
+    -- visualises '--startup' nvim arg
+    -- use {'dstein64/vim-startuptime'}
 end)

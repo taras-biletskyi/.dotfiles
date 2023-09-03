@@ -89,3 +89,4 @@ vim.g.python3_host_prog = '/usr/local/bin/python3'
 -- fold markdown files
 vim.o.mmp = 200000
 vim.o.history = 10000
+vim.o.synmaxcol = 200

@@ -1,3 +1,5 @@
+-- impatient needs to be at the top of init.lua
+require('impatient')
 require('plugins')
 
 require('sets')
