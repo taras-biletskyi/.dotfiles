@@ -14,8 +14,8 @@ map("i", "<S-Down>", "<Esc>:m+<CR>", {noremap = true})
 vim.g.mapleader = " "
 -- Paste/delete into black-hole register
 map("x", "<leader>p", '"_dP', {noremap = true})
--- nnoremap <leader>d "_d
--- vnoremap <leader>d "_d
+map("n", "<leader>d", '"_d', {noremap = true})
+map("v", "<leader>d", '"_d', {noremap = true})
 -- Yank into system clipboard
 map("n", "<leader>y", '"+y', {noremap = true})
 map("v", "<leader>y", '"+y', {noremap = true})

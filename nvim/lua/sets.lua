@@ -80,6 +80,7 @@ augroup Markdown
   autocmd!
   autocmd FileType markdown set wrap
   autocmd FileType text set wrap
+  autocmd FileType sql set nowrap
 augroup END
 ]]
 vim.o.mmp = 200000
