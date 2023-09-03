@@ -12,4 +12,5 @@
 /Users/tmp/.dotfiles/karabiner/karabiner.json|/Users/tmp/.config/karabiner/karabiner.json
 /Users/tmp/.dotfiles/karabiner/assets/complex_modifications/cmd_layer.json|/Users/tmp/.config/karabiner/assets/complex_modifications/cmd_layer.json
 /Users/tmp/.dotfiles/karabiner/assets/complex_modifications/modifier_keys_layer_0_and_1.json|/Users/tmp/.config/karabiner/assets/complex_modifications/modifier_keys_layer_0_and_1.json
-/Users/tmp/.dotfiles/skin.yml|/Users/tmp/Library/Application\ Support/k9s/skin.yml
+/Users/tmp/.dotfiles/k9s/skin.yml|/Users/tmp/Library/Application\ Support/k9s/skin.yml
+/Users/tmp/.dotfiles/k9s/config.yml|/Users/tmp/Library/Application\ Support/k9s/config.yml

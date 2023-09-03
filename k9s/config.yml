@@ -1,0 +1,71 @@
+k9s:
+  refreshRate: 2
+  maxConnRetry: 1
+  enableMouse: false
+  headless: false
+  logoless: false
+  crumbsless: false
+  readOnly: true
+  noExitOnCtrlC: true
+  noIcons: false
+  logger:
+    tail: 100
+    buffer: 5000
+    sinceSeconds: -1
+    fullScreenLogs: false
+    textWrap: false
+    showTime: false
+  currentContext: docker-desktop
+  currentCluster: docker-desktop
+  clusters:
+    docker-desktop:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - airflow-dev-local
+        - all
+        - kube-public
+        - kube-system
+        - default
+      view:
+        active: service
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    replyk8s:
+      namespace:
+        active: default
+        lockFavorites: false
+        favorites:
+        - airflow
+        - default
+      view:
+        active: service
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70
+  screenDumpDir: /var/folders/02/2839r2mx1cq6jx6jf_10mqww0000gp/T/k9s-screens-tb_reply
