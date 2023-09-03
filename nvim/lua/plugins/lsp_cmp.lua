@@ -61,7 +61,7 @@ cmp.setup {
                     return vim.api.nvim_list_bufs()
                 end
             }
-        }, {name = "dap"}, {name = "luasnip"}, {name = "emoji"}
+        }, {name = "dap"}, {name = "luasnip"}
     }),
     formatting = {
       format = lspkind.cmp_format({
@@ -75,7 +75,6 @@ cmp.setup {
               buffer = "[Buf]",
               nvim_lua = "[Lua]",
               calc = "[Clc]",
-              emoji = "[Emj]",
               dap = "[Dap]"
           })
 

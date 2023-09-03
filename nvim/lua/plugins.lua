@@ -30,7 +30,6 @@ require('packer').startup(function(use, run)
     use {'hrsh7th/cmp-nvim-lsp'}
     use {'hrsh7th/cmp-buffer'}
     use {'hrsh7th/cmp-path'}
-    use {'hrsh7th/cmp-emoji'}
     use {'hrsh7th/cmp-cmdline'}
 
     -- these two go together
@@ -88,4 +87,5 @@ require('packer').startup(function(use, run)
             require("telescope").load_extension("yaml_schema")
         end
     }
+    use {'xiyaowong/telescope-emoji.nvim'}
 end)
