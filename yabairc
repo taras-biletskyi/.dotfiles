@@ -17,6 +17,7 @@ yabai -m rule --add app="FirefoxCP Isolated Web Content" manage=off
 yabai -m rule --add app="LibreOffice" manage=off
 yabai -m rule --add app="ClearVPN" manage=off
 yabai -m rule --add app="DBeaver" manage=off
+yabai -m rule --add app="Slack" manage=off
 
 # Closing focused window gives focus to remaining window
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
