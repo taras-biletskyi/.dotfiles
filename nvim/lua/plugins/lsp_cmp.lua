@@ -163,10 +163,18 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts.border = opts.border or border
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
+
 vim.cmd [[
   highlight! NormalFloat guibg=#1d2021
   highlight! FloatBorder guifg=#ebdbb2 guibg=#1d2021
 ]]
+
+-- activate :LspInfo float border
+local _border = "rounded"
+require('lspconfig.ui.windows').default_options = {
+  border = _border
+}
+vim.cmd [[highlight! LspInfoBorder guifg=#ebdbb2 guibg=#1d2021]]
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
