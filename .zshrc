@@ -11,6 +11,19 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+### My addition
+### All these settings should go in your zshrc file, before Oh My Zsh is sourced.
+export FZF_BASE=/usr/local/Cellar/fzf/0.34.0
+export FZF_DEFAULT_OPTS="-m -0 -1 --height 40% --min-height=10 --layout=reverse
+    --border --scroll-off=5 --info=inline --history-size=100000 --no-unicode --tabstop=4
+    --margin 1.5% --bind ctrl-space:toggle --bind tab:down --bind shift-tab:up"
+
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
+    --color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
+    --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54
+"
+
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -77,6 +90,11 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+### My addition
+autoload -Uz compinit && compinit
+### My addition
+# Should be before plugins and after compinit
+source /Users/tmp/.oh-my-zsh/custom/plugins/fzf-tab/fzf-tab.plugin.zsh
 plugins=(
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
     git
@@ -89,20 +107,21 @@ plugins=(
     colored-man-pages
     docker
     docker-compose
+    fzf
+    fzf-tab
     # kubectl
     # kubectx
     # golang
-    # Correct previos command with ESC ESC
-    # thefuck
-    # npm
 )
 
+### My addition
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+### My addition
 export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -128,7 +147,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-###### My additions ######
+############### My additions ###############
 
 # 1Password comletions
 eval "$(op completion zsh)"; compdef _op op
@@ -147,20 +166,18 @@ export EDITOR='nvim'
 export TERM="xterm-256color"
 export FPATH="/usr/local/opt/curl/share/zsh/site-functions:$FPATH"
 
-
-autoload -Uz compinit && compinit
-
 # Change zsh-autosuggestions hotkey
 bindkey '^ ' autosuggest-accept
-
-# Initialize startx on login
-# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  # exec startx
-# fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.dotfiles/.p10k.zsh.
+[[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
+
+############### nnn snippents ###############
 # Quit nnn to current dir with ^G and set alias to `n`
 n ()
 {
@@ -192,20 +209,30 @@ n ()
 }
 # No dir auto-enter during "/" filtering
 export NNN_OPTS="A"
+############### nnn snippents ###############
 
-# Remap right Command to right Option & Right Option to right Control
-# `hidutil property --get "UserKeyMapping" -- checks for current remaping;
-# resets upon system restart | hidutil property --set '{"UserKeyMapping":[]}'
-# https://apple.stackexchange.com/questions/280855/changing-right-hand-command-alt-key-order-to-be-like-a-windows-keyboard
+############### fzf snippents ###############
+# tm - create new tmux session, or switch to existing one. Works from within tmux too. (@bag-man)
+# `tm` will allow you to select your tmux session via fzf.
+# `tm irc` will attach to the irc session (if it exists), else it will create it.
+tm() {
+  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+  if [ $1 ]; then
+    tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+  fi
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
+}
 
-# hidutil property --set '{"UserKeyMapping":
-#     [{"HIDKeyboardModifierMappingSrc":0x7000000e7,
-#       "HIDKeyboardModifierMappingDst":0x7000000e6},
-#      {"HIDKeyboardModifierMappingSrc":0x7000000e6,
-#       "HIDKeyboardModifierMappingDst":0x7000000e4}]
-# }'
+# fd - cd to selected directory, includes hidden ones
+fd() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.dotfiles/.p10k.zsh.
-[[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
+# ZSH
+# Make all kubectl completion fzf
+# !!! This should not be needed with fzf-tab plugin !!!
+# command -v fzf >/dev/null 2>&1 && {
+    # source <(kubectl completion zsh | sed 's#${requestComp} 2>/dev/null#${requestComp} 2>/dev/null | head -n -1 | fzf  --multi=0 #g')
+# }
+############### fzf snippents ###############
