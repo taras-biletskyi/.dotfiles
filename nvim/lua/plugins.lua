@@ -35,6 +35,8 @@ require('packer').startup(function(use, run)
     -- these two go together
     use {'L3MON4D3/LuaSnip'}
     use {'saadparwaiz1/cmp_luasnip'}
+    -- this one has snippets for LuaSnip
+    use {"rafamadriz/friendly-snippets"}
 
     use {'rcarriga/cmp-dap'}
     use {'onsails/lspkind-nvim'}
