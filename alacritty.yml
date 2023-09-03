@@ -114,7 +114,7 @@ font:
     family: DejaVuSansMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Book
 
   # Bold font face
   bold:
@@ -125,7 +125,7 @@ font:
     family: DejaVuSansMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: Bold
 
   # Italic font face
   italic:
@@ -136,7 +136,7 @@ font:
     family: DejaVuSansMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
-    # style: Italic
+    style: Oblique
 
   # Bold italic font face
   bold_italic:
@@ -147,7 +147,7 @@ font:
     family: DejaVuSansMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
-    # style: Bold Italic
+    style: Bold Oblique
 
   # Point size
   size: 16.0

@@ -1,4 +1,2 @@
-files_to_track.txt
-move_script.sh
 .DS_Store
 /nvim/plugin/

@@ -13,7 +13,8 @@ export ZSH=$HOME/.oh-my-zsh
 
 ### My addition
 ### All these settings should go in your zshrc file, before Oh My Zsh is sourced.
-export FZF_BASE=/usr/local/Cellar/fzf/0.34.0
+true_fzf_path=$(readlink -f $(which fzf))
+export FZF_BASE=$true_fzf_path
 export FZF_DEFAULT_OPTS="-m -0 -1 --height 40% --min-height=10 --layout=reverse
     --border --scroll-off=5 --info=inline --history-size=100000 --no-unicode --tabstop=4
     --margin 1.5% --bind ctrl-space:toggle+down --bind tab:down --bind shift-tab:up"
@@ -94,7 +95,9 @@ ENABLE_CORRECTION="true"
 autoload -Uz compinit && compinit
 ### My addition
 # Should be before plugins and after compinit
-source /Users/tmp/.oh-my-zsh/custom/plugins/fzf-tab/fzf-tab.plugin.zsh
+user=$(whoami)
+fzf_tab_path=$(echo "/Users/${user}/.oh-my-zsh/custom/plugins/fzf-tab/fzf-tab.plugin.zsh")
+source "$fzf_tab_path"
 plugins=(
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
     git
@@ -106,7 +109,6 @@ plugins=(
     history-substring-search
     colored-man-pages
     docker
-    docker-compose
     fzf
     fzf-tab
     gcloud
@@ -162,6 +164,9 @@ alias lzd="lazydocker"
 
 HISTSIZE=1000000
 SAVEHIST=1000000
+
+# Use this instead of `use_thin_strokes: false` in alacritty config
+# defaults write -g AppleFontSmoothing -int 0
 
 export VISUAL='nvim'
 export EDITOR='nvim'

@@ -1,0 +1,14 @@
+/Users/tmp/.dotfiles/.zshrc|/Users/tmp/.zshrc
+/Users/tmp/.dotfiles/.bash_profile|/Users/tmp/.bash_profile
+/Users/tmp/.dotfiles/.p10k.zsh|/Users/tmp/.p10k.zsh
+/Users/tmp/.dotfiles/.tmux.conf|/Users/tmp/.tmux.conf
+/Users/tmp/.dotfiles/oh-my-zsh.sh|/Users/tmp/.oh-my-zsh/oh-my-zsh.sh
+/Users/tmp/.dotfiles/alacritty.yml|/Users/tmp/.config/alacritty/alacritty.yml
+/Users/tmp/.dotfiles/lazygit/config.yml|/Users/tmp/Library/Application\ Support/lazygit/config.yml
+/Users/tmp/.dotfiles/lazydocker/config.yml|/Users/tmp/Library/Application\ Support/lazydocker/config.yml
+/Users/tmp/.dotfiles/nvim|/Users/tmp/.config/nvim
+/Users/tmp/.dotfiles/skhdrc|/Users/tmp/.config/skhd/skhdrc
+/Users/tmp/.dotfiles/yabairc|/Users/tmp/.config/yabai/yabairc
+/Users/tmp/.dotfiles/karabiner/karabiner.json|/Users/tmp/.config/karabiner/karabiner.json
+/Users/tmp/.dotfiles/karabiner/assets/complex_modifications/cmd_layer.json|/Users/tmp/.config/karabiner/assets/complex_modifications/cmd_layer.json
+/Users/tmp/.dotfiles/karabiner/assets/complex_modifications/modifier_keys_layer_0_and_1.json|/Users/tmp/.config/karabiner/assets/complex_modifications/modifier_keys_layer_0_and_1.json
