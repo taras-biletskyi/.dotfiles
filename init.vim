@@ -33,6 +33,7 @@ Plug 'hrsh7th/cmp-cmdline'
 " hrsh7th/cmp-nvim-lua
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'rcarriga/cmp-dap'
 Plug 'onsails/lspkind-nvim'
 " Code actions lightbulb working with nvim-lspconfig
 Plug 'kosayoda/nvim-lightbulb'
@@ -52,7 +53,6 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'mfussenegger/nvim-dap-python'
-Plug 'rcarriga/cmp-dap'
 " Helps to restore vim session after reboot
 " Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
@@ -158,6 +158,7 @@ xnoremap <leader>p "_dP
 " Yank into system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
+nmap <leader>Y "+Y
 " set space to not do anything in normal/visual mode
 " Local & Quickfix lists
 nnoremap <leader>lo :lopen<cr>
@@ -174,6 +175,12 @@ nnoremap <leader>qf :cfirst<cr>
 nnoremap <leader>ql :clast<cr>
 " For Go errors
 nnoremap <Leader>err oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>
+" move lines up & down in visual
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+" always center on search
+nnoremap n nzzzv
+nnoremap N Nzzzv
 " ---------------------------- COLORSCHEME
 " syntax enable
 filetype plugin indent on
@@ -333,6 +340,11 @@ end
 local luasnip = require "luasnip"
 local cmp = require "cmp"
 cmp.setup {
+-- this is for rcarriga/cmp-dap
+-- nvim-cmp by defaults disables autocomplete for prompt buffers
+enabled = function()
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+end,
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -384,6 +396,7 @@ cmp.setup {
                     end
                 }
             },
+            {name = "dap"},
             {name = "luasnip"},
             {name = "emoji"}
         }
@@ -399,19 +412,12 @@ cmp.setup {
                 buffer = "[Buf]",
                 nvim_lua = "[Lua]",
                 calc = "[Clc]",
-                emoji = "[Emj]"
+                emoji = "[Emj]",
+                dap = "[Dap]"
             })[entry.source.name]
             return vim_item
         end
     },
-    -- this is for rcarriga/cmp-dap
-    -- nvim-cmp by defaults disables autocomplete for prompt buffers
-    enabled = function()
-        return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
-    end,
-    sources = {
-        {name = "dap"}
-    }
 }
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
