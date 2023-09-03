@@ -26,3 +26,7 @@ require'treesitter-context'.setup {
 
     zindex = 20 -- The Z-index of the context window
 }
+
+vim.cmd [[
+  highlight link TreesitterContext Pmenu
+]]
