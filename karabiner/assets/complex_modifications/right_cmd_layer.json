@@ -1,5 +1,5 @@
 {
-  "title": "right cmd layer",
+  "title": "right cmd layer keys",
   "rules": [
     {
       "description": "left part",
@@ -166,6 +166,26 @@
         {
           "from": {
             "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "0",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "g",
             "modifiers": {
               "mandatory": [
                 "right_option"
@@ -493,6 +513,56 @@
             }
           ],
           "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "fn -> hyper",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "fn",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_shift",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "meh -> fn",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_shift",
+            "modifiers": {
+              "mandatory": [
+                "left_control",
+                "left_option"
+              ],
+              "optional": "any"
+            }
+          },
+          "to": [
+            {
+              "key_code": "fn",
+              "modifiers": "any"
+            }
+          ]
         }
       ]
     }

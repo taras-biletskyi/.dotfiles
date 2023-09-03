@@ -545,7 +545,8 @@ nnoremap <silent> <Leader>dbb <Cmd>lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> <Leader>dbc <Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
 nnoremap <silent> <Leader>dbl <Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
 nnoremap <silent> <Leader>dr <Cmd>lua require'dap'.repl.toggle()<CR>
-nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
+" nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
+nnoremap <silent> <Leader>dtc <Cmd>lua require'dap'.run_to_cursor()<CR>
 " run_to_cursor() This temporarily removes all breakpoints, sets a breakpoint at the cursor, resumes execution and then adds back all breakpoints again.
 " from mfussenegger/nvim-dap-python
 nnoremap <silent> <leader>dtm :lua require('dap-python').test_method()<CR>
