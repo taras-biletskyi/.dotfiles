@@ -16,7 +16,7 @@ require('packer').startup(function(use, run)
         config = function() require("nvim-autopairs").setup {} end
     }
     -- Gutter to the right of line numbers
-    use {'airblade/vim-gitgutter'}
+    use {'lewis6991/gitsigns.nvim'}
     use {'tpope/vim-fugitive'}
     use {'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim'}
     -- ctags thing for code outline

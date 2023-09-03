@@ -7,7 +7,7 @@ require('keymaps')
 require('colors')
 
 require('plugins.status')
-require('plugins.gitgutter')
+require('plugins.gitsigns')
 require('plugins.telescopic')
 require('plugins.nerdcomment')
 require('plugins.lsp_cmp')

@@ -7,6 +7,8 @@ require("diffview").setup({
 })
 
 local map = vim.api.nvim_set_keymap
-map ("n", "<leader>gdh", ":DiffviewFileHistory <CR>", {})
-map ("n", "<leader>gdo", ":DiffviewOpen <CR>", {})
-map ("n", "<leader>gdc", ":DiffviewClose <CR>", {})
+-- it is also posible to pass a range into DiffviewFileHistory
+    -- altough don't know how to map that
+map ("n", "<leader>hh", ":DiffviewFileHistory <CR>", {})
+map ("n", "<leader>ho", ":DiffviewOpen <CR>", {})
+map ("n", "<leader>hc", ":DiffviewClose <CR>", {})
