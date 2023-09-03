@@ -10,7 +10,7 @@ require("todo-comments").setup {
         },
         TODO = {icon = " ", color = "info"},
         HACK = {icon = " ", color = "warning", alt = {"MAGIC"}},
-        WARN = {icon = " ", color = "warning", alt = {"WARNING", "XXX"}},
+        WARN = {icon = " ", color = "warning", alt = {"WARNING", "XXX", "REFACTOR"}},
         PERF = {icon = " ", color = "perf", alt = {"OPTIM", "PERFORMANCE", "OPTIMIZE"}},
         NOTE = {icon = " ", color = "hint", alt = {"INFO"}},
         TEST = {icon = "⏲ ", color = "perf", alt = {"TESTING", "PASSED", "FAILED"}}
@@ -21,7 +21,7 @@ require("todo-comments").setup {
     highlight = {
         keyword = "bg", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
         after = "",
-        pattern = [[(\/\/|#).*<(KEYWORDS)\s*(.*)]], -- pattern or table of patterns, used for highlightng (vim regex)
+        pattern = [[.*<(KEYWORDS)\s*(.*)]], -- pattern or table of patterns, used for highlightng (vim regex)
     }
 }
 

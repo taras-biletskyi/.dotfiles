@@ -10,7 +10,7 @@ vim.o.termguicolors = true
 --[[
    [ vim.g.gruvbox_termcolors = 256
    [ -- let g:gruvbox_termcolors=256
-   [ 
+   [
    [ -- let g:gruvbox_transparent_bg=1
    [ -- let g:gruvbox_contrast_light=1
    [ vim.g.gruvbox_bold = 1
@@ -28,7 +28,12 @@ require("gruvbox").setup({
     undercurl = true,
     underline = true,
     bold = true,
-    italic = false,
+    italic = {
+        strings = false,
+        comments = false,
+        operators = false,
+        folds = false,
+    },
     strikethrough = true,
     invert_selection = false,
     invert_signs = false,
