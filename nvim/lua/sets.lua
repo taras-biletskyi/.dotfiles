@@ -83,3 +83,4 @@ augroup Markdown
 augroup END
 ]]
 vim.o.mmp = 200000
+vim.o.history = 10000
