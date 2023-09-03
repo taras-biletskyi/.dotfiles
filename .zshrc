@@ -178,6 +178,7 @@ export VISUAL='nvim'
 export EDITOR='nvim'
 export TERM="xterm-256color"
 export FPATH="/usr/local/opt/curl/share/zsh/site-functions:$FPATH"
+export FPATH="/opt/homebrew/opt/curl/share/zsh/site-functions:$FPATH"
 
 # Change zsh-autosuggestions hotkey
 bindkey '^ ' autosuggest-accept
@@ -256,3 +257,5 @@ fd() {
 source /usr/local/etc/bash_completion.d/az
 # https://minikube.sigs.k8s.io/docs/commands/completion/
 # source ~/.minikube-completion
+# for mysql CLI client
+export PATH="/opt/homebrew/Cellar/mysql-client/8.0.32/bin:$PATH"
