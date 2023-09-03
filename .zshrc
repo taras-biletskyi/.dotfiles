@@ -112,13 +112,14 @@ plugins=(
     fzf
     fzf-tab
     gcloud
-    # kubectl
+    kubectl
     # kubectx
     # golang
 )
 
 ### My addition
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+fpath+=/Users/tb_reply/.config/completion
 
 source $ZSH/oh-my-zsh.sh
 

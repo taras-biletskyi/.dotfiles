@@ -82,8 +82,5 @@ require('packer').startup(function(use, run)
     use {"danymat/neogen"}
     use {'mbbill/undotree'}
     use {'bogado/file-line'}
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 end)
