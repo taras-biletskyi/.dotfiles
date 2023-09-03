@@ -21,8 +21,20 @@ map("n", "<Leader>dr", "<cmd> lua require('dap').repl.toggle()<CR>", opts)
 -- run_to_cursor() This temporarily removes all breakpoints, sets a breakpoint at the cursor, resumes execution and then adds back all breakpoints again.
 map("n", "<Leader>dtc", "<cmd> lua require('dap').run_to_cursor()<CR>", opts)
 -- from mfussenegger/nvim-dap-python
-map("n", "<leader>dtm", "<cmd> lua require('dap-python').test_method()<CR>", opts)
-map("n", "<leader>dtc", "<cmd> lua require('dap-python').test_class()<CR>", opts)
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"go", "gomod"},
+    callback = function()
+        map("n", "<leader>dtt", "<cmd> lua require('dap-go').debug_test()<CR>", opts)
+        map("n", "<leader>dtl", "<cmd> lua require('dap-go').debug_last_test()<CR>", opts)
+    end
+})
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"python"},
+    callback = function()
+        map("n", "<leader>dtm", "<cmd> lua require('dap-python').test_method()<CR>", opts)
+        map("n", "<leader>dtc", "<cmd> lua require('dap-python').test_class()<CR>", opts)
+    end
+})
 map("v", "<leader>ds", "<cmd> lua require('dap-python').debug_selection()<CR>", opts)
 -- trigger REPL compoletions automatically
 -- vim.cmd [[au FileType dap-repl lua require('dap.ext.autocompl').attach()]]

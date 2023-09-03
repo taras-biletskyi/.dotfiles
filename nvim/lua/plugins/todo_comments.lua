@@ -13,7 +13,7 @@ require("todo-comments").setup {
         WARN = {icon = " ", color = "warning", alt = {"WARNING", "XXX"}},
         PERF = {icon = " ", color = "perf", alt = {"OPTIM", "PERFORMANCE", "OPTIMIZE"}},
         NOTE = {icon = " ", color = "hint", alt = {"INFO"}},
-        TEST = {icon = "⏲ ", color = "test", alt = {"TESTING", "PASSED", "FAILED"}}
+        TEST = {icon = "⏲ ", color = "perf", alt = {"TESTING", "PASSED", "FAILED"}}
     },
     colors = {
         perf = { "GruvboxPurple" }
