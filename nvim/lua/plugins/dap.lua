@@ -33,7 +33,7 @@ local dap = require('dap')
 -- Via lldb-vscode (it just works better)
 dap.adapters.lldb = {
     type = 'executable',
-    command = '/usr/local/Cellar/llvm/15.0.3/bin/lldb-vscode', -- adjust as needed, must be absolute path
+    command = '/usr/local/Cellar/llvm/15.0.6/bin/lldb-vscode', -- adjust as needed, must be absolute path
     name = 'lldb'
 }
 dap.configurations.cpp = {
