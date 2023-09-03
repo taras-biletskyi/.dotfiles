@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function() vim.opt_local.wrap = true end
 })
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"sql", "qf", "python", "c", "go"},
+    pattern = {"*"},
     callback = function() vim.opt_local.wrap = false end
 })
 vim.api.nvim_create_autocmd("FileType", {
