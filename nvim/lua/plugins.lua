@@ -72,6 +72,7 @@ require("lazy").setup({
     "tpope/vim-surround",
     "tpope/vim-repeat",
     "sbdchd/neoformat",
+    "stevearc/conform.nvim",
     -- DOcument GEnerator
     "danymat/neogen",
     "mbbill/undotree",

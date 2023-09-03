@@ -28,3 +28,23 @@ let g:neoformat_lua_luaformat =  {
 let g:neoformat_enabled_lua = ['luaformat']
 let g:neoformat_enabled_yaml = ['prettier']
 ]]
+
+-- TODO: see if this plugin supports arguments for separate formatters yet
+require("conform").setup({
+    formatters_by_ft = {
+        c = {"clang_format"},
+        lua = { "luaformat" },
+        -- Formatters can also be specified with additional options
+        python = {
+            formatters = { "isort", "black" },
+            args = {""},
+            -- Run formatters one after another instead of stopping at the first success
+            run_all_formatters = true,
+        },
+        go = {
+            formatters = {"gofmt", "gofumpt", "golines", "goimports"},
+            run_all_formatters = true,
+        },
+        yaml = {"prettier"}
+    },
+})
