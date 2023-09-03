@@ -20,8 +20,6 @@ require('packer').startup(function(use, run)
     use {'tpope/vim-fugitive'}
     -- ctags thing for code outline
     use {'preservim/tagbar'}
-    -- Start screen
-    use {'mhinz/vim-startify'}
     -- Plugin for commenting code
     use {'preservim/nerdcommenter'}
     -- Completions to come along with neovim/nvim-lspconfig
