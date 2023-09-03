@@ -9,7 +9,7 @@ require'treesitter-context'.setup {
         -- appear in the context window.
         default = {
             'class', 'function', 'method', 'for', 'with', 'while', 'if',
-            'switch', 'case', 'try', 'except', 'else'
+            'switch', 'case', 'default', 'try', 'except', 'else',
         },
         json = {'pair'},
         yaml = {'block_mapping_pair'}
