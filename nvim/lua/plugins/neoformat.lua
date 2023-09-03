@@ -12,7 +12,7 @@ let g:shfmt_opt="-ci"
 
 let g:neoformat_c_clangformat = {
             \ 'exe': 'clang-format',
-            \ 'args': ['-style="{BasedOnStyle: google, IndentWidth: 4}"'],
+            \ 'args': ['-style="{BasedOnStyle: llvm, IndentWidth: 4}"'],
             \ 'stdin': 1
             \ }
 let g:neoformat_enabled_c = ['clangformat']
