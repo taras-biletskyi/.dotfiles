@@ -13,21 +13,106 @@ map("n", "<F10>", "<cmd> lua require('dap').step_over()<CR>", opts)
 map("n", "<F11>", "<cmd> lua require('dap').step_into()<CR>", opts)
 map("n", "<F12>", "<cmd> lua require('dap').step_out()<CR>", opts)
 map("n", "<Leader>dbb", "<cmd>lua require('dap').toggle_breakpoint()<CR>", opts)
-map("n", "<Leader>dbc",  "<cmd> lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
-map("n", "<Leader>dbl", "<cmd> lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
+map("n", "<Leader>dbc",
+    "<cmd> lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+    opts)
+map("n", "<Leader>dbl",
+    "<cmd> lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
+    opts)
 map("n", "<Leader>dr", "<cmd> lua require('dap').repl.toggle()<CR>", opts)
 -- nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
 map("n", "<Leader>dtc", "<cmd> lua require('dap').run_to_cursor()<CR>", opts)
 -- run_to_cursor() This temporarily removes all breakpoints, sets a breakpoint at the cursor, resumes execution and then adds back all breakpoints again.
 -- from mfussenegger/nvim-dap-python
-map("n", "<leader>dtm", "<cmd> lua require('dap-python').test_method()<CR>", opts)
+map("n", "<leader>dtm", "<cmd> lua require('dap-python').test_method()<CR>",
+    opts)
 map("n", "<leader>dtc", "<cmd> lua require('dap-python').test_class()<CR>", opts)
-map("v", "<leader>ds", "<cmd> lua require('dap-python').debug_selection()<CR>", opts)
+map("v", "<leader>ds", "<cmd> lua require('dap-python').debug_selection()<CR>",
+    opts)
 -- trigger REPL compoletions automatically
 vim.cmd [[
 au FileType dap-repl lua require('dap.ext.autocompl').attach()
 ]]
 local dap = require('dap')
+-- for C/C++/Rust (must compile with '-g' flag for breakpoints to work)
+-- Via vscode-cpptools
+--[[
+   [ -- brew install gdb
+   [ -- https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(gdb-via--vscode-cpptools)
+   [ dap.adapters.cppdbg = {
+   [     id = 'cppdbg',
+   [     type = 'executable',
+   [     command = '/Users/tmp/personal/important_tools/extension/debugAdapters/bin/OpenDebugAD7'
+   [ }
+   [ dap.configurations.cpp = {
+   [     {
+   [         name = "Launch file",
+   [         type = "cppdbg",
+   [         request = "launch",
+   [         program = function()
+   [             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/',
+   [                                 'file')
+   [         end,
+   [         cwd = '${workspaceFolder}',
+   [         stopOnEntry = true
+   [     }, {
+   [         name = 'Attach to gdbserver :1234',
+   [         type = 'cppdbg',
+   [         request = 'launch',
+   [         MIMode = 'gdb',
+   [         miDebuggerServerAddress = 'localhost:1234',
+   [         miDebuggerPath = '/usr/bin/gdb',
+   [         cwd = '${workspaceFolder}',
+   [         program = function()
+   [             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/',
+   [                                 'file')
+   [         end
+   [     }
+   [ }
+   ]]
+-- Via lldb-vscode (it just works better)
+dap.adapters.lldb = {
+    type = 'executable',
+    command = '/usr/local/Cellar/llvm/14.0.6_1/bin/lldb-vscode', -- adjust as needed, must be absolute path
+    name = 'lldb'
+}
+dap.configurations.cpp = {
+    {
+        name = 'Launch',
+        type = 'lldb',
+        request = 'launch',
+        program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/',
+                                'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {}
+        -- 💀
+        -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
+        --
+        --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+        --
+        -- Otherwise you might get the following error:
+        --
+        --    Error on launch: Failed to attach to the target process
+        --
+        -- But you should be aware of the implications:
+        -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
+        -- runInTerminal = false,
+    }
+}
+env = function()
+    local variables = {}
+    for k, v in pairs(vim.fn.environ()) do
+        table.insert(variables, string.format("%s=%s", k, v))
+    end
+    return variables
+end
+-- If you want to use this for Rust and C, add something like this:
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
+-- for C/C++/Rust
 -- =====END===== mfussenegger/nvim-dap ==========
 
 -- =====START===== rcarriga/nvim-dap-ui ==========
@@ -49,7 +134,9 @@ dap.listeners.before.event_terminated["dapui_config"] =
 dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 -- eval floating window
 -- same command to jumpt to the window
-vim.api.nvim_set_keymap("n", "<Leader>de", "<cmd> lua require('dapui').eval()<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Leader>de",
+                        "<cmd> lua require('dapui').eval()<CR>",
+                        {noremap = true})
 -- =====END===== rcarriga/nvim-dap-ui ==========
 
 -- =====START===== theHamsta/nvim-dap-virtual-text ==========
@@ -58,5 +145,6 @@ require("nvim-dap-virtual-text").setup()
 
 -- =====START===== nvim-telescope/telescope-dap.nvim ==========
 require('telescope').load_extension('dap')
-vim.keymap.set('n', '<Leader>dc', function() require('telescope').extensions.dap.commands() end)
+vim.keymap.set('n', '<Leader>dc',
+               function() require('telescope').extensions.dap.commands() end)
 -- =====END===== nvim-telescope/telescope-dap.nvim ==========

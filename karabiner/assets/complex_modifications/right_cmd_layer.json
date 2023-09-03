@@ -602,8 +602,7 @@
           },
           "to": [
             {
-              "key_code": "f1",
-              "modifiers": "right_shift"
+              "key_code": "f1"
             }
           ],
           "type": "basic"
@@ -622,8 +621,7 @@
           },
           "to": [
             {
-              "key_code": "f2",
-              "modifiers": "right_shift"
+              "key_code": "f2"
             }
           ],
           "type": "basic"
@@ -642,8 +640,7 @@
           },
           "to": [
             {
-              "key_code": "f3",
-              "modifiers": "right_shift"
+              "key_code": "f3"
             }
           ],
           "type": "basic"
@@ -662,8 +659,7 @@
           },
           "to": [
             {
-              "key_code": "f4",
-              "modifiers": "right_shift"
+              "key_code": "f4"
             }
           ],
           "type": "basic"
@@ -682,8 +678,7 @@
           },
           "to": [
             {
-              "key_code": "f5",
-              "modifiers": "right_shift"
+              "key_code": "f5"
             }
           ],
           "type": "basic"
@@ -702,8 +697,7 @@
           },
           "to": [
             {
-              "key_code": "f6",
-              "modifiers": "right_shift"
+              "key_code": "f6"
             }
           ],
           "type": "basic"
@@ -722,8 +716,7 @@
           },
           "to": [
             {
-              "key_code": "f7",
-              "modifiers": "right_shift"
+              "key_code": "f7"
             }
           ],
           "type": "basic"
@@ -742,8 +735,7 @@
           },
           "to": [
             {
-              "key_code": "f8",
-              "modifiers": "right_shift"
+              "key_code": "f8"
             }
           ],
           "type": "basic"
@@ -762,8 +754,7 @@
           },
           "to": [
             {
-              "key_code": "f9",
-              "modifiers": "right_shift"
+              "key_code": "f9"
             }
           ],
           "type": "basic"
@@ -782,8 +773,7 @@
           },
           "to": [
             {
-              "key_code": "f10",
-              "modifiers": "right_shift"
+              "key_code": "f10"
             }
           ],
           "type": "basic"
@@ -802,8 +792,7 @@
           },
           "to": [
             {
-              "key_code": "f11",
-              "modifiers": "right_shift"
+              "key_code": "f11"
             }
           ],
           "type": "basic"
@@ -822,8 +811,7 @@
           },
           "to": [
             {
-              "key_code": "f12",
-              "modifiers": "right_shift"
+              "key_code": "f12"
             }
           ],
           "type": "basic"
