@@ -1,0 +1,8 @@
+{
+  "cssTheme": "Obsidian gruvbox",
+  "translucency": true,
+  "monospaceFontFamily": "DejaVuSansMono Nerd Font Mono",
+  "enabledCssSnippets": [
+    "gruvbox_fix"
+  ]
+}
