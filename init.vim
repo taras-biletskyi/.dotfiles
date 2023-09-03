@@ -17,7 +17,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 " Symbols outline plugin
-" Plug 'simrat39/symbols-outline.nvim'
+Plug 'simrat39/symbols-outline.nvim'
 " Start screen
 Plug 'mhinz/vim-startify'
 " Plugin for commenting code
@@ -45,11 +45,19 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'folke/which-key.nvim'
 " Debuger
 " Plug 'puremourning/vimspector'
+" Plugins for nvim-dap debugger
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'mfussenegger/nvim-dap-python'
 " Helps to restore vim session after reboot
 " Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'sbdchd/neoformat'
+" DOcument GEnerator
+Plug 'kkoomen/vim-doge' " After PlugInstall - :call doge#install()
 call plug#end()
 
 " Makes tmux work with vim
@@ -83,7 +91,7 @@ set showbreak=↪\
 " set listchars=tab:→\,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set listchars=tab:→\ ,trail:•,extends:⟩,precedes:⟨
 set list
-set signcolumn=auto:1-2
+set signcolumn=auto:1-3
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
@@ -113,9 +121,13 @@ set undodir=~/.vim/undodir
 set conceallevel=0
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:netrw_browse_split = 0
+" close the netrw browser when opening a file
+let g:netrw_fastbrowse = 0
+let g:netrw_bufsettings = 'noma nomod nu rnu nowrap ro nobl'
 " Ignore files in vimgrep, atleast
 set wildignore+=*.pyc
 set wildignore+=**/venv/*
+set wildignore+=**/data/*
 set wildignore+=*_build/*
 set wildignore+=**/coverage/*
 set wildignore+=**/node_modules/*
@@ -138,8 +150,8 @@ inoremap <S-Down> <Esc>:m+<CR>
 let mapleader=" "
 " Paste/delete into black-hole register
 xnoremap <leader>p "_dP
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
+" nnoremap <leader>d "_d
+" vnoremap <leader>d "_d
 " Yank into system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
@@ -247,7 +259,7 @@ endif
 nnoremap <leader>tf <cmd>lua require("telescope.builtin").find_files(require('telescope.themes').get_ivy({hidden=false, follow=true, no_ignore=false})) <CR>
 nnoremap <leader>tg <cmd>lua require("telescope.builtin").live_grep(require('telescope.themes').get_ivy()) <CR>
 nnoremap <leader>tb <cmd>lua require("telescope.builtin").buffers(require('telescope.themes').get_ivy()) <CR>
-nnoremap <leader>tt <cmd>lua require("telescope.builtin").treesitter(require('telescope.themes').get_ivy()) <CR>
+nnoremap <leader>tt <cmd>lua require("telescope.builtin").lsp_document_symbols(require('telescope.themes').get_ivy()) <CR>
 nnoremap <leader>td <cmd>lua require("telescope.builtin").git_files(require('telescope.themes').get_ivy({prompt_title = ".dotfiles", cwd = "~/.dotfiles/", show_untracked = true}))<CR>
 " builtin.quickfix
 " builtin.loclist
@@ -522,6 +534,77 @@ let g:neoformat_enabled_toml = ['taplo']
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 " =====END===== puremourning/vimspector ==========
 
+" =====START===== mfussenegger/nvim-dap ==========
+" Docs: https://github.com/mfussenegger/nvim-dap/blob/master/doc/dap.txt
+nnoremap <silent> <F5> <Cmd>lua require'dap'.continue()<CR>
+nnoremap <silent> <F6> <Cmd>lua require'dap'.terminate()<CR>
+nnoremap <silent> <F10> <Cmd>lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> <Cmd>lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> <Cmd>lua require'dap'.step_out()<CR>
+nnoremap <silent> <Leader>dbb <Cmd>lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <Leader>dbc <Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <Leader>dbl <Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <Leader>dr <Cmd>lua require'dap'.repl.toggle()<CR>
+nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
+" run_to_cursor() This temporarily removes all breakpoints, sets a breakpoint at the cursor, resumes execution and then adds back all breakpoints again.
+" from mfussenegger/nvim-dap-python
+nnoremap <silent> <leader>dtm :lua require('dap-python').test_method()<CR>
+nnoremap <silent> <leader>dtc :lua require('dap-python').test_class()<CR>
+vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
+lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+" trigger REPL compoletions automatically
+au FileType dap-repl lua require('dap.ext.autocompl').attach()
+lua << EOF
+local dap = require('dap')
+EOF
+" =====END===== mfussenegger/nvim-dap ==========
+
+" =====START===== rcarriga/nvim-dap-ui ==========
+"    default mappings = {
+"        expand = { "<CR>", "<2-LeftMouse>" },
+"        open = "o",
+"        remove = "d",
+"        edit = "e",
+"        repl = "r",
+"        toggle = "t",
+"    }
+lua << EOF
+require("dapui").setup()
+-- initialize the UI on dap startup
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+    dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+    dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+    dapui.close()
+end
+EOF
+" eval floating window
+    " same command to jumpt to the window
+noremap <Leader>de <Cmd>lua require("dapui").eval()<CR>
+" =====END===== rcarriga/nvim-dap-ui ==========
+
+" =====START===== theHamsta/nvim-dap-virtual-text ==========
+lua << EOF
+require("nvim-dap-virtual-text").setup()
+EOF
+" =====END===== theHamsta/nvim-dap-virtual-text ==========
+
+" =====START===== nvim-telescope/telescope-dap.nvim ==========
+lua << EOF
+require('telescope').load_extension('dap')
+EOF
+" =====END===== nvim-telescope/telescope-dap.nvim ==========
+
+" =====START===== kkoomen/vim-doge ==========
+let g:doge_doc_standard_python = 'numpy'
+let g:doge_comment_jump_modes = ['n', 's']
+let g:doge_mapping = '<Leader>doge'
+" =====END===== kkoomen/vim-doge ==========
+
 " Usefull vim stuff
     " Commands:
         " = - auto-indent
@@ -538,7 +621,6 @@ let g:neoformat_enabled_toml = ['taplo']
         " g; - go to older position in change list
         " gs - go to sleep for n(1) seconds
         " C-w - panes related commands
-        " {count}C-g - print buffer's full path, lines, prcnt
         " C-O | C-I - Retrace your movements in file in backwards | forwards
         " ^-G - shows current file path + basic info. If 1 + ^-G, shows full
             " path, count >= 2 shows current buffer number.
@@ -557,7 +639,7 @@ let g:neoformat_enabled_toml = ['taplo']
         " to the next occurence of the word or last respectively
         " ggn | GN - jump to the first and last matches respectively
         " / > Ctrl-r > Ctrl-w - copy the word under cursor to the command
-        " line
+            " line
     " Quickfix lists
         " :grep | :vimgrep - external and internal grep
         " :cnext | :cprev | :copen - next | prev searches and open the list
