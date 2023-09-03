@@ -50,14 +50,14 @@ hyper - 6 : yabai -m space --focus 6
 hyper - 7 : yabai -m space --focus 7
 hyper - 8 : yabai -m space --focus 8
 hyper - 9 : yabai -m space --focus 9
+# previously accessed space
+hyper - 0 : yabai -m space --focus recent
 
 # swap spaces
 # comma
 hyper_w < 0x2F : yabai -m space --swap next
 # dot
 hyper_w < 0x2B : yabai -m space --swap prev
-# # previously accessed space
-# hyper - 0x16 : yabai -m space --focus recent
 # next | prev space
 hyper - n : yabai -m space --focus next
 hyper - p : yabai -m space --focus prev
