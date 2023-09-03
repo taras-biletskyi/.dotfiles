@@ -103,7 +103,7 @@ cmp.event:on(
 -- =====START===== neovim/nvim-lspconfig  ==========
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = {
-    "clangd", "gopls", "pyright", "vimls", "sumneko_lua", "jsonls", "dockerls",
+    "clangd", "gopls", "pyright", "vimls", "lua_ls", "jsonls", "dockerls",
     "yamlls", "bashls", "cmake", "taplo"
 }
 -- Initializes pyright, rust_analyzer lsp server
@@ -190,7 +190,7 @@ for type, icon in pairs(signs) do
 end
 
 -- this is for lua lsp to work with neovim api
-require'lspconfig'.sumneko_lua.setup {
+require'lspconfig'.lua_ls.setup {
     settings = {
         Lua = {
             runtime = {
