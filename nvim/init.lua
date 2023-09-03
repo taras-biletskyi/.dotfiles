@@ -1,5 +1,19 @@
+-- lazy.nvim package manager needs to the very first thing
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
 -- impatient needs to be at the top of init.lua
-require('impatient')
+-- require('impatient')
 require('plugins')
 
 require('sets')

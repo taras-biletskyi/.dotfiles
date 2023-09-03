@@ -2,3 +2,4 @@
 /nvim/plugin/
 Session.vim
 nvim/lua/.luarc.json
+nvim/lazy-lock.json

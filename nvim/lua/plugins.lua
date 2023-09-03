@@ -1,96 +1,104 @@
-require('packer').startup(function(use, run)
-    use 'wbthomason/packer.nvim'
-    -- Colortheme
-    -- use {'gruvbox-community/gruvbox'}
-    -- this one is in Lua but does not support treesitter as well
-    use {"ellisonleao/gruvbox.nvim"}
+-- TODO: try to lazy-load everything
+require("lazy").setup({
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000,
+    },
     -- buffer line & tabline
-    use {'nvim-lualine/lualine.nvim'}
-    use {'arkav/lualine-lsp-progress'}
+    "nvim-lualine/lualine.nvim",
+    "arkav/lualine-lsp-progress",
     -- displaying thin vertical lines at each indentation level for code indented with spaces
-    -- use 'Yggdroot/indentLine'
+    -- 'Yggdroot/indentLine'
     -- color the color codes 🤷
-    -- use {'norcalli/nvim-colorizer.lua'}
-    use {
+    -- 'norcalli/nvim-colorizer.lua'
+    {
         "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    }
+        event = "InsertEnter"
+    },
     -- Gutter to the right of line numbers
-    use {'lewis6991/gitsigns.nvim'}
-    use {'tpope/vim-fugitive'}
-    use {'nvim-lua/plenary.nvim'}
-    use {'sindrets/diffview.nvim'}
+    "lewis6991/gitsigns.nvim",
+    "tpope/vim-fugitive",
+    "nvim-lua/plenary.nvim",
+    "sindrets/diffview.nvim",
     -- ctags thing for code outline
-    use {'preservim/tagbar'}
+    "preservim/tagbar",
     -- Plugin for commenting code
-    use {'preservim/nerdcommenter'}
+    "preservim/nerdcommenter",
     -- Completions to come along with neovim/nvim-lspconfig
-    use {'neovim/nvim-lspconfig'}
-    use {'hrsh7th/nvim-cmp'}
-    use {'hrsh7th/cmp-nvim-lsp'}
-    use {'hrsh7th/cmp-buffer'}
-    use {'hrsh7th/cmp-path'}
-    use {'hrsh7th/cmp-cmdline'}
+    "neovim/nvim-lspconfig",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
 
     -- these two go together
-    use {'L3MON4D3/LuaSnip'}
-    use {'saadparwaiz1/cmp_luasnip'}
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
     -- this one has snippets for LuaSnip
-    use {"rafamadriz/friendly-snippets"}
+    "rafamadriz/friendly-snippets",
 
-    use {'rcarriga/cmp-dap'}
-    use {'onsails/lspkind-nvim'}
+    "rcarriga/cmp-dap",
+    "onsails/lspkind-nvim",
     -- Code actions lightbulb working with nvim-lspconfig
-    use {'kosayoda/nvim-lightbulb'}
+    "kosayoda/nvim-lightbulb",
     -- Telescope plugins
-    use {'nvim-telescope/telescope.nvim'}
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+    "nvim-telescope/telescope.nvim",
+    {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+    },
     -- Code highlighting
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate"
+    },
     -- Shows sticky context at the top of the buffer; much awesome
-    use {'nvim-treesitter/nvim-treesitter-context'}
+    "nvim-treesitter/nvim-treesitter-context",
     -- Shortcuts cheat sheet
-    use {'folke/which-key.nvim'}
+    "folke/which-key.nvim",
     -- Debuger
     -- Plugins for nvim-dap debugger
-    use {'mfussenegger/nvim-dap'}
-    use {'rcarriga/nvim-dap-ui'}
-    use {'theHamsta/nvim-dap-virtual-text'}
-    use {'nvim-telescope/telescope-dap.nvim'}
-    use {'mfussenegger/nvim-dap-python'}
-    use {'leoluz/nvim-dap-go'}
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+    "theHamsta/nvim-dap-virtual-text",
+    "nvim-telescope/telescope-dap.nvim",
+    "mfussenegger/nvim-dap-python",
+    "leoluz/nvim-dap-go",
     -- Helps to restore vim session after reboot
-    use 'tpope/vim-obsession'
-    use {'tpope/vim-surround'}
-    use {'tpope/vim-repeat'}
-    use {'sbdchd/neoformat'}
+    "tpope/vim-obsession",
+    "tpope/vim-surround",
+    "tpope/vim-repeat",
+    "sbdchd/neoformat",
     -- DOcument GEnerator
-    use {"danymat/neogen"}
-    use {'mbbill/undotree'}
-    use {'bogado/file-line'}
-    use({
+    "danymat/neogen",
+    "mbbill/undotree",
+    "bogado/file-line",
+    {
         "iamcco/markdown-preview.nvim",
-        run = "cd app && npm install",
-        setup = function() vim.g.mkdp_filetypes = {"markdown"} end,
-        ft = {"markdown"}
-    })
-    use {
-        'glacambre/firenvim',
-        run = function() vim.fn['firenvim#install'](0) end
-    }
+        ft = "markdown",
+        build = function()
+            vim.fn["mkdp#util#install"]()
+        end,
+    },
+    {
+        "glacambre/firenvim",
+        lazy = not vim.g.started_by_firenvim,
+        build = function() vim.fn['firenvim#install'](0) end
+    },
     -- caches for nvim startup
-    use {'lewis6991/impatient.nvim'}
+    -- TODO: run `lua vim.loader.enable()` instead. Part of nvim 0.9 now
+    -- "lewis6991/impatient.nvim",
     -- visualises '--startup' nvim arg
-    -- use {'dstein64/vim-startuptime'}
-    use {"someone-stole-my-name/yaml-companion.nvim",
+    -- {'dstein64/vim-startuptime'},
+    {
+        "someone-stole-my-name/yaml-companion.nvim",
+        ft = "yaml",
         config = function()
             require("telescope").load_extension("yaml_schema")
         end
-    }
-    use {'nvim-telescope/telescope-symbols.nvim'}
-    use {'folke/todo-comments.nvim'}
-    use({"epwalsh/obsidian.nvim"})
-end)
+    },
+    "nvim-telescope/telescope-symbols.nvim",
+    "folke/todo-comments.nvim",
+    "epwalsh/obsidian.nvim",
+})
