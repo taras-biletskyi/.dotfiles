@@ -26,4 +26,5 @@ let g:neoformat_lua_luaformat =  {
             \ 'stdin': 1
             \ }
 let g:neoformat_enabled_lua = ['luaformat']
+let g:neoformat_enabled_yaml = ['prettier']
 ]]
