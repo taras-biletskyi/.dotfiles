@@ -1,5 +1,5 @@
 {
-  "title": "right cmd layer keys",
+  "title": "cmd layer keys",
   "rules": [
     {
       "description": "left part",
@@ -279,6 +279,25 @@
             }
           ],
           "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "b",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "hyphen"
+            }
+          ],
+          "type": "basic"
         }
       ]
     },
@@ -363,6 +382,26 @@
         },
         {
           "from": {
+            "key_code": "p",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "8",
+              "modifiers": "right_shift"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
             "key_code": "h",
             "modifiers": {
               "mandatory": [
@@ -433,6 +472,25 @@
           "to": [
             {
               "key_code": "6"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "semicolon",
+            "modifiers": {
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "equal_sign"
             }
           ],
           "type": "basic"

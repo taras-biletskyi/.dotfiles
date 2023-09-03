@@ -6,7 +6,7 @@ local lspkind = require("lspkind")
 local lspconfig = require("lspconfig")
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = {
-    "clangd", "gopls", "pyright", "tsserver", "vimls", "sumneko_lua", "jsonls"
+    "clangd", "gopls", "pyright", "vimls", "sumneko_lua", "jsonls"
 }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
@@ -138,7 +138,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-    "pyright", "gopls", "vimls", "clangd", "tsserver", "sumneko_lua", "jsonls"
+    "pyright", "gopls", "vimls", "clangd", "sumneko_lua", "jsonls"
 }
 for _, lsp in pairs(servers) do
     require("lspconfig")[lsp].setup {
