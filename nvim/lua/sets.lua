@@ -85,7 +85,11 @@ vim.opt.wildignore:append{"**/android/*"}
 vim.opt.wildignore:append{"**/ios/*"}
 vim.opt.wildignore:append{"**/.git/*"}
 vim.opt.wildignore:append{"**/debug/*"}
-vim.g.python3_host_prog = '/usr/local/bin/python3'
+if io.popen('uname -m','r'):read('*l') == 'arm64' then
+    vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
+else
+    vim.g.python3_host_prog = '/usr/local/bin/python3'
+end
 -- fold markdown files
 vim.o.mmp = 200000
 vim.o.history = 10000
