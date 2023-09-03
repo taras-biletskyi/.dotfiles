@@ -156,7 +156,8 @@ alias py="python3"
 alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -iv"
-alias lg=lazygit
+alias lzg="lazygit"
+alias lzd="lazydocker"
 
 HISTSIZE=1000000
 SAVEHIST=1000000
