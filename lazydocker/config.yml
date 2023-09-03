@@ -18,13 +18,13 @@ gui:
   showBottomLine: true
   # When true, increases vertical space used by focused side panel,
   # creating an accordion effect
-  expandFocusedSidePanel: false
+  expandFocusedSidePanel: true
 logs:
   timestamps: false
   since: '60m' # set to '' to show all logs
   tail: '' # set to 200 to show last 200 lines of logs
 commandTemplates:
-  dockerCompose: docker-compose
+  dockerCompose: docker compose
   restartService: '{{ .DockerCompose }} restart {{ .Service.Name }}'
   up:  '{{ .DockerCompose }} up -d'
   down: '{{ .DockerCompose }} down'
@@ -52,3 +52,10 @@ stats:
     - caption: Memory (%)
       statPath: DerivedStats.MemoryPercentage
       color: green
+customCommands:
+# A custom one instead of default `E` one, which does not work
+  containers:
+    - name: shell
+      attach: true
+      command: 'docker exec -it {{ .Container.ID }} bash'
+      serviceNames: []

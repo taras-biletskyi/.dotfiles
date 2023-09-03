@@ -152,6 +152,10 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 ############### My additions ###############
 
+# this sends a bell upon a command finish
+precmd () {
+  echo -n -e "\a"
+}
 # 1Password comletions
 eval "$(op completion zsh)"; compdef _op op
 
@@ -246,4 +250,5 @@ fd() {
 # }
 ############### fzf snippents ###############
 # autoload bashcompinit && bashcompinit
+# completions for Azure CLI
 source /usr/local/etc/bash_completion.d/az
