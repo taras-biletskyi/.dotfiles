@@ -21,9 +21,30 @@ vim.o.relativenumber = true
 -- shows a symbol for lines that are wraped
 vim.cmd [[set showbreak=↪\]]
 -- specifies characters for set list to show
--- eol:↲
 -- set listchars=tab:→\,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
-vim.cmd [[set listchars=tab:→\ ,trail:•,extends:⟩,precedes:⟨]]
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"*"},
+    callback = function()
+        vim.opt_local.listchars = {
+          tab = '→ ',
+          extends = '⟩',
+          precedes = '⟨',
+          trail = '•'
+        }
+    end
+})
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"go"},
+    callback = function()
+        vim.opt_local.listchars = {
+          tab = '  ',
+          lead = '•',
+          extends = '⟩',
+          precedes = '⟨',
+          trail = '•'
+        }
+    end
+})
 vim.o.list = true
 vim.o.signcolumn = "auto:1-3"
 vim.o.tabstop = 4
@@ -32,6 +53,12 @@ vim.o.shiftwidth = 4
 vim.o.shiftwidth = 4
 -- On pressing tab, insert 4 spaces
 vim.o.expandtab = true
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"go"},
+    callback = function()
+        vim.opt_local.expandtab = false
+    end
+})
 -- set autoindent
 vim.o.smartindent = true
 vim.api.nvim_create_autocmd("FileType", {
