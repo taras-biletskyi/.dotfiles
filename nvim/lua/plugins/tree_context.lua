@@ -1,4 +1,4 @@
-require'treesitter-context'.setup{
+require'treesitter-context'.setup {
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
     max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
     throttle = true, -- Throttles plugin updates (may improve performance)
@@ -8,15 +8,9 @@ require'treesitter-context'.setup{
         -- By setting the 'default' entry below, you can control which nodes you want to
         -- appear in the context window.
         default = {
-            'class',
-            'function',
-            'method',
-            'for', -- These won't appear in the context
-            'while',
-            'if',
-            'switch',
-            'case',
-        },
+            'class', 'function', 'method', 'for', -- These won't appear in the context
+            'while', 'if', 'switch', 'case'
+        }
     },
     exact_patterns = {
         -- Example for a specific filetype with Lua patterns
@@ -28,5 +22,5 @@ require'treesitter-context'.setup{
     -- [!] The options below are exposed but shouldn't require your attention,
     --     you can safely ignore them.
 
-    zindex = 20, -- The Z-index of the context window
+    zindex = 20 -- The Z-index of the context window
 }

@@ -269,7 +269,6 @@ if !exists('g:airline_symbols')
 endif
 if !exists('g:airline_section_z')
     if airline#util#winwidth() > 79
-        " TODO: This does not seem to full-window toml files...
         " let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '%p%%', 'linenr', 'maxlinenr', 'colnr'])
         let g:airline_section_z = airline#section#create(['windowswap', 'obsession', 'linenr', 'maxlinenr', 'colnr'])
     else

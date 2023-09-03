@@ -1,12 +1,13 @@
 -- TODO: make this prettier
-
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 local lspkind = require("lspkind")
 local lspconfig = require("lspconfig")
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = {"clangd", "gopls", "pyright", "tsserver", "vimls", "sumneko_lua", "jsonls"}
+local servers = {
+    "clangd", "gopls", "pyright", "tsserver", "vimls", "sumneko_lua", "jsonls"
+}
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         -- on_attach = my_custom_on_attach,
@@ -26,72 +27,54 @@ end
 local luasnip = require "luasnip"
 local cmp = require "cmp"
 cmp.setup {
--- this is for rcarriga/cmp-dap
--- nvim-cmp by defaults disables autocomplete for prompt buffers
-enabled = function()
-    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
-end,
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end
-    },
+    -- this is for rcarriga/cmp-dap
+    -- nvim-cmp by defaults disables autocomplete for prompt buffers
+    enabled = function()
+        return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or
+                   require("cmp_dap").is_dap_buffer()
+    end,
+    snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
     window = {},
-    mapping = cmp.mapping.preset.insert(
-        {
-            ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-            ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            ["<C-Space>"] = cmp.mapping.complete(),
-            ["<C-e>"] = cmp.mapping.abort(),
-            ["<CR>"] = cmp.mapping.confirm({select = false}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-            ["<Tab>"] = cmp.mapping(
-                function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif luasnip.expand_or_jumpable() then
-                        luasnip.expand_or_jump()
-                    else
-                        fallback()
-                    end
-                end,
-                {"i", "s"}
-            ),
-            ["<S-Tab>"] = cmp.mapping(
-                function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif luasnip.jumpable(-1) then
-                        luasnip.jump(-1)
-                    else
-                        fallback()
-                    end
-                end,
-                {"i", "s"}
-            )
-        }
-    ),
-    sources = cmp.config.sources(
-        {
-            {name = "nvim_lsp"},
-            {name = "path"},
-            {
-                name = "buffer",
-                options = {
-                    get_bufnrs = function()
-                        return vim.api.nvim_list_bufs()
-                    end
-                }
-            },
-            {name = "dap"},
-            {name = "luasnip"},
-            {name = "emoji"}
-        }
-    ),
+    mapping = cmp.mapping.preset.insert({
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm({select = false}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end, {"i", "s"}),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, {"i", "s"})
+    }),
+    sources = cmp.config.sources({
+        {name = "nvim_lsp"}, {name = "path"}, {
+            name = "buffer",
+            options = {
+                get_bufnrs = function()
+                    return vim.api.nvim_list_bufs()
+                end
+            }
+        }, {name = "dap"}, {name = "luasnip"}, {name = "emoji"}
+    }),
     formatting = {
         format = function(entry, vim_item)
-            vim_item.kind = string.format("%s %s", get_kind(vim_item.kind), vim_item.kind)
-            vim_item.menu =
-                ({
+            vim_item.kind = string.format("%s %s", get_kind(vim_item.kind),
+                                          vim_item.kind)
+            vim_item.menu = ({
                 nvim_lsp = "[Lsp]",
                 luasnip = "[Snp]",
                 path = "[Pth]",
@@ -103,42 +86,23 @@ end,
             })[entry.source.name]
             return vim_item
         end
-    },
+    }
 }
-
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(
-    "/",
-    {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-            {name = "buffer"}
-        }
-    }
-)
+cmp.setup.cmdline("/", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {{name = "buffer"}}
+})
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(
-    ":",
-    {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources(
-            {
-                {name = "cmdline"}
-            },
-            {
-                {name = "path"}
-            },
-            {
-                {name = "buffer"}
-            }
-        )
-    }
-)
--- EOF
+cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({{name = "cmdline"}}, {{name = "path"}},
+                                 {{name = "buffer"}})
+})
 -- =====END===== hrsh7th/nvim-cmp  ==========
+
 -- =====START===== neovim/nvim-lspconfig  ==========
 -- Initializes pyright, rust_analyzer lsp server
--- lua << EOF
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = {noremap = true, silent = true}
@@ -173,7 +137,9 @@ local on_attach = function(client, bufnr)
 end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {"pyright", "gopls", "vimls", "clangd", "tsserver", "sumneko_lua", "jsonls"}
+local servers = {
+    "pyright", "gopls", "vimls", "clangd", "tsserver", "sumneko_lua", "jsonls"
+}
 for _, lsp in pairs(servers) do
     require("lspconfig")[lsp].setup {
         on_attach = on_attach,
@@ -182,13 +148,11 @@ for _, lsp in pairs(servers) do
             debounce_text_changes = 150
         }
     }
-
 vim.cmd [[
   highlight! DiagnosticSignError guibg=none guifg=#fb4934
   highlight! DiagnosticSignWarn guibg=none guifg=#fabd2f
   highlight! DiagnosticSignInfo guibg=none guifg=#83a598
   highlight! DiagnosticSignHint guibg=none guifg=#8ec07c
-
   sign define DiagnosticSignError text=E texthl=DiagnosticSignError
   sign define DiagnosticSignWarn text=W texthl=DiagnosticSignWarn
   sign define DiagnosticSignInfo text=I texthl=DiagnosticSignInfo
@@ -197,25 +161,22 @@ vim.cmd [[
 end
 -- this is for lua lsp to work with neovim api
 require'lspconfig'.sumneko_lua.setup {
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT'
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {'vim'}
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true)
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {enable = false}
+        }
+    }
 }
-

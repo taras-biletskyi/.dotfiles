@@ -11,14 +11,14 @@ vim.g.gruvbox_termcolors = 256
 
 -- let g:gruvbox_transparent_bg=1
 -- let g:gruvbox_contrast_light=1
-vim.g.gruvbox_bold=1
-vim.g.gruvbox_italic=1
-vim.g.gruvbox_underline=1
-vim.g.gruvbox_undercurl=1
-vim.g.gruvbox_contrast_dark='hard'
-vim.g.gruvbox_invert_selection=0
+vim.g.gruvbox_bold = 1
+vim.g.gruvbox_italic = 1
+vim.g.gruvbox_underline = 1
+vim.g.gruvbox_undercurl = 1
+vim.g.gruvbox_contrast_dark = 'hard'
+vim.g.gruvbox_invert_selection = 0
 vim.opt.background = 'dark'
-vim.cmd[[colorscheme gruvbox]]
+vim.cmd [[colorscheme gruvbox]]
 vim.cmd('highlight netrwDir guifg=#e4717a')
 
 -- TODO: move this somewhere else?

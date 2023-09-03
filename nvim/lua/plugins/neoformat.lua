@@ -18,4 +18,12 @@ let g:neoformat_c_clangformat = {
 let g:neoformat_enabled_c = ['clangformat']
 " for TOML files
 let g:neoformat_enabled_toml = ['taplo']
+" for Lua
+    " luarocks luaformatter
+let g:neoformat_lua_luaformat =  {
+            \ 'exe': 'lua-format',
+            \ 'args': ["--column-limit=80", "--indent-width=4", "--tab-width=4", "--no-use-tab"],
+            \ 'stdin': 1
+            \ }
+let g:neoformat_enabled_lua = ['luaformat']
 ]]
