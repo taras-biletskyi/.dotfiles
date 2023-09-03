@@ -68,4 +68,5 @@ return require('packer').startup(function(use, run)
     -- DOcument GEnerator
     use {'kkoomen/vim-doge', run ':call doge#install()'} -- After PlugInstall - :call doge#install()
     use {'mbbill/undotree'}
+    use {'bogado/file-line'}
 end)
