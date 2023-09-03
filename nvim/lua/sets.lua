@@ -18,11 +18,11 @@ vim.o.encoding = "utf-8"
 vim.o.number = true
 vim.o.relativenumber = true
 -- shows a symbol for lines that are wraped
-vim.o.showbreak = "↪\\"
+vim.cmd[[set showbreak=↪\]]
 -- specifies characters for set list to show
 -- eol:↲
 -- set listchars=tab:→\,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
-vim.o.listchars = "tab:→\\ ,trail:•,extends:⟩,precedes:⟨"
+vim.cmd[[set listchars=tab:→\ ,trail:•,extends:⟩,precedes:⟨]]
 vim.o.list = true
 vim.o.signcolumn = "auto:1-3"
 vim.o.tabstop = 4
@@ -51,8 +51,9 @@ vim.o.incsearch = true
 vim.o.sidescroll = 1
 vim.o.undofile = true
 vim.o.completeopt = "menu,menuone,noselect"
-vim.opt.undodir = os.getenv("HOME") .. '/.vim/undodir'
--- vim.o.undodir = "~/.vim/undodir"
+-- This does not really work
+    -- vim.opt.undodir = os.getenv("HOME") .. '/.vim/undodir'
+vim.cmd[[set undodir=~/.vim/undodir]]
 -- Do not conceal any symbols (works in .md)
 vim.o.conceallevel = 0
 vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
