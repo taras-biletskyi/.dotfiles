@@ -89,5 +89,5 @@ require('packer').startup(function(use, run)
         end
     }
     use {'nvim-telescope/telescope-symbols.nvim'}
-    -- use {'folke/todo-comments.nvim'}
+    use {'folke/todo-comments.nvim'}
 end)
