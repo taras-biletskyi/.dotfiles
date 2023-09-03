@@ -546,9 +546,14 @@
               ]
             }
           },
-          "to": [
+          "to_if_alone": [
             {
               "key_code": "2"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_control"
             }
           ],
           "type": "basic"
@@ -565,9 +570,14 @@
               ]
             }
           },
-          "to": [
+          "to_if_alone": [
             {
               "key_code": "3"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_option"
             }
           ],
           "type": "basic"
@@ -584,9 +594,14 @@
               ]
             }
           },
-          "to": [
+          "to_if_alone": [
             {
               "key_code": "0"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_command"
             }
           ],
           "type": "basic"

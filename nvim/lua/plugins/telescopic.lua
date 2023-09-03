@@ -1,22 +1,13 @@
 local map = vim.api.nvim_set_keymap
 
-
-require('telescope').setup{
-  pickers = {
-    git_files = {
-      theme = "ivy",
-    }
-  }
-}
--- Falling back to find_files if git_files can't find a .git directory
--- `_G` allows to call Lua functions in the global namespace (_G) directly from Vimscript.
 function _G.project_files()
-    local opts = {} -- define here if you want to define something
-    local ok = pcall(require "telescope.builtin".git_files, {show_untracked = true})
-    if not ok then
-        require"telescope.builtin".find_files(
+    local in_git_repo = vim.fn.systemlist"git rev-parse --is-inside-work-tree"[1] == 'true'
+    if in_git_repo then
+        require("telescope.builtin").git_files({show_untracked = true})
+    else
+        require("telescope.builtin").find_files(
             require("telescope.themes").get_ivy({
-                hidden = false,
+                hidden = true,
                 follow = true,
                 no_ignore = false
             }))

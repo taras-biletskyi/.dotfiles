@@ -8,7 +8,7 @@ map ("n", "<leader>gp", "<Plug>(GitGutterPrevHunk)", {})
 map ("n", "<leader>ghh", "<Plug>(GitGutterPreviewHunk)", {})
 map ("n", "<leader>gs", "<Plug>(GitGutterStageHunk)", {noremap = true})
 map ("n", "<leader>gu", "<Plug>(GitGutterUndoHunk)", {noremap = true})
-map ("n", "<leader>ghb", ":GitGutterQuickFixCurrentFile <bar> :lopen <CR>)", {noremap = true})
+map ("n", "<leader>ghb", ":GitGutterQuickFixCurrentFile <bar> :copen <CR>)", {noremap = true})
 map ("n", "<leader>ghw", ":GitGutterQuickFix <bar> :copen <CR>", {noremap = true})
 vim.cmd [[
 

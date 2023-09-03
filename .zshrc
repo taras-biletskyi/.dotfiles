@@ -128,8 +128,8 @@ alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -iv"
 
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000
+SAVEHIST=1000000
 
 export VISUAL='nvim'
 export EDITOR='nvim'

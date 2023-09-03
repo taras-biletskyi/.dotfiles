@@ -15,6 +15,10 @@ yabai -m rule --add app="LibreOffice" manage=off
 yabai -m rule --add app="ClearVPN" manage=off
 yabai -m rule --add app="DBeaver" manage=off
 
+# Closing focused window gives focus to remaining window
+yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+
 # .. more yabai startup stuff
 
 # global settings
