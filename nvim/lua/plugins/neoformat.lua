@@ -27,6 +27,7 @@ let g:neoformat_lua_luaformat =  {
             \ }
 let g:neoformat_enabled_lua = ['luaformat']
 let g:neoformat_enabled_yaml = ['prettier']
+let g:neoformat_enabled_markdown = ['prettier']
 ]]
 
 -- TODO: see if this plugin supports arguments for separate formatters yet
