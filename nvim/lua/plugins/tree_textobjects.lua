@@ -35,8 +35,12 @@ require'nvim-treesitter.configs'.setup {
                 ["]z"] = "@fold"
             },
             goto_next_end = {
+                ["]K"] = "@conditional.outer",
                 ["]F"] = "@function.outer",
-                ["]["] = "@class.outer"
+                ["]["] = "@class.outer",
+                ["]L"] = "@loop.outer",
+                ["]S"] = "@scope",
+                ["]Z"] = "@fold"
             },
             goto_previous_start = {
                 ["[k"] = "@conditional.outer",
@@ -47,8 +51,12 @@ require'nvim-treesitter.configs'.setup {
                 ["[z"] = "@fold"
             },
             goto_previous_end = {
+                ["[K"] = "@conditional.outer",
                 ["[F"] = "@function.outer",
-                ["[]"] = "@class.outer"
+                ["[]"] = "@class.outer",
+                ["[L"] = "@loop.outer",
+                ["[S"] = "@scope",
+                ["[Z"] = "@fold"
             }
         }
     }
