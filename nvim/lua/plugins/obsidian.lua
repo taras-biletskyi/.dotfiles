@@ -1,4 +1,5 @@
 require("obsidian").setup({
+    lazy = true,
     dir = "~/personal/fault",
     daily_notes = {
         -- Optional, if you keep daily notes in a separate directory.
