@@ -36,7 +36,7 @@ map("n", "<leader>qf", ":cfirst<cr>", {noremap = true})
 map("n", "<leader>ql", ":clast<cr>", {noremap = true})
 -- For Go errors
 map("n", "<Leader>err",
-    "oif err != nil {<CR>return nil, err<CR>}<esc>k2w",
+    "oif err != nil {<CR>return nil, err<CR>}<esc>k2wW",
     {noremap = true}
 )
 -- move lines up & down in visual
@@ -49,3 +49,10 @@ map("n", "N", "Nzzzv", {noremap = true})
 map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus <CR>", {noremap = true})
 
 map("n", "<F8>", ":TagbarToggle jf <CR>", {})
+
+map("n", "_", 'g_', {noremap = true})
+map("v", "_", 'g_', {noremap = true})
+
+-- these two seem nice???
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
