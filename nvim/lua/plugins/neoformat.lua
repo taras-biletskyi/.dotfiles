@@ -28,6 +28,12 @@ let g:neoformat_lua_luaformat =  {
 let g:neoformat_enabled_lua = ['luaformat']
 let g:neoformat_enabled_yaml = ['prettier']
 let g:neoformat_enabled_markdown = ['prettier']
+let g:neoformat_markdown_prettier =  {
+            \ 'exe': 'prettier',
+            \ 'args': ['--stdin-filepath', '"%:p"', "--tab-width 2"],
+            \ 'stdin': 1,
+            \ 'try_node_exe': 1,
+            \ }
 ]]
 
 -- TODO: see if this plugin supports arguments for separate formatters yet
