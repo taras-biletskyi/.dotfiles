@@ -1,4 +1,26 @@
-Builtin = require'telescope.builtin'
+local Builtin = require 'telescope.builtin'
+local actions = require "telescope.actions"
+require"telescope".setup {
+    defaults = {
+        dynamic_preview_title = true,
+        mappings = {
+            n = {
+                ["<C-q>"] = false,
+                ["<M-q>"] = false,
+                ["<C-q>a"] = actions.send_to_qflist + actions.open_qflist,
+                ["<C-q>q"] = actions.send_selected_to_qflist +
+                    actions.open_qflist
+            },
+            i = {
+                ["<C-q>"] = false,
+                ["<M-q>"] = false,
+                ["<C-q>a"] = actions.send_to_qflist + actions.open_qflist,
+                ["<C-q>q"] = actions.send_selected_to_qflist +
+                    actions.open_qflist
+            }
+        }
+    }
+}
 
 function _G.project_files()
     local in_git_repo = vim.fn.systemlist"git rev-parse --is-inside-work-tree"[1] == 'true'
@@ -18,8 +40,6 @@ function _G.project_files()
     end
 end
 
-require "telescope".setup{defaults = {dynamic_preview_title = true}}
-
 local opts = {}
 opts = require("telescope.themes").get_ivy{show_untracked = true}
 opts.path_display = {shorten = {len = 3, exclude = {1, -1}}, truncate = true}
@@ -35,5 +55,3 @@ vim.keymap.set('n', '<leader>tls', function() Builtin.lsp_dynamic_workspace_symb
 vim.keymap.set('n', '<leader>tlr', function() Builtin.lsp_references(opts) end, {})
 vim.keymap.set('n', '<leader>tli', function() Builtin.lsp_incoming_calls(opts) end, {})
 vim.keymap.set('n', '<leader>tlo', function() Builtin.lsp_outgoing_calls(opts) end, {})
-
---TODO: remape sending selectiond of file to quickfix fot tf and tg and td
