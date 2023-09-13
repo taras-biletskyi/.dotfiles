@@ -52,6 +52,7 @@ map("n", "<F8>", ":TagbarToggle jf <CR>", {})
 
 map("n", "_", 'g_', {noremap = true})
 map("v", "_", 'g_', {noremap = true})
+map("o", "_", 'g_', {noremap = true})
 
 -- these two seem nice???
 vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
