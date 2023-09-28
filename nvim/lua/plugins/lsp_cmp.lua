@@ -143,7 +143,7 @@ local on_attach = function(client, bufnr)
     -- ka instead of ca???? wtf is wrong with me
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ka", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
     -- vim.lsp.buf.incoming_calls()
     -- vim.lsp.buf.outgoing_calls()
 end
@@ -225,20 +225,28 @@ require'lspconfig'.lua_ls.setup {
     }
 }
 
-require'lspconfig'.gopls.setup{
-  cmd = {'gopls'},
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    gopls = {
-      experimentalPostfixCompletions = true,
-      analyses = {
-        unusedparams = true,
-        shadow = true,
-      },
-      staticcheck = true,
-    },
-  },
+require'lspconfig'.gopls.setup {
+    cmd = {'gopls'},
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        gopls = {
+            experimentalPostfixCompletions = true,
+            analyses = {
+                fieldalignment = true,
+                staticcheck = true,
+                unusedparams = true,
+                shadow = true,
+                nilness = true,
+                unusedwrite = true,
+                useany = true,
+                unusedvariable = true
+            },
+            annotations = {bounds = true, escape = true, inline = true},
+            staticcheck = true,
+            gofumpt = true
+        }
+    }
 }
 
 vim.diagnostic.config{
