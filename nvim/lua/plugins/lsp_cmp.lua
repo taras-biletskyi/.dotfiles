@@ -110,7 +110,7 @@ cmp.event:on(
 local servers = {
     "clangd", "gopls", "pyright", "vimls", "lua_ls", "jsonls", "dockerls",
     "yamlls", "bashls", "cmake", "taplo", "docker_compose_language_service",
-    "tsserver", "html"
+    "tsserver", "html", "terraformls",
 }
 -- Initializes pyright, rust_analyzer lsp server
 -- Mappings.
