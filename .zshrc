@@ -262,3 +262,6 @@ export PATH="/opt/homebrew/Cellar/mysql-client/8.0.32/bin:$PATH"
 # for go executables
 export PATH="/Users/tmp/go/bin:$PATH"
 export HOMEBREW_NO_INSTALL_FROM_API=1
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
