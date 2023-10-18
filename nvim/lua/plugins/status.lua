@@ -83,7 +83,7 @@ require('lualine').setup {
         lualine_c = {},
         lualine_x = {'%{ObsessionStatus()}'},
         lualine_y = {'filetype'},
-        lualine_z = {{'tabs', mode = 0}}
+        lualine_z = {{'tabs', mode = 0, show_modified_status = false}}
     },
     extensions = {}
 }
