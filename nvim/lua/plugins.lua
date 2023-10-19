@@ -31,6 +31,10 @@ require("lazy").setup({
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
+    {
+        "scalameta/nvim-metals",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
 
     -- these two go together
     {

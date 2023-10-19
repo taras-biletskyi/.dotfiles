@@ -55,3 +55,4 @@ vim.keymap.set('n', '<leader>tls', function() Builtin.lsp_dynamic_workspace_symb
 vim.keymap.set('n', '<leader>tlr', function() Builtin.lsp_references(opts) end, {})
 vim.keymap.set('n', '<leader>tli', function() Builtin.lsp_incoming_calls(opts) end, {})
 vim.keymap.set('n', '<leader>tlo', function() Builtin.lsp_outgoing_calls(opts) end, {})
+vim.keymap.set('n', '<leader>tlm', function() require"telescope".extensions.metals.commands() end, {})
