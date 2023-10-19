@@ -265,3 +265,6 @@ export HOMEBREW_NO_INSTALL_FROM_API=1
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+export PATH="/Users/tmp/Library/Application Support/Coursier/bin:$PATH"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export JAVA_HOME="/usr/local/opt/openjdk/"
