@@ -32,9 +32,8 @@ metals_config.settings = {
     showImplicitArguments = true,
     showImplicitConversionsAndClasses = true,
     showInferredType = true,
-    javaHome = "/usr/local/opt/openjdk/"
-    -- TODO: have a default config for scalafmt somewhere in personal dir?
-    -- scalafmtConfigPath = "...",
+    javaHome = "/usr/local/opt/openjdk/",
+    scalafmtConfigPath = "/Users/tmp/personal/.scalafmt.conf",
 }
 
 -- These are here as well as in lsp_cmp.lua because there, there is no lsp to
