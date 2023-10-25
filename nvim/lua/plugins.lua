@@ -80,6 +80,10 @@ require("lazy").setup({
     "sbdchd/neoformat",
     "stevearc/conform.nvim",
     -- DOcument GEnerator
+    {
+        "kkoomen/vim-doge",
+        build = ":call doge#install()"
+    },
     "danymat/neogen",
     "mbbill/undotree",
     "bogado/file-line",
