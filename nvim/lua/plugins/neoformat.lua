@@ -30,7 +30,7 @@ let g:neoformat_enabled_yaml = ['prettier']
 let g:neoformat_enabled_markdown = ['prettier']
 let g:neoformat_markdown_prettier =  {
             \ 'exe': 'prettier',
-            \ 'args': ['--stdin-filepath', '"%:p"', "--tab-width 2"],
+            \ 'args': ['--stdin-filepath', '"%:p"', "--tab-width 2", "--prose-wrap always"],
             \ 'stdin': 1,
             \ 'try_node_exe': 1,
             \ }
