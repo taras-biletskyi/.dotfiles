@@ -32,8 +32,9 @@ metals_config.settings = {
     showImplicitArguments = true,
     showImplicitConversionsAndClasses = true,
     showInferredType = true,
-    javaHome = "/usr/local/opt/openjdk/",
+    javaHome = "/usr/local/opt/openjdk@17",
     scalafmtConfigPath = "/Users/tmp/personal/.scalafmt.conf",
+    fallbackScalaVersion = "2.13.12",
 }
 
 -- These are here as well as in lsp_cmp.lua because there, there is no lsp to
@@ -64,6 +65,9 @@ map('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
 -- Metals specific
 map("n", "<leader>cl", vim.lsp.codelens.run)
 map("n", "<leader>ws", function() require("metals").hover_worksheet() end)
+-- Symbol tree view
+-- require("metals.tvp").toggle_tree_view()
+-- require("metals.tvp").reveal_in_tree()
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"scala", "sbt", "java"},
