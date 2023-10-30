@@ -33,7 +33,7 @@ metals_config.settings = {
     showImplicitConversionsAndClasses = true,
     showInferredType = true,
     javaHome = "/usr/local/opt/openjdk@17",
-    scalafmtConfigPath = "/Users/tmp/personal/.scalafmt.conf",
+    scalafmtConfigPath = "/Users/tmp/.dotfiles/.scalafmt.conf",
     fallbackScalaVersion = "2.13.12",
 }
 
