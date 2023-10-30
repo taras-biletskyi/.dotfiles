@@ -92,3 +92,5 @@ require('telescope').load_extension('dap')
 vim.keymap.set('n', '<Leader>dc',
                function() require('telescope').extensions.dap.commands() end)
 -- =====END===== nvim-telescope/telescope-dap.nvim ==========
+-- Make the line backgroud when stopped not eye-gouging
+vim.cmd('highlight debugPC guibg=#504945')
