@@ -34,6 +34,7 @@ metals_config.settings = {
     showInferredType = true,
     javaHome = "/usr/local/opt/openjdk@17",
     scalafmtConfigPath = "/Users/tmp/.dotfiles/.scalafmt.conf",
+    scalafixConfigPath = "/Users/tmp/.dotfiles/.scalafix.conf",
     fallbackScalaVersion = "2.13.12",
 }
 
