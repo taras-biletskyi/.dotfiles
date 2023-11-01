@@ -7,6 +7,8 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+# for M2
+export PATH=/opt/homebrew/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -260,11 +262,12 @@ fd() {
 # for mysql CLI client
 export PATH="/opt/homebrew/Cellar/mysql-client/8.0.32/bin:$PATH"
 # for go executables
-export PATH="/Users/tmp/go/bin:$PATH"
+user=$(whoami)
+export PATH="/Users/${user}/go/bin:$PATH"
 export HOMEBREW_NO_INSTALL_FROM_API=1
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
-export PATH="/Users/tmp/Library/Application Support/Coursier/bin:$PATH"
+export PATH="/Users/${user}/Library/Application Support/Coursier/bin:$PATH"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export JAVA_HOME="/usr/local/opt/openjdk@17"
