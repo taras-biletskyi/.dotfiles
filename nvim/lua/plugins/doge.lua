@@ -22,4 +22,5 @@ let g:doge_doc_standard_scala = "scaladoc"
 
 let g:doge_enable_mapping = 0
 let g:doge_comment_jump_wrap = 0
+let g:doge_comment_interactive = 0
 ]]
