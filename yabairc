@@ -22,6 +22,7 @@ yabai -m rule --add app="DBeaver" manage=off
 yabai -m rule --add app="zoom.us" manage=off
 # yabai -m rule --add app="Slack" manage=off
 yabai -m rule --add app="Workplace Chat" manage=off
+yabai -m rule --add app="teams" manage=off
 yabai -m rule --add app="Teams" manage=off
 
 # Closing focused window gives focus to remaining window

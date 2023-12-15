@@ -270,4 +270,10 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 export PATH="/Users/${user}/Library/Application Support/Coursier/bin:$PATH"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+# for M2
+# export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export JAVA_HOME="/usr/local/opt/openjdk@17"
+# for M2
+# export JAVA_HOME="/opt/homebrew/opt/openjdk@17"
+# For compilers to find openjdk@17 you may need to set:
+#   export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"

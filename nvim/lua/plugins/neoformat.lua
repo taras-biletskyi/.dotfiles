@@ -8,7 +8,7 @@ let g:neoformat_python_black = {
 
 let g:neoformat_enabled_python = ['black']
 " To format sh files with shfmt
-let g:shfmt_opt="-ci"
+let g:shfmt_opt="-ci -bn -i 4 -sr"
 
 let g:neoformat_c_clangformat = {
             \ 'exe': 'clang-format',
