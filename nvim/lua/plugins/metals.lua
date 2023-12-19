@@ -28,13 +28,17 @@ metals_config.on_attach = function(client, bufnr)
   require("metals").setup_dap()
 end
 
+local handle = io.popen("whoami")
+local user = handle:read("*a"):gsub('\n', '')
+handle:close()
+
 metals_config.settings = {
     showImplicitArguments = true,
     showImplicitConversionsAndClasses = true,
     showInferredType = true,
     javaHome = "/usr/local/opt/openjdk@17",
-    scalafmtConfigPath = "/Users/tmp/.dotfiles/.scalafmt.conf",
-    scalafixConfigPath = "/Users/tmp/.dotfiles/.scalafix.conf",
+    scalafmtConfigPath = "/Users/" .. user .. "/.dotfiles/.scalafmt.conf",
+    scalafixConfigPath = "/Users/" .. user .. "/.dotfiles/.scalafix.conf",
     fallbackScalaVersion = "2.13.12",
 }
 
