@@ -43,7 +43,7 @@ require('gitsigns').setup {
     map('n', '<leader>gU', gs.undo_stage_hunk)
     map('n', '<leader>ghh', gs.preview_hunk)
     map('n', '<leader>gb', function() gs.blame_line{full=true} end)
-    map('n', '<leader>gb', gs.toggle_current_line_blame)
+    -- map('n', '<leader>gb', gs.toggle_current_line_blame)
     -- map('n', '<leader>hR', gs.reset_buffer)
     -- map('n', '<leader>hd', gs.diffthis)
     -- map('n', '<leader>hD', function() gs.diffthis('~') end)
@@ -68,5 +68,5 @@ highlight GitSignsAdd guifg=#b8bb26 guibg=none
 highlight GitSignsChange guifg=#8ec07c guibg=none
 highlight GitSignsDelete guifg=#FB4934 guibg=none
 highlight GitSignsUntracked guifg=#fabd2f guibg=none
+highlight! link GitSignsCurrentLineBlame Conceal
 ]]
-
