@@ -3,7 +3,7 @@
 /Users/tmp/.dotfiles/.p10k.zsh|/Users/tmp/.p10k.zsh
 /Users/tmp/.dotfiles/.tmux.conf|/Users/tmp/.tmux.conf
 /Users/tmp/.dotfiles/oh-my-zsh.sh|/Users/tmp/.oh-my-zsh/oh-my-zsh.sh
-/Users/tmp/.dotfiles/alacritty.yml|/Users/tmp/.config/alacritty/alacritty.yml
+/Users/tmp/.dotfiles/alacritty.toml|/Users/tmp/.config/alacritty/alacritty.toml
 /Users/tmp/.dotfiles/lazygit/config.yml|/Users/tmp/Library/Application\ Support/lazygit/config.yml
 /Users/tmp/.dotfiles/lazydocker/config.yml|/Users/tmp/Library/Application\ Support/lazydocker/config.yml
 /Users/tmp/.dotfiles/nvim|/Users/tmp/.config/nvim
