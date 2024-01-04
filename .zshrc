@@ -128,6 +128,7 @@ FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 source $ZSH/oh-my-zsh.sh
 
+# TODO: sort this out
 # User configuration
 
 ### My addition
@@ -256,7 +257,9 @@ fd() {
 ############### fzf snippents ###############
 # autoload bashcompinit && bashcompinit
 # completions for Azure CLI
-# source /usr/local/etc/bash_completion.d/az
+if command -v az &> /dev/null; then
+    source /usr/local/etc/bash_completion.d/az
+fi
 # https://minikube.sigs.k8s.io/docs/commands/completion/
 # source ~/.minikube-completion
 # for mysql CLI client
@@ -269,12 +272,10 @@ export HOMEBREW_NO_INSTALL_FROM_API=1
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 export PATH="/Users/${user}/Library/Application Support/Coursier/bin:$PATH"
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-# for M2
-# export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-export JAVA_HOME="/usr/local/opt/openjdk@17"
-# for M2
-# export JAVA_HOME="/opt/homebrew/opt/openjdk@17"
+
+java_home=$(cs java-home)
+export JAVA_HOME=java_home
+export PATH="${java_home}/bin:$PATH"
 # For compilers to find openjdk@17 you may need to set:
 #   export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
 
