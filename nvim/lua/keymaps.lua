@@ -57,3 +57,5 @@ map("o", "_", 'g_', {noremap = true})
 -- these two seem nice???
 vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<A-j>", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<A-k>", "<cmd>lprevious<CR>zz")
