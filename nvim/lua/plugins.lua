@@ -77,6 +77,7 @@ require("lazy").setup({
     "tpope/vim-obsession",
     "tpope/vim-surround",
     "tpope/vim-repeat",
+    "tpope/vim-eunuch",
     "sbdchd/neoformat",
     "stevearc/conform.nvim",
     -- DOcument GEnerator
