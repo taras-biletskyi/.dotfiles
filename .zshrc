@@ -273,9 +273,9 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 export PATH="/Users/${user}/Library/Application Support/Coursier/bin:$PATH"
 
-java_home=$(cs java-home)
-export JAVA_HOME=java_home
-export PATH="${java_home}/bin:$PATH"
+java_crib=$(brew --prefix openjdk@17)
+export JAVA_HOME=${java_crib}
+export PATH="${java_crib}/bin:$PATH"
 # For compilers to find openjdk@17 you may need to set:
 #   export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
 
