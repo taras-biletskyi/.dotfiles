@@ -20,13 +20,15 @@ export FZF_BASE=$true_fzf_path
 export FZF_DEFAULT_OPTS="-m -0 -1 --height 40% --min-height=10 --layout=reverse
     --border --scroll-off=5 --info=inline --history-size=100000 --no-unicode --tabstop=4
     --margin 1.5% --bind ctrl-space:toggle+down --bind tab:down --bind shift-tab:up
-    --scrollbar"
+    --bind ctrl-g:first --bind alt-enter:toggle-all --scrollbar"
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
     --color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
     --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54
 "
-zstyle ':fzf-tab:complete:*' fzf-bindings 'ctrl-space:toggle+down'
+# unbind alt-enter from print-query
+zstyle ':fzf-tab:*' print-query alt-a
+zstyle ':fzf-tab:*' fzf-bindings 'ctrl-space:toggle+down' 'ctrl-g:first' 'alt-enter:toggle-all'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
