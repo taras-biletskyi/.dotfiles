@@ -31,12 +31,13 @@ end
 local handle = io.popen("whoami")
 local user = handle:read("*a"):gsub('\n', '')
 handle:close()
+local java_crib = os.getenv("JAVA_HOME")
 
 metals_config.settings = {
     showImplicitArguments = true,
     showImplicitConversionsAndClasses = true,
     showInferredType = true,
-    javaHome = "/usr/local/opt/openjdk@17",
+    javaHome = java_crib,
     scalafmtConfigPath = "/Users/" .. user .. "/.dotfiles/.scalafmt.conf",
     scalafixConfigPath = "/Users/" .. user .. "/.dotfiles/.scalafix.conf",
     fallbackScalaVersion = "2.13.12",
