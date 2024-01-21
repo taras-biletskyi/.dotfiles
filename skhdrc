@@ -58,9 +58,13 @@ hyper - 0 : yabai -m space --focus recent
 hyper_w < 0x2F : yabai -m space --swap next
 # dot
 hyper_w < 0x2B : yabai -m space --swap prev
+
 # next | prev space
-hyper - n : yabai -m space --focus next
-hyper - p : yabai -m space --focus prev
+# Focus next space of current display. No-op if the current space is the last space of its display.
+hyper - n : if [[ $(yabai -m query --spaces --display | jq '.[-1]."has-focus"') == "false" ]]; then yabai -m space --focus next; fi
+# Focus previous space of current display. No-op if the current space is the first space of its display.
+hyper - p : if [[ $(yabai -m query --spaces --display | jq '.[0]."has-focus"') == "false" ]]; then yabai -m space --focus prev; fi
+
 # Rotatte windows 90
 hyper - r : yabai -m space --rotate 90
 
@@ -78,6 +82,9 @@ hyper_w < n : yabai -m window --space next && yabai -m window --focus recent
 # Move window to prev space and focus on it
 hyper_w < p : yabai -m window --space prev && yabai -m window --focus recent
 
+# Move window to recent display and focus on it
+hyper_w < d : yabai -m window --display recent && yabai -m window --focus recent
+
 # Resize windows
 hyper_g < h : yabai -m window --resize left:-20:0
 hyper_g < l : yabai -m window --resize right:20:0
@@ -93,4 +100,4 @@ hyper_s < k : yabai -m window --resize bottom:0:-20
 hyper - f : yabai -m window --toggle float
 
 # Switch to the next display
-hyper - d : yabai -m display --focus next
+hyper - d : yabai -m display --focus recent
