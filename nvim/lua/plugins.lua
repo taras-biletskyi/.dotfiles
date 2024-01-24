@@ -94,11 +94,6 @@ require("lazy").setup({
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
     },
-    {
-        "glacambre/firenvim",
-        lazy = not vim.g.started_by_firenvim,
-        build = function() vim.fn['firenvim#install'](0) end
-    },
     -- caches for nvim startup
     -- visualises '--startup' nvim arg
     -- {'dstein64/vim-startuptime'},
