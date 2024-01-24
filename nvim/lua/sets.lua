@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"go", "gomod"},
+    pattern = {"go", "gomod", "lua"},
     callback = function()
         vim.opt_local.listchars = {
           tab = '  ',
@@ -63,7 +63,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- On pressing tab, insert 4 spaces
 vim.o.expandtab = true
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"go"},
+    pattern = {"go", "lua"},
     callback = function()
         vim.opt_local.expandtab = false
     end
