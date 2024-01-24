@@ -2,7 +2,7 @@ require("obsidian").setup({
     lazy = true,
     dir = "~/personal/fault",
     disable_frontmatter = true,
-    ui = {enable = false},
+    ui = {enable = true},
     daily_notes = {
         -- Optional, if you keep daily notes in a separate directory.
         folder = "daily",
