@@ -25,6 +25,13 @@ require("conform").setup({
 			command = "prettier",
 			args = { "--stdin-filepath", '"%:p"', "--tab-width=2", "--prose-wrap=always", "$FILENAME" },
 		},
+		sqlformatter = {
+			command = "sql-formatter",
+			args = {
+				"-l=snowflake",
+				'--config={"tabWidth": 2, "keywordCase":"lower", "dataTypeCase":"lower", "functionCase":"lower", "expressionWidth":80}',
+			},
+		},
 	},
 	formatters_by_ft = {
 		c = { "clang" },
@@ -37,6 +44,7 @@ require("conform").setup({
 		sh = { "shfmt" },
 		markdown = { "md" },
 		yaml = { "prettier" },
+		sql = { "sqlformatter" },
 	},
 })
 
