@@ -80,10 +80,10 @@ require("lazy").setup({
     "tpope/vim-eunuch",
     "stevearc/conform.nvim",
     -- DOcument GEnerator
-    {
-        "kkoomen/vim-doge",
-        build = ":call doge#install()"
-    },
+    -- {
+    --     "kkoomen/vim-doge",
+    --     build = ":call doge#install()"
+    -- },
     "danymat/neogen",
     "mbbill/undotree",
     "bogado/file-line",
