@@ -1,53 +1,57 @@
-local Builtin = require 'telescope.builtin'
-local actions = require "telescope.actions"
-require"telescope".setup {
-    defaults = {
-        dynamic_preview_title = true,
-        mappings = {
-            n = {
-                ["<C-q>"] = false,
-                ["<M-q>"] = false,
-                ["<C-q>a"] = actions.send_to_qflist + actions.open_qflist,
-                ["<C-q>q"] = actions.send_selected_to_qflist +
-                    actions.open_qflist
-            },
-            i = {
-                ["<C-q>"] = false,
-                ["<M-q>"] = false,
-                ["<C-q>a"] = actions.send_to_qflist + actions.open_qflist,
-                ["<C-q>q"] = actions.send_selected_to_qflist +
-                    actions.open_qflist
-            }
-        }
-    }
-}
+local Builtin = require("telescope.builtin")
+local actions = require("telescope.actions")
+require("telescope").setup({
+	defaults = {
+		dynamic_preview_title = true,
+		sorting_strategy = "ascending",
+		path_display = { shorten = { len = 3, exclude = { 1, -1 } }, truncate = true },
+		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+				preview_width = 0.65,
+				results_width = 0.9,
+				preview_cutoff = 1,
+				width = 0.9,
+				height = 0.9,
+			},
+		},
+		mappings = {
+			n = {
+				["<C-q>"] = false,
+				["<M-q>"] = false,
+				["<C-q>a"] = actions.send_to_qflist + actions.open_qflist,
+				["<C-q>q"] = actions.send_selected_to_qflist + actions.open_qflist,
+			},
+			i = {
+				["<C-q>"] = false,
+				["<M-q>"] = false,
+				["<C-q>a"] = actions.send_to_qflist + actions.open_qflist,
+				["<C-q>q"] = actions.send_selected_to_qflist + actions.open_qflist,
+			},
+		},
+	},
+})
 
 function _G.project_files()
-    local in_git_repo = vim.fn.systemlist"git rev-parse --is-inside-work-tree"[1] == 'true'
-    if in_git_repo then
-        Builtin.git_files(
-            require("telescope.themes").get_ivy({
-                show_untracked = true
-            })
-        )
-    else
-        Builtin.find_files(
-            require("telescope.themes").get_ivy({
-                hidden = true,
-                follow = true,
-                no_ignore = false
-            }))
-    end
+	local in_git_repo = vim.fn.systemlist("git rev-parse --is-inside-work-tree")[1] == "true"
+	if in_git_repo then
+		Builtin.git_files({ show_untracked = true })
+	else
+		Builtin.find_files({
+			hidden = true,
+			follow = true,
+			no_ignore = false,
+		})
+	end
 end
 
 local opts = {}
-opts = require("telescope.themes").get_ivy{show_untracked = true}
-opts.path_display = {shorten = {len = 3, exclude = {1, -1}}, truncate = true}
+opts = { show_untracked = true }
 
 vim.keymap.set('n', '<leader>tf', project_files)
 vim.keymap.set('n', '<leader>tg', function() Builtin.live_grep(opts) end, {})
 vim.keymap.set('n', '<leader>tb', function() Builtin.buffers(opts) end, {})
-vim.keymap.set('n', '<leader>td', function() Builtin.git_files(require('telescope.themes').get_ivy({prompt_title = ".dotfiles", cwd = "~/.dotfiles/", show_untracked = true})) end, {})
+vim.keymap.set('n', '<leader>td', function() Builtin.git_files({prompt_title = ".dotfiles", cwd = "~/.dotfiles/", show_untracked = true}) end, {})
 vim.keymap.set('n', '<leader>th', function() Builtin.help_tags(opts) end, {})
 vim.keymap.set('n', '<leader>te', function() Builtin.symbols(opts) end, {}) -- emoji
 
