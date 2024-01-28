@@ -1,51 +1,53 @@
 -- If a new release comes out or you change your server version, you can issue a
 -- |MetalsUpdate| command to re-install it.
-local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", {clear = true})
+local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 local metals_config = require("metals").bare_config()
 -- BUG: this status thing does not work
--- metals_config.init_options.statusBarProvider = "on"
+metals_config.init_options.statusBarProvider = "on"
 -- For cmp completions
 metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- for dap
 local dap = require("dap")
 dap.configurations.scala = {
-    {
-        type = "scala",
-        request = "launch",
-        name = "RunOrTest",
-        metals = {
-            runType = "runOrTestFile"
-            -- args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
-        }
-    }, {
-        type = "scala",
-        request = "launch",
-        name = "Test Target",
-        metals = {runType = "testTarget"}
-    }
+	{
+		type = "scala",
+		request = "launch",
+		name = "RunOrTest",
+		metals = {
+			runType = "runOrTestFile",
+			-- args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
+		},
+	},
+	{
+		type = "scala",
+		request = "launch",
+		name = "Test Target",
+		metals = { runType = "testTarget" },
+	},
 }
 metals_config.on_attach = function(client, bufnr)
-  require("metals").setup_dap()
+	require("metals").setup_dap()
 end
 
 local handle = io.popen("whoami")
-local user = handle:read("*a"):gsub('\n', '')
+local user = handle:read("*a"):gsub("\n", "")
 handle:close()
 local java_crib = os.getenv("JAVA_HOME")
 
 metals_config.settings = {
-    showImplicitArguments = true,
-    showImplicitConversionsAndClasses = true,
-    showInferredType = true,
-    javaHome = java_crib,
-    scalafmtConfigPath = "/Users/" .. user .. "/.dotfiles/.scalafmt.conf",
-    scalafixConfigPath = "/Users/" .. user .. "/.dotfiles/.scalafix.conf",
-    fallbackScalaVersion = "2.13.12",
+	showImplicitArguments = true,
+	showImplicitConversionsAndClasses = true,
+	showInferredType = true,
+	javaHome = java_crib,
+	scalafmtConfigPath = "/Users/" .. user .. "/.dotfiles/.scalafmt.conf",
+	scalafixConfigPath = "/Users/" .. user .. "/.dotfiles/.scalafix.conf",
+	fallbackScalaVersion = "2.13.12",
+	serverVersion = "latest.snapshot",
 }
 
 -- These are here as well as in lsp_cmp.lua because there, there is no lsp to
 -- attach to: this is a standalone plugin with lsp in it.
-local opts = {noremap = true}
+local opts = { noremap = true }
 local map = vim.keymap.set
 map("n", "<leader>ee", vim.diagnostic.open_float, opts)
 map("n", "[d", vim.diagnostic.goto_prev, opts)
@@ -68,11 +70,11 @@ map("n", "<leader>rn", vim.lsp.buf.rename, opts)
 map("n", "<leader>ka", vim.lsp.buf.code_action, opts)
 map("n", "<leader>gr", vim.lsp.buf.references, opts)
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"scala", "sbt", "java"},
-    callback = function()
-        map('n', '<space>f', function() vim.lsp.buf.format { async = true } end, {noremap = true, desc = "Metals LSP formating"})
-        map('v', '<space>f', function() vim.lsp.buf.format { async = true } end, {noremap = true, desc = "Metals LSP formating"})
-    end
+	pattern = {"scala", "sbt", "java"},
+	callback = function()
+		map('n', '<space>f', function() vim.lsp.buf.format { async = true } end, {noremap = true, desc = "Metals LSP formating"})
+		map('v', '<space>f', function() vim.lsp.buf.format { async = true } end, {noremap = true, desc = "Metals LSP formating"})
+	end
 })
 -- Metals specific
 map("n", "<leader>cl", vim.lsp.codelens.run)
@@ -82,9 +84,9 @@ map("n", "<leader>ws", function() require("metals").hover_worksheet() end)
 -- require("metals.tvp").reveal_in_tree()
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"scala", "sbt", "java"},
-    callback = function()
-        require("metals").initialize_or_attach(metals_config)
-    end,
-    group = nvim_metals_group
+	pattern = { "scala", "sbt", "java" },
+	callback = function()
+		require("metals").initialize_or_attach(metals_config)
+	end,
+	group = nvim_metals_group,
 })
