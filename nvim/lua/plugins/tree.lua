@@ -1,6 +1,6 @@
 -- Additionaly need to install language packs vis :TSInstall
 require"nvim-treesitter.configs".setup {
-    indent = {enable = true},
+    -- indent = {enable = true},
     highlight = {
         enable = true,
         -- for obsidian plugin: improves md highlighting
