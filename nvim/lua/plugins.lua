@@ -106,4 +106,14 @@ require("lazy").setup({
     "nvim-telescope/telescope-symbols.nvim",
     "folke/todo-comments.nvim",
     "epwalsh/obsidian.nvim",
+	-- TODO: make these icons only work for octo.nvim?
+	"nvim-tree/nvim-web-devicons",
+	{
+	'pwntester/octo.nvim',
+	requires = {
+		'nvim-lua/plenary.nvim',
+		'nvim-telescope/telescope.nvim',
+		'nvim-tree/nvim-web-devicons',
+	}
+	},
 })
