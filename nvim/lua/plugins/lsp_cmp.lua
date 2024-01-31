@@ -66,6 +66,7 @@ cmp.setup {
                 end
             }
         },
+		{name = "git"},
         {name = "dap"}
     }),
     formatting = {
@@ -81,6 +82,7 @@ cmp.setup {
               buffer = "[Buf]",
               nvim_lua = "[Lua]",
               calc = "[Clc]",
+			  git = "[Git]",
               dap = "[Dap]"
           })
 

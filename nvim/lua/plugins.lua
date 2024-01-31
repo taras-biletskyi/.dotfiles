@@ -116,4 +116,11 @@ require("lazy").setup({
 		'nvim-tree/nvim-web-devicons',
 	}
 	},
+	-- for nvim-cmp GitHub & GitLab completions
+	{
+		"petertriho/cmp-git",
+		config = function()
+			require("cmp_git").setup()
+		end
+	},
 })
