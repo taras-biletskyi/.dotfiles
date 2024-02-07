@@ -14,7 +14,7 @@ require("conform").setup({
 		},
 		shfmt = {
 			command = "shfmt",
-			args = { "-ci", "-bn", "-i=4", "-sr", "-filename", "$FILENAME" },
+			args = { "-s", "-ci", "-bn", "-i=4", "-sr", "$FILENAME" },
 		},
 		luaformat = {
 			command = "stylua",
