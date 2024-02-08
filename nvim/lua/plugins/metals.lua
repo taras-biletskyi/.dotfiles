@@ -3,7 +3,7 @@
 local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 local metals_config = require("metals").bare_config()
 -- BUG: this status thing does not work
-metals_config.init_options.statusBarProvider = "on"
+-- metals_config.init_options.statusBarProvider = "on"
 -- For cmp completions
 metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- for dap
