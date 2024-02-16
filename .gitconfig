@@ -1,0 +1,32 @@
+[difftool]
+    prompt = true
+[init]
+    defaultBranch = main
+[difftool "vimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[diff]
+    tool = nvimdiff
+[merge]
+    tool = nvimdiff
+[mergetool "vimdiff"]
+    path = nvim
+
+[rerere]
+    enabled = true
+[branch]
+    sort = -committerdate
+[gpg]
+    format = ssh
+[commit]
+    gpgsign = true
+[maintenance]
+    repo = /Users/tmp/.dotfiles
+    repo = /Users/tmp/work/jay/repos/backend-api-dm
+    repo = /Users/tmp/work/jay/repos/backend-tracking
+
+[includeif "gitdir:~/personal/"]
+    path = ~/personal/.gitconfig
+[includeif "gitdir:~/.dotfiles/"]
+    path = ~/personal/.gitconfig
+[includeif "gitdir:~/work/jay/"]
+    path = ~/work/jay/.gitconfig
