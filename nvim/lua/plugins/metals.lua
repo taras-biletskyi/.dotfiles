@@ -70,7 +70,7 @@ map("n", "<leader>rn", vim.lsp.buf.rename, opts)
 map("n", "<leader>ka", vim.lsp.buf.code_action, opts)
 map("n", "<leader>gr", vim.lsp.buf.references, opts)
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = {"scala", "sbt", "java"},
+	pattern = { "scala", "sbt", "java" },
 	callback = function()
 		map('n', '<space>f', function() vim.lsp.buf.format { async = true } end, {noremap = true, desc = "Metals LSP formating"})
 		map('v', '<space>f', function() vim.lsp.buf.format { async = true } end, {noremap = true, desc = "Metals LSP formating"})

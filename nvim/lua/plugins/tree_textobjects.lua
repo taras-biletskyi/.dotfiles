@@ -1,66 +1,66 @@
-require'nvim-treesitter.configs'.setup {
-    textobjects = {
-        select = {
-            enable = true,
-            -- Automatically jump forward to textobj, similar to targets.vim
-            lookahead = true,
-            keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ["ak"] = "@conditional.outer",
-                ["ik"] = "@conditional.inner",
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
-                ["al"] = "@loop.outer",
-                ["il"] = "@loop.inner",
-                ["as"] = "@scope"
-            },
-            selection_modes = {
-                ['@parameter.outer'] = 'v', -- charwise
-                ['@function.outer'] = 'V', -- linewise
-                ['@class.outer'] = '<c-v>' -- blockwise
-            },
-            include_surrounding_whitespace = false
-        },
-        move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-                ["]k"] = "@conditional.outer",
-                ["]f"] = "@function.outer",
-                ["]]"] = "@class.outer",
-                ["]l"] = "@loop.outer",
-                ["]s"] = "@scope",
-                ["]z"] = "@fold"
-            },
-            goto_next_end = {
-                ["]K"] = "@conditional.outer",
-                ["]F"] = "@function.outer",
-                ["]["] = "@class.outer",
-                ["]L"] = "@loop.outer",
-                ["]S"] = "@scope",
-                ["]Z"] = "@fold"
-            },
-            goto_previous_start = {
-                ["[k"] = "@conditional.outer",
-                ["[f"] = "@function.outer",
-                ["[["] = "@class.outer",
-                ["[l"] = "@loop.outer",
-                ["[s"] = "@scope",
-                ["[z"] = "@fold"
-            },
-            goto_previous_end = {
-                ["[K"] = "@conditional.outer",
-                ["[F"] = "@function.outer",
-                ["[]"] = "@class.outer",
-                ["[L"] = "@loop.outer",
-                ["[S"] = "@scope",
-                ["[Z"] = "@fold"
-            }
-        }
-    }
-}
+require("nvim-treesitter.configs").setup({
+	textobjects = {
+		select = {
+			enable = true,
+			-- Automatically jump forward to textobj, similar to targets.vim
+			lookahead = true,
+			keymaps = {
+				-- You can use the capture groups defined in textobjects.scm
+				["ak"] = "@conditional.outer",
+				["ik"] = "@conditional.inner",
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+				["al"] = "@loop.outer",
+				["il"] = "@loop.inner",
+				["as"] = "@scope",
+			},
+			selection_modes = {
+				["@parameter.outer"] = "v", -- charwise
+				["@function.outer"] = "V", -- linewise
+				["@class.outer"] = "<c-v>", -- blockwise
+			},
+			include_surrounding_whitespace = false,
+		},
+		move = {
+			enable = true,
+			set_jumps = true, -- whether to set jumps in the jumplist
+			goto_next_start = {
+				["]k"] = "@conditional.outer",
+				["]f"] = "@function.outer",
+				["]]"] = "@class.outer",
+				["]l"] = "@loop.outer",
+				["]s"] = "@scope",
+				["]z"] = "@fold",
+			},
+			goto_next_end = {
+				["]K"] = "@conditional.outer",
+				["]F"] = "@function.outer",
+				["]["] = "@class.outer",
+				["]L"] = "@loop.outer",
+				["]S"] = "@scope",
+				["]Z"] = "@fold",
+			},
+			goto_previous_start = {
+				["[k"] = "@conditional.outer",
+				["[f"] = "@function.outer",
+				["[["] = "@class.outer",
+				["[l"] = "@loop.outer",
+				["[s"] = "@scope",
+				["[z"] = "@fold",
+			},
+			goto_previous_end = {
+				["[K"] = "@conditional.outer",
+				["[F"] = "@function.outer",
+				["[]"] = "@class.outer",
+				["[L"] = "@loop.outer",
+				["[S"] = "@scope",
+				["[Z"] = "@fold",
+			},
+		},
+	},
+})
 
 -- local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 

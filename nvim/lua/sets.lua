@@ -19,31 +19,31 @@ vim.o.encoding = "utf-8"
 vim.o.number = true
 vim.o.relativenumber = true
 -- shows a symbol for lines that are wraped
-vim.cmd [[set showbreak=↪\]]
+vim.cmd([[set showbreak=↪\]])
 -- specifies characters for set list to show
 -- set listchars=tab:→\,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"*"},
-    callback = function()
-        vim.opt_local.listchars = {
-          tab = '→ ',
-          extends = '⟩',
-          precedes = '⟨',
-          trail = '•'
-        }
-    end
+	pattern = { "*" },
+	callback = function()
+		vim.opt_local.listchars = {
+			tab = "→ ",
+			extends = "⟩",
+			precedes = "⟨",
+			trail = "•",
+		}
+	end,
 })
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"go", "gomod", "lua"},
-    callback = function()
-        vim.opt_local.listchars = {
-          tab = '  ',
-          lead = '•',
-          extends = '⟩',
-          precedes = '⟨',
-          trail = '•'
-        }
-    end
+	pattern = { "go", "gomod", "lua" },
+	callback = function()
+		vim.opt_local.listchars = {
+			tab = "  ",
+			lead = "•",
+			extends = "⟩",
+			precedes = "⟨",
+			trail = "•",
+		}
+	end,
 })
 vim.o.list = true
 vim.o.signcolumn = "auto:1-3"
@@ -52,35 +52,41 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.shiftwidth = 4
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"markdown", "scala", "sbt", "sql"},
-    callback = function()
-        vim.opt_local.tabstop = 2
-        vim.opt_local.softtabstop = 2
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.shiftwidth = 2
-    end
+	pattern = { "markdown", "scala", "sbt", "sql" },
+	callback = function()
+		vim.opt_local.tabstop = 2
+		vim.opt_local.softtabstop = 2
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.shiftwidth = 2
+	end,
 })
 -- On pressing tab, insert 4 spaces
 vim.o.expandtab = true
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"go", "lua"},
-    callback = function()
-        vim.opt_local.expandtab = false
-    end
+	pattern = { "go", "lua" },
+	callback = function()
+		vim.opt_local.expandtab = false
+	end,
 })
 -- set autoindent
 vim.o.smartindent = true
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"*"},
-    callback = function() vim.opt_local.wrap = false end
+	pattern = { "*" },
+	callback = function()
+		vim.opt_local.wrap = false
+	end,
 })
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"text"},
-    callback = function() vim.opt_local.wrap = true end
+	pattern = { "text" },
+	callback = function()
+		vim.opt_local.wrap = true
+	end,
 })
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"gitcommit", "markdown", "text"},
-    callback = function() vim.cmd('setlocal spell') end
+	pattern = { "gitcommit", "markdown", "text" },
+	callback = function()
+		vim.cmd("setlocal spell")
+	end,
 })
 vim.opt.wrap = false
 vim.o.smarttab = true
@@ -88,7 +94,7 @@ vim.o.laststatus = 3
 vim.o.backup = false
 -- Does not show which mode is on on a separate line
 vim.o.showmode = false
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = "80"
 -- Highlight matching search patterns
 vim.o.hlsearch = true
 -- Enable incremental search
@@ -101,38 +107,38 @@ vim.o.sidescroll = 1
 vim.o.undofile = true
 vim.o.completeopt = "menu,menuone,noselect"
 -- This does not really work
-    -- vim.opt.undodir = os.getenv("HOME") .. '/.vim/undodir'
-vim.cmd [[set undodir=~/.vim/undodir]]
+-- vim.opt.undodir = os.getenv("HOME") .. '/.vim/undodir'
+vim.cmd([[set undodir=~/.vim/undodir]])
 -- Do not conceal any symbols (works in .md)
 vim.o.conceallevel = 0
-vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
+vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }
 vim.g.netrw_browse_split = 0
 -- close the netrw browser when opening a file
 vim.g.netrw_fastbrowse = 0
 vim.g.netrw_bufsettings = "noma nomod nu rnu nowrap ro nobl"
 -- Ignore files in vimgrep, atleast
-vim.opt.wildignore:append{"*.pyc"}
-vim.opt.wildignore:append{"**/venv/*"}
-vim.opt.wildignore:append{"**/data/*"}
-vim.opt.wildignore:append{"*_build/*"}
-vim.opt.wildignore:append{"**/coverage/*"}
-vim.opt.wildignore:append{"**/node_modules/*"}
-vim.opt.wildignore:append{"**/android/*"}
-vim.opt.wildignore:append{"**/ios/*"}
-vim.opt.wildignore:append{"**/.git/*"}
-vim.opt.wildignore:append{"**/debug/*"}
-if io.popen('uname -m','r'):read('*l') == 'arm64' then
-    vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
+vim.opt.wildignore:append({ "*.pyc" })
+vim.opt.wildignore:append({ "**/venv/*" })
+vim.opt.wildignore:append({ "**/data/*" })
+vim.opt.wildignore:append({ "*_build/*" })
+vim.opt.wildignore:append({ "**/coverage/*" })
+vim.opt.wildignore:append({ "**/node_modules/*" })
+vim.opt.wildignore:append({ "**/android/*" })
+vim.opt.wildignore:append({ "**/ios/*" })
+vim.opt.wildignore:append({ "**/.git/*" })
+vim.opt.wildignore:append({ "**/debug/*" })
+if io.popen("uname -m", "r"):read("*l") == "arm64" then
+	vim.g.python3_host_prog = "/opt/homebrew/bin/python3"
 else
-    vim.g.python3_host_prog = '/usr/local/bin/python3'
+	vim.g.python3_host_prog = "/usr/local/bin/python3"
 end
 vim.o.mmp = 200000
 vim.o.history = 10000
 vim.o.synmaxcol = 200
-vim.opt.fillchars = { diff = '/' }
+vim.opt.fillchars = { diff = "/" }
 -- Remove trailing whitespace on buff write
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-    pattern = "*",
-    command = "%s/\\s\\+$//e",
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = "*",
+	command = "%s/\\s\\+$//e",
 })
 vim.opt_global.shortmess:remove("F")
