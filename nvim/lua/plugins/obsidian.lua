@@ -10,9 +10,7 @@ require("obsidian").setup({
 		date_format = "%Y-%m-%d",
 	},
 	mappings = {},
-	completion = {
-		new_notes_location = "notes_subdir", --[[ prepend_note_id = false ]]
-	},
+	new_notes_location = "notes_subdir", --[[ prepend_note_id = false ]]
 	note_id_func = function(title)
 		local suffix = ""
 		if title ~= nil then
