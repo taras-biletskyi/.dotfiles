@@ -12,3 +12,4 @@ local map = vim.api.nvim_set_keymap
 map("n", "<leader>hh", ":DiffviewFileHistory <CR>", {})
 map("n", "<leader>ho", ":DiffviewOpen <CR>", {})
 map("n", "<leader>hc", ":DiffviewClose <CR>", {})
+map("n", "<leader>hb", ":DiffviewFileHistory % <CR>", {})
