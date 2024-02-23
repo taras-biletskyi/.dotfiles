@@ -41,7 +41,7 @@ yabai -m signal --add event=application_terminated action="yabai -m query --wind
 # floating windows are always on top (default: off)
 # need this for popups to be shown on top of windows
 yabai -m config mouse_follows_focus on
-yabai -m config focus_follows_mouse          autofocus # autoraise
+yabai -m config focus_follows_mouse          autoraise # autofocus
 yabai -m config window_placement             first_child
 # show shadows only for floating windows
 yabai -m config window_shadow                float
