@@ -19,7 +19,7 @@ true_fzf_path=$(readlink -f $(which fzf))
 export FZF_BASE=$true_fzf_path
 export FZF_DEFAULT_OPTS="-m -0 -1 --height 40% --min-height=10 --layout=reverse
     --border --scroll-off=5 --info=inline --history-size=100000 --no-unicode --tabstop=4
-    --margin 1.5% --bind ctrl-space:toggle+down --bind tab:down --bind shift-tab:up
+    --margin 1.5% --bind ctrl-space:toggle+down --bind tab:toggle+down --bind shift-tab:toggle+up
     --bind ctrl-g:first --bind alt-enter:toggle-all --scrollbar"
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
