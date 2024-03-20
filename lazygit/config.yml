@@ -12,4 +12,4 @@ git:
   parseEmoji: true
   paging:
     colorArg: always
-    pager: delta --syntax-theme gruvbox-dark --paging=never
+    pager: delta --dark --syntax-theme gruvbox-dark --paging=never
