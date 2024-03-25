@@ -6,6 +6,8 @@ gui:
     selectedLineBgColor:
       - reverse
   skipDiscardChangeWarning: false
+  enlargedSideViewLocation: 'top'
+  showFileIcons: false
 git:
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
   allBranchesLogCmd: "git log -p --color-words --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium"
