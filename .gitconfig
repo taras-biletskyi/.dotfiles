@@ -6,10 +6,19 @@
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [diff]
     tool = nvimdiff
+    colorMoved = default
 [merge]
     tool = nvimdiff
+    conflictstyle = diff3
 [mergetool "vimdiff"]
     path = nvim
+
+[core]
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true    # use n and N to move between diff sections
 
 [rerere]
     enabled = true
