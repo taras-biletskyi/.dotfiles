@@ -24,6 +24,7 @@ require("lazy").setup({
 	-- ctags thing for code outline
 	"preservim/tagbar",
 	-- Plugin for commenting code
+	-- TODO: see if this is relevant in a few months. Neovim 0.10 has comments now.
 	"numToStr/Comment.nvim",
 	-- Completions to come along with neovim/nvim-lspconfig
 	"neovim/nvim-lspconfig",
