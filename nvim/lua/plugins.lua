@@ -73,7 +73,15 @@ require("lazy").setup({
 	-- Additional maps based on treesitter
 	"nvim-treesitter/nvim-treesitter-textobjects",
 	-- Shortcuts cheat sheet
-	"folke/which-key.nvim",
+	{
+		"folke/which-key.nvim",
+		-- TODO: delete opts when https://github.com/folke/which-key.nvim/issues/822 is fixed
+		opts = {
+			plugins = {
+				registers = false,
+			},
+		},
+	},
 	-- Debuger
 	-- Plugins for nvim-dap debugger
 	"mfussenegger/nvim-dap",
@@ -118,7 +126,10 @@ require("lazy").setup({
 		end,
 	},
 	"nvim-telescope/telescope-symbols.nvim",
-	"folke/todo-comments.nvim",
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 	"epwalsh/obsidian.nvim",
 	-- TODO: make these icons only work for octo.nvim?
 	"nvim-tree/nvim-web-devicons",
