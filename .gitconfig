@@ -20,8 +20,8 @@
 [delta]
     navigate = true    # use n and N to move between diff sections
 
-[rerere]
-    enabled = true
+; [rerere]
+;     enabled = true
 [branch]
     sort = -committerdate
 [gpg]
@@ -39,3 +39,5 @@
     path = ~/personal/.gitconfig
 [includeif "gitdir:~/work/jay/"]
     path = ~/work/jay/.gitconfig
+[includeif "gitdir:~/work/brightway"]
+    path = ~/work/brightway/.gitconfig
