@@ -122,7 +122,7 @@ local servers = {
 	"cmake",
 	"taplo",
 	"docker_compose_language_service",
-	"tsserver",
+	"ts_ls",
 	"html",
 	"terraformls",
 }
