@@ -75,12 +75,6 @@ require("lazy").setup({
 	-- Shortcuts cheat sheet
 	{
 		"folke/which-key.nvim",
-		-- TODO: delete opts when https://github.com/folke/which-key.nvim/issues/822 is fixed
-		opts = {
-			plugins = {
-				registers = false,
-			},
-		},
 	},
 	-- Debuger
 	-- Plugins for nvim-dap debugger
