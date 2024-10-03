@@ -32,9 +32,14 @@ require("conform").setup({
 				'--config={"tabWidth": 2, "keywordCase":"lower", "dataTypeCase":"lower", "functionCase":"lower", "expressionWidth":80}',
 			},
 		},
+		javashittyformat = {
+			command = "google-java-format",
+			args = {"-", "--aosp"},
+		},
 	},
 	formatters_by_ft = {
 		c = { "clang" },
+		java = {"javashittyformat"},
 		python = { "py" },
 		go = {
 			formatters = { "gofmt", "gofumpt", "golines", "goimports" },
