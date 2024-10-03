@@ -35,14 +35,20 @@ handle:close()
 local java_crib = os.getenv("JAVA_HOME")
 
 metals_config.settings = {
-	showImplicitArguments = true,
-	showImplicitConversionsAndClasses = true,
-	showInferredType = true,
+	verboseCompilation = true,
 	javaHome = java_crib,
 	scalafmtConfigPath = "/Users/" .. user .. "/.dotfiles/.scalafmt.conf",
 	scalafixConfigPath = "/Users/" .. user .. "/.dotfiles/.scalafix.conf",
 	fallbackScalaVersion = "2.13.12",
 	serverVersion = "latest.snapshot",
+	-- TODO: these do not seem work, but should(((
+	inlayHints = {
+		hintsInPatternMatch = { enable = true },
+		implicitArguments = { enable = true },
+		implicitConversions = { enable = true },
+		inferredTypes = { enable = true },
+		typeParameters = { enable = true },
+	},
 }
 
 -- These are here as well as in lsp_cmp.lua because there, there is no lsp to
