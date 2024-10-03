@@ -18,7 +18,13 @@ require("lazy").setup({
 	-- Gutter to the right of line numbers
 	"lewis6991/gitsigns.nvim",
 	"tpope/vim-fugitive",
-	"ThePrimeagen/git-worktree.nvim",
+	-- TODO: both of these worktree plugins are bugy((
+	-- "ThePrimeagen/git-worktree.nvim",
+	{
+		"polarmutex/git-worktree.nvim",
+		version = "^2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 	"nvim-lua/plenary.nvim",
 	"sindrets/diffview.nvim",
 	-- ctags thing for code outline
