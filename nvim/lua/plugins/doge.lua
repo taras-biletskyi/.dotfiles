@@ -18,6 +18,7 @@ vim.api.nvim_set_keymap("n", "<Leader>dogefi", ":lua require('neogen').generate(
 vim.cmd([[
 let g:doge_doc_standard_python = "reST"
 let g:doge_doc_standard_scala = "scaladoc"
+let g:doge_doc_standard_java = "javadoc"
 
 let g:doge_enable_mapping = 0
 let g:doge_comment_jump_wrap = 0
