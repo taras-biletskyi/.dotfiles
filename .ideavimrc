@@ -1,0 +1,98 @@
+" TODO: orginize this into categories
+set surround
+set commentary
+" Plug 'tpope/vim-commentary'
+set highlightedyank
+" set which-key
+
+
+set ideawrite=file
+
+set notimeout
+set timeoutlen=5000
+
+set cursorline
+set guicursor=a:block
+set scrolloff=10
+set sidescroll=1
+set sidescrolloff=20
+set fileencoding=utf-8
+set number
+set relativenumber
+set list
+set smartcase
+set showmode
+set colorcolumn=80
+set hlsearch
+set incsearch
+set history=10000
+let mapleader=" "
+
+" ======================== Maps
+" === From neovim config
+" keymaps.lua
+:map gn <Action>(NextTab)
+:map gp <Action>(PreviousTab)
+:map gw <Action>(CloseContent)
+:map <S-Up> <Action>(MoveLineUp)
+:map <S-Down> <Action>(MoveLineDown)
+:map n nzzzv
+:map N nzzzv
+:map <leader>u <Action>(LocalHistory.ShowHistory)
+" :map <F8> <Action>(ActivateStructureToolWindow)
+:map _ g_
+" dap.lua
+:map <F5> <Action>(Debug)
+:map <F6> <Action>(Stop)
+:map <F10> <Action>(StepOver)
+:map <F11> <Action>(StepInto)
+:map <F12> <Action>(StepOut)
+:map <leader>dbb <Action>(ToggleLineBreakpoint)
+:map <leader>f <Action>(ReformatCode)
+:map g1 <Action>(GoToTab1)
+:map g2 <Action>(GoToTab2)
+:map g3 <Action>(GoToTab3)
+:map g4 <Action>(GoToTab4)
+:map g5 <Action>(GoToTab5)
+:map g6 <Action>(GoToTab6)
+:map g7 <Action>(GoToTab7)
+:map g8 <Action>(GoToTab8)
+:map g9 <Action>(GoToTab9)
+:map <leader>y "+y
+
+" TODO: include Telescope maps for files, etc.
+
+" lsp_cmp.lua
+:map <leader>ee <Action>(ShowErrorDescription)
+:map ]d <Action>(GotoNextError)
+:map [d <Action>(GotoPreviousError)
+:map <leader>eb <Action>(ActivateProblemsViewToolWindow)
+
+
+" delcaration/definition
+:map <leader>gD <Action>(GotoDeclaration)
+" hover
+:map K <Action>(QuickJavaDoc)
+" implementation
+:map <leader>gi <Action>(GotoImplementation)
+" type definition
+:map <leader>D <Action>(GotoTypeDeclaration)
+" rename
+:map <leader>rn <Action>(RenameElement)
+" code actions
+:map <leader>ka <Action>(ShowIntentionActions)
+" references
+:map <leader>gr <Action>(FindUsages)
+" signature help
+:map <C-s> <Action>(ParameterInfo)
+" some other???
+
+:map <leader>ghh <Action>(VcsShowCurrentChangeMarker)
+:map <leader>gn <Action>(VcsShowNextChangeMarker)
+:map <leader>gp <Action>(VcsShowPrevChangeMarker)
+:map <leader>gu <Action>(Vcs.RollbackChangedLines)
+
+" =============== additionally
+:map <C-wv> <Action>(SplitVertically)
+:map <C-ws <Action>(SplitHorizontally)
+:map za <Action>(ExpandCollapseToggleAction)
