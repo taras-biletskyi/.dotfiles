@@ -25,10 +25,12 @@ yabai -m rule --add app="Workplace Chat" manage=off
 # yabai -m rule --add app="teams" manage=off
 # yabai -m rule --add app="Teams" manage=off
 # yabai -m rule --add app="Microsoft Teams" manage=on
+yabai -m rule --add app="IntelliJ IDEA" manage=off
 
 # When these open, follow some rules
 yabai -m rule --add app="Firefox|Chrome" display=2 space=1
 yabai -m rule --add app="^Alacritty$|^alacritty$" display=2 native-fullscreen=on
+yabai -m rule --add app="IntelliJ IDEA" display=2 native-fullscreen=on
 yabai -m rule --add app="Slack|Teams|Obsidian" display=1 space=1
 
 # Closing focused window gives focus to remaining window
