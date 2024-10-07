@@ -39,5 +39,5 @@
     path = ~/personal/.gitconfig
 [includeif "gitdir:~/work/jay/"]
     path = ~/work/jay/.gitconfig
-[includeif "gitdir:~/work/brightway"]
+[includeif "gitdir:~/work/brightway/"]
     path = ~/work/brightway/.gitconfig
