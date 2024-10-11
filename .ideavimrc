@@ -1,16 +1,14 @@
-" TODO: orginize this into categories
+" ====== Plugins
 set surround
 set commentary
 " Plug 'tpope/vim-commentary'
 set highlightedyank
 " set which-key
 
-
+" ====== Sets
 set ideawrite=file
-
 set notimeout
 set timeoutlen=5000
-
 set cursorline
 set guicursor=a:block
 set scrolloff=10
@@ -28,9 +26,7 @@ set incsearch
 set history=10000
 let mapleader=" "
 
-" ======================== Maps
-" === From neovim config
-" keymaps.lua
+" ====== Maps
 :map gn <Action>(NextTab)
 :map gp <Action>(PreviousTab)
 :map gw <Action>(CloseContent)
@@ -39,16 +35,18 @@ let mapleader=" "
 :map n nzzzv
 :map N nzzzv
 :map <leader>u <Action>(LocalHistory.ShowHistory)
-" :map <F8> <Action>(ActivateStructureToolWindow)
+:map <F8> <Action>(ActivateStructureToolWindow)
 :map _ g_
-" dap.lua
-:map <F5> <Action>(Debug)
+:map <leader>y "+y
+" === Debuger
+:map <F5> <Action>(ChooseDebugConfiguration)
 :map <F6> <Action>(Stop)
 :map <F10> <Action>(StepOver)
 :map <F11> <Action>(StepInto)
 :map <F12> <Action>(StepOut)
 :map <leader>dbb <Action>(ToggleLineBreakpoint)
 :map <leader>f <Action>(ReformatCode)
+" === Navigation
 :map g1 <Action>(GoToTab1)
 :map g2 <Action>(GoToTab2)
 :map g3 <Action>(GoToTab3)
@@ -58,17 +56,19 @@ let mapleader=" "
 :map g7 <Action>(GoToTab7)
 :map g8 <Action>(GoToTab8)
 :map g9 <Action>(GoToTab9)
-:map <leader>y "+y
 
-" TODO: include Telescope maps for files, etc.
+" === Run/Compile
+" TODO: run & build???
+:map <leader>ra <Action>(RunAnything)
+:map <leader>rr <Action>(ChooseRunConfiguration)
+:map <leader>rc <Action>(CompileProject)
+:map <leader>tf <Action>(SearchEverywhere)
 
-" lsp_cmp.lua
+" ==== LSP/CMP
 :map <leader>ee <Action>(ShowErrorDescription)
 :map ]d <Action>(GotoNextError)
 :map [d <Action>(GotoPreviousError)
 :map <leader>eb <Action>(ActivateProblemsViewToolWindow)
-
-
 " delcaration/definition
 :map <leader>gD <Action>(GotoDeclaration)
 " hover
@@ -87,12 +87,16 @@ let mapleader=" "
 :map <C-s> <Action>(ParameterInfo)
 " some other???
 
+" === Todo
+:map <leader>tt <Action>(ActivateTODOToolWindow)
+
+" === Git hunks
 :map <leader>ghh <Action>(VcsShowCurrentChangeMarker)
 :map <leader>gn <Action>(VcsShowNextChangeMarker)
 :map <leader>gp <Action>(VcsShowPrevChangeMarker)
 :map <leader>gu <Action>(Vcs.RollbackChangedLines)
 
-" =============== additionally
+" === additionally
 :map <C-wv> <Action>(SplitVertically)
 :map <C-ws <Action>(SplitHorizontally)
 :map za <Action>(ExpandCollapseToggleAction)
