@@ -5,7 +5,7 @@ require("todo-comments").setup({
 		perf = { "GruvboxPurple" },
 	},
 	keywords = {
-		WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX", "NOBUG" } },
+		WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX", "NOBUG", "MAGIC"} },
 		PERF = { icon = " ", color = "perf", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
 		TEST = { icon = "⏲ ", color = "perf", alt = { "TESTING", "PASSED", "FAILED" } },
 	},
