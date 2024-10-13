@@ -45,7 +45,8 @@ let mapleader=" "
 :map <F11> <Action>(StepInto)
 :map <F12> <Action>(StepOut)
 :map <leader>dbb <Action>(ToggleLineBreakpoint)
-:map <leader>f <Action>(ReformatCode)
+" TODO: add optimize imports and other actions to this below
+:map <leader>f <Action>(ReformatCode)<Action>(OptimizeImports)
 " === Navigation
 :map g1 <Action>(GoToTab1)
 :map g2 <Action>(GoToTab2)
@@ -85,6 +86,7 @@ let mapleader=" "
 :map <leader>gr <Action>(FindUsages)
 " signature help
 :map <C-s> <Action>(ParameterInfo)
+:map <leader>ih <Action>(ToggleInlineHintsAction)<Action>(ToggleInlayHintsGloballyAction)
 " some other???
 
 " === Todo
