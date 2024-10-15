@@ -15,6 +15,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 ### My addition
 ### All these settings should go in your zshrc file, before Oh My Zsh is sourced.
+source <(fzf --zsh)
 true_fzf_path=$(readlink -f $(which fzf))
 export FZF_BASE=$true_fzf_path
 export FZF_DEFAULT_OPTS="-m -0 -1 --height 40% --min-height=10 --layout=reverse
@@ -29,6 +30,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
 # unbind alt-enter from print-query
 zstyle ':fzf-tab:*' print-query alt-a
 zstyle ':fzf-tab:*' fzf-bindings 'ctrl-space:toggle+down' 'ctrl-g:first' 'alt-enter:toggle-all'
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
