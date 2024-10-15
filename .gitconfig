@@ -1,3 +1,5 @@
+[user]
+    signingkey = /Users/taras/.ssh/id_rsa.pub
 [difftool]
     prompt = true
 [init]
@@ -30,14 +32,10 @@
     gpgsign = true
 [maintenance]
     repo = /Users/tmp/.dotfiles
-    repo = /Users/tmp/work/jay/repos/backend-api-dm
-    repo = /Users/tmp/work/jay/repos/backend-tracking
 
 [includeif "gitdir:~/personal/"]
     path = ~/personal/.gitconfig
-[includeif "gitdir:~/.dotfiles/"]
+[includeif "gitdir:~/.dotfiles"]
     path = ~/personal/.gitconfig
-[includeif "gitdir:~/work/jay/"]
-    path = ~/work/jay/.gitconfig
-[includeif "gitdir:~/work/brightway/"]
-    path = ~/work/brightway/.gitconfig
+[includeif "gitdir:~/work/"]
+    path = ~/work/.gitconfig
