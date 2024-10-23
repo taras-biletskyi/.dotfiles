@@ -26,6 +26,7 @@ yabai -m rule --add app="Workplace Chat" manage=off
 # yabai -m rule --add app="Teams" manage=off
 # yabai -m rule --add app="Microsoft Teams" manage=on
 yabai -m rule --add app="IntelliJ IDEA" manage=off
+yabai -m rule --add app="Kindle" manage=off
 
 # When these open, follow some rules
 yabai -m rule --add app="Firefox|Chrome" display=2 space=1
