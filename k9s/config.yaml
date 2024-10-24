@@ -1,0 +1,8 @@
+k9s:
+  ui:
+    enableMouse: true
+    logoless: true
+  logger:
+    tail: 500
+    buffer: 69420
+    sinceSeconds: -1
