@@ -26,10 +26,11 @@ require("conform").setup({
 			args = { "--stdin-filepath", '"%:p"', "--tab-width=2", "--prose-wrap=always", "$FILENAME" },
 		},
 		sqlformatter = {
-			command = "sql-formatter",
+			command = "sqlfluff",
 			args = {
-				"-l=snowflake",
-				'--config={"tabWidth": 2, "keywordCase":"lower", "dataTypeCase":"lower", "functionCase":"lower", "expressionWidth":80}',
+				"fix",
+				"--config","/Users/taras/.dotfiles/.sqlfluff",
+				"-",
 			},
 		},
 		javashittyformat = {
