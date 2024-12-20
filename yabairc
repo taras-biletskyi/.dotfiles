@@ -25,13 +25,18 @@ yabai -m rule --add app="Workplace Chat" manage=off
 # yabai -m rule --add app="teams" manage=off
 # yabai -m rule --add app="Teams" manage=off
 # yabai -m rule --add app="Microsoft Teams" manage=on
-yabai -m rule --add app="IntelliJ IDEA" manage=off
+JB_Apps='^(PyCharm|IntelliJ IDEA)$'
+yabai -m rule --add app="${JB_Apps}" manage=off
+# If `Open last project when launch` is checked, add this rule. And make sure `always show project path` is also checked.
+# yabai -m rule --add app="${JB_Apps}" title=".*\[.*\].*" manage=on
+yabai -m rule --add app="${JB_Apps}" title="^$"  manage=off
+
 yabai -m rule --add app="Kindle" manage=off
 
 # When these open, follow some rules
 yabai -m rule --add app="Firefox|Chrome" display=2 space=1
 yabai -m rule --add app="^Alacritty$|^alacritty$" display=2 native-fullscreen=on
-yabai -m rule --add app="IntelliJ IDEA" display=2 native-fullscreen=on
+# yabai -m rule --add app="IntelliJ IDEA" display=2 native-fullscreen=on
 yabai -m rule --add app="Slack|Teams|Obsidian" display=1 space=1
 
 # Closing focused window gives focus to remaining window
