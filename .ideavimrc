@@ -63,7 +63,7 @@ let mapleader=" "
 :map <leader>ra <Action>(RunAnything)
 :map <leader>rr <Action>(ChooseRunConfiguration)
 :map <leader>rc <Action>(CompileProject)
-:map <leader>tf <Action>(SearchEverywhere)
+:map <leader>tf <Action>(GotoFile)
 
 " ==== LSP/CMP
 :map <leader>ee <Action>(ShowErrorDescription)
@@ -86,6 +86,7 @@ let mapleader=" "
 :map <leader>gr <Action>(FindUsages)
 " signature help
 :map <C-s> <Action>(ParameterInfo)
+:imap <C-s> <Action>(ParameterInfo)
 :map <leader>ih <Action>(ToggleInlineHintsAction)<Action>(ToggleInlayHintsGloballyAction)
 " some other???
 
