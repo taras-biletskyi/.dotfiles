@@ -8,6 +8,10 @@ gui:
   skipDiscardChangeWarning: false
   enlargedSideViewLocation: 'top'
   showFileIcons: false
+  branchColors:
+    bugfix: "#fe8019"
+    hotfix: "#cc241d"
+    feature: "#98971a"
 git:
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
   allBranchesLogCmd: "git log -p --color-words --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium"
