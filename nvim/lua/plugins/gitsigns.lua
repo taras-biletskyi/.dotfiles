@@ -17,6 +17,7 @@ require("gitsigns").setup({
 
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
+		local gitsigns = require("gitsigns")
 
 		local function map(mode, l, r, opts)
 			opts = opts or {}
@@ -27,24 +28,19 @@ require("gitsigns").setup({
 		-- Navigation
 		map("n", "<leader>gn", function()
 			if vim.wo.diff then
-				return "]c"
+				vim.cmd.normal({ "]c", bang = true })
+			else
+				gitsigns.nav_hunk("next", { target = "all" })
 			end
-			vim.schedule(function()
-				gs.next_hunk()
-			end)
-			return "<Ignore>"
-		end, { expr = true })
+		end)
 
 		map("n", "<leader>gp", function()
 			if vim.wo.diff then
-				return "[c"
+				vim.cmd.normal({ "[c", bang = true })
+			else
+				gitsigns.nav_hunk("prev", { target = "all" })
 			end
-			vim.schedule(function()
-				gs.prev_hunk()
-			end)
-			return "<Ignore>"
-		end, { expr = true })
-
+		end)
 		-- Actions
 		map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>")
 		map({ "n", "v" }, "<leader>gu", ":Gitsigns reset_hunk<CR>")
