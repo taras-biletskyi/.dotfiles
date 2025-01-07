@@ -4,15 +4,20 @@
     prompt = true
 [init]
     defaultBranch = main
-[difftool "vimdiff"]
+[difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [diff]
     tool = nvimdiff
     colorMoved = default
 [merge]
     tool = nvimdiff
+    # not sure this is needed
     conflictstyle = diff3
-[mergetool "vimdiff"]
+[mergetool]
+    keepBackup = false
+[mergetool "nvimdiff"]
+    # to display correct window layout during merge confilicts
+    cmd = "nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\""
     path = nvim
 
 [core]
