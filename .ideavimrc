@@ -46,7 +46,7 @@ let mapleader=" "
 :map <F12> <Action>(StepOut)
 :map <leader>dbb <Action>(ToggleLineBreakpoint)
 " TODO: add optimize imports and other actions to this below
-:map <leader>f <Action>(ReformatCode)<Action>(OptimizeImports)
+:map <leader>f <Action>(ReformatCode)
 " === Navigation
 :map g1 <Action>(GoToTab1)
 :map g2 <Action>(GoToTab2)
