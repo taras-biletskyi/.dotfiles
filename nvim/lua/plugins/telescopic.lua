@@ -88,6 +88,7 @@ vim.keymap.set('n', '<leader>tb', function() Builtin.buffers(opts) end, {})
 vim.keymap.set('n', '<leader>td', function() Builtin.git_files({prompt_title = ".dotfiles", cwd = "~/.dotfiles/", show_untracked = true}) end, {})
 vim.keymap.set('n', '<leader>th', function() Builtin.help_tags(opts) end, {})
 vim.keymap.set('n', '<leader>te', function() Builtin.symbols(opts) end, {}) -- emoji
+vim.keymap.set('n', '<leader>tk', function() Builtin.keymaps(opts) end, {})
 
 vim.keymap.set('n', '<leader>tls', function() Builtin.lsp_dynamic_workspace_symbols(opts) end, {})
 vim.keymap.set('n', '<leader>tlr', function() Builtin.lsp_references(opts) end, {})
