@@ -108,7 +108,7 @@ vim.o.undofile = true
 vim.o.completeopt = "menu,menuone,noselect"
 -- This does not really work
 -- vim.opt.undodir = os.getenv("HOME") .. '/.vim/undodir'
-vim.cmd([[set undodir=~/.vim/undodir]])
+vim.cmd([[set undodir=~/nvim/undodir]])
 -- Do not conceal any symbols (works in .md)
 vim.o.conceallevel = 0
 vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }

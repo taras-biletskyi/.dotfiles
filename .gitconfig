@@ -1,5 +1,7 @@
 [user]
-    signingkey = /Users/taras/.ssh/id_rsa.pub
+    signingkey = /home/taras/.ssh/id_rsa.pub
+	email = tarasbiletskyi@gmail.com
+	name = taras-biletskyi
 [difftool]
     prompt = true
 [init]
@@ -36,7 +38,7 @@
 [commit]
     gpgsign = true
 [maintenance]
-    repo = /Users/tmp/.dotfiles
+    repo = /home/taras/.dotfiles
 
 [includeif "gitdir:~/personal/"]
     path = ~/personal/.gitconfig

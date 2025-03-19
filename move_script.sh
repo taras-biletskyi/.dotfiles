@@ -1,7 +1,6 @@
-#! /bin/bash
 
 user=$(whoami)
-text_file=$(echo "/Users/${user}/.dotfiles/files_to_track.txt")
+text_file=$(echo "/home/${user}/.dotfiles/files_to_track.txt")
 
 link_it_baby() {
     while read p; do

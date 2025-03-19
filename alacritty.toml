@@ -61,9 +61,9 @@ family = "DejaVuSansM Nerd Font Mono"
 style = "Regular"
 
 [window]
-decorations = "none"
+# decorations = "none"
 dynamic_padding = false
-opacity = 0.9
+opacity = 1
 option_as_alt = "Both"
 [scrolling]
 history = 100000

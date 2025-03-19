@@ -8,7 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # for M2
-export PATH=/opt/homebrew/bin:$PATH
+# export PATH=/opt/homebrew/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -103,8 +103,8 @@ autoload -Uz compinit && compinit
 ### My addition
 # Should be before plugins and after compinit
 user=$(whoami)
-fzf_tab_path=$(echo "/Users/${user}/.oh-my-zsh/custom/plugins/fzf-tab/fzf-tab.plugin.zsh")
-source "$fzf_tab_path"
+# fzf_tab_path=$(echo "/Users/${user}/.oh-my-zsh/custom/plugins/fzf-tab/fzf-tab.plugin.zsh")
+# source "$fzf_tab_path"
 plugins=(
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
     git
@@ -126,9 +126,10 @@ plugins=(
 
 ### My addition
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-fpath+=/Users/tb_reply/.config/completion
+# fpath+=/Users/tb_reply/.config/completion
+fpath=(/nix/store/*zsh-completions*/share/zsh/site-functions/ $fpath)
 # for brew ocmpletion
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+# FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -184,8 +185,8 @@ SAVEHIST=1000000
 export VISUAL='nvim'
 export EDITOR='nvim'
 export TERM="xterm-256color"
-export FPATH="/usr/local/opt/curl/share/zsh/site-functions:$FPATH"
-export FPATH="/opt/homebrew/opt/curl/share/zsh/site-functions:$FPATH"
+# export FPATH="/usr/local/opt/curl/share/zsh/site-functions:$FPATH"
+# export FPATH="/opt/homebrew/opt/curl/share/zsh/site-functions:$FPATH"
 
 # Change zsh-autosuggestions hotkey
 bindkey '^ ' autosuggest-accept
@@ -196,7 +197,7 @@ bindkey '^ ' autosuggest-accept
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/.p10k.zsh.
-[[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
+# [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
 
 ############### nnn snippents ###############
 # Quit nnn to current dir with ^G and set alias to `n`
@@ -252,6 +253,12 @@ fd() {
   cd "$dir"
 }
 
+# fda - including hidden directories and follow links
+fda() {
+  local dir
+  dir=$(find -L "${1:-.}" -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
+
 # ZSH
 # Make all kubectl completion fzf
 # !!! This should not be needed with fzf-tab plugin !!!
@@ -267,7 +274,7 @@ fi
 # https://minikube.sigs.k8s.io/docs/commands/completion/
 # source ~/.minikube-completion
 # for mysql CLI client
-export PATH="/opt/homebrew/Cellar/mysql-client/8.0.32/bin:$PATH"
+# export PATH="/opt/homebrew/Cellar/mysql-client/8.0.32/bin:$PATH"
 # for go executables
 user=$(whoami)
 export PATH="/Users/${user}/go/bin:$PATH"
@@ -277,15 +284,17 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 export PATH="/Users/${user}/Library/Application Support/Coursier/bin:$PATH"
 
-java_crib=$(brew --prefix openjdk@17)
-export JAVA_HOME=${java_crib}
-export PATH="${java_crib}/bin:$PATH"
+# TODO: for java
+# java_crib=$(brew --prefix openjdk@17)
+# export JAVA_HOME=${java_crib}
+# export PATH="${java_crib}/bin:$PATH"
 # For compilers to find openjdk@17 you may need to set:
 #   export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
 
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+# source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+# source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+source ~/powerlevel10k/powerlevel10k.zsh-theme
