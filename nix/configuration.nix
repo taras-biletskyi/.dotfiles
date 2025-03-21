@@ -165,6 +165,11 @@
     zsh-fzf-tab
   ];
 
+  # Enable fingerprint scanner
+  # `fprintd-enroll` to capture prints
+  services.fprintd.enable = true;
+  # Enable finger auth
+  security.pam.services.sudo.fprintAuth = true;
 
   environment.variables = {
     "GSETTINGS_SCHEMA_DIR" = "/run/current-system/sw/share/gsettings-schemas/${pkgs.mutter}/glib-2.0/schemas";
