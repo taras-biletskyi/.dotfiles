@@ -231,6 +231,7 @@ n ()
 }
 # No dir auto-enter during "/" filtering
 export NNN_OPTS="A"
+export NNN_PLUG='v:imgview'
 ############### nnn snippents ###############
 
 ############### fzf snippents ###############
