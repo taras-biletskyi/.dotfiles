@@ -48,10 +48,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # Disable X11 since you're using Wayland
+  services.xserver.enable = false;
 
-  # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
@@ -102,6 +101,10 @@
     enable = true;
     enableCompletion = true;
   };
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -128,6 +131,14 @@
     gnumake42
     go_1_22
     google-chrome
+    ### Let the ricing begin ###
+    hyprland
+    # ly   # maybe some time later once I add a lockscreen app too
+    kitty
+    waybar
+    wofi
+    ### Let the ricing end ###
+    hyprls
     jdt-language-server
     k9s
     lazydocker
@@ -163,6 +174,8 @@
     zsh
     zsh-completions
     zsh-fzf-tab
+    wev
+    hyprlock
   ];
 
   # Enable fingerprint scanner
@@ -175,6 +188,7 @@
     "GSETTINGS_SCHEMA_DIR" = "/run/current-system/sw/share/gsettings-schemas/${pkgs.mutter}/glib-2.0/schemas";
     "GDK_SCALE" = "1"; # Global scaling (affects GTK apps)
     "GDK_DPI_SCALE" = "1.5"; # Fractional scaling
+    # "WAYLAND_DISPLAY" = "wayland-0"; # Wayland environment variable
   };
 
   # TODO: For Home Manager

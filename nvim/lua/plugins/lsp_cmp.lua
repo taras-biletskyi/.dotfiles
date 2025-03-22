@@ -147,6 +147,7 @@ local servers = {
 	"terraformls",
 	"jdtls",
 	"nixd",
+	"hyprls",
 }
 -- Initializes pyright, rust_analyzer lsp server
 -- Mappings.
