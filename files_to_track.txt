@@ -11,3 +11,5 @@
 /home/taras/.dotfiles/k9s/skin.yml|/home/taras/.config/k9s/skins/skin.yml
 /home/taras/.dotfiles/.gitconfig|/home/taras/.gitconfig
 /home/taras/.dotfiles/nix/hyprland.conf|/home/taras/.config/hypr/hyprland.conf
+/home/taras/.dotfiles/nix/wofi/config|/home/taras/.config/wofi/config
+/home/taras/.dotfiles/nix/wofi/style.css|/home/taras/.config/wofi/style.css
