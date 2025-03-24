@@ -136,10 +136,12 @@
     # ly   # maybe some time later once I add a lockscreen app too
     kitty
     waybar
+    mako
+    # for testing notifications `notify-send "Title" "Message" -u critical -t 5000 -i dialog-information`
+    libnotify
     wofi
     # TODO:
     # wofi-emoji
-    ### Let the ricing end ###
     hyprls
     jdt-language-server
     k9s

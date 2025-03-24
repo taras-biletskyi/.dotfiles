@@ -13,3 +13,4 @@
 /home/taras/.dotfiles/nix/hyprland.conf|/home/taras/.config/hypr/hyprland.conf
 /home/taras/.dotfiles/nix/wofi/config|/home/taras/.config/wofi/config
 /home/taras/.dotfiles/nix/wofi/style.css|/home/taras/.config/wofi/style.css
+/home/taras/.dotfiles/nix/mako/config|/home/taras/.config/mako/config
