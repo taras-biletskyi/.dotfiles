@@ -106,6 +106,8 @@
     xwayland.enable = true;
   };
 
+  programs.waybar.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -131,8 +133,8 @@
     gnumake42
     go_1_22
     google-chrome
-    ### Let the ricing begin ###
     hyprland
+    # TODO: Is only possible to install via home manager `hyprlandPlugins.hyprsplit`
     # ly   # maybe some time later once I add a lockscreen app too
     kitty
     waybar
@@ -163,6 +165,8 @@
     nix-zsh-completions
     nnn
     pyright
+    pyenv
+    pipenv
     ripgrep
     slack
     taplo
@@ -190,6 +194,7 @@
     gruvbox-gtk-theme
     # TODO:
     # gruvbox-plus-icons
+    brightnessctl
   ];
 
   services.kmonad = {
