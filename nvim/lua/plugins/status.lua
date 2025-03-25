@@ -53,7 +53,7 @@ require("lualine").setup({
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
 		lualine_c = { { "filename", path = 1, newfile_status = true } },
-		lualine_x = { "lsp_progress", "encoding", "fileformat" },
+		lualine_x = { --[[ "lsp_progress", ]] "encoding", "fileformat" },
 		-- trail_white shows TW:line_number
 		-- mixed_indent shows MI:line_number
 		-- !!! These custom functions slow down nvim a lot. Especially with large files. !!!

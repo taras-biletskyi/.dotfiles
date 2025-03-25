@@ -168,6 +168,14 @@
     pyright
     pyenv
     pipenv
+    jdk17
+    jdk21
+    uv
+    docker
+    kubernetes
+    minikube
+    python312
+    openssl
     ripgrep
     slack
     taplo
@@ -196,8 +204,28 @@
     # TODO:
     # gruvbox-plus-icons
     brightnessctl
+    nix-ld
+    ctags
+    mongodb-compass
+    dockerfile-language-server-nodejs
+    clickhouse
+    cacert
     hyprshot
   ];
+
+  environment.variables.JAVA_HOME = "${pkgs.jdk17}/lib/openjdk";
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk17;
+  };
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = [
+        pkgs.pipenv
+        pkgs.pyenv
+    ];
+  };
 
   services.kmonad = {
    enable = true;

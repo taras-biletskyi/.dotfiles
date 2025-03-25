@@ -10,7 +10,7 @@ require("lazy").setup({
 	-- displaying thin vertical lines at each indentation level for code indented with spaces
 	-- 'Yggdroot/indentLine'
 	-- color the color codes 🤷
-	-- 'norcalli/nvim-colorizer.lua'
+	'norcalli/nvim-colorizer.lua',
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",

@@ -291,6 +291,8 @@ export PATH="/Users/${user}/Library/Application Support/Coursier/bin:$PATH"
 # export PATH="${java_crib}/bin:$PATH"
 # For compilers to find openjdk@17 you may need to set:
 #   export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
+
 
 # source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 # source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
@@ -299,3 +301,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt

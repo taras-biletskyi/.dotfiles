@@ -50,4 +50,4 @@ require("gruvbox").setup({
 vim.cmd("colorscheme gruvbox")
 
 vim.cmd("highlight netrwDir guifg=#e4717a")
--- require'colorizer'.setup()
+require'colorizer'.setup()
