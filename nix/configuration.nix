@@ -214,7 +214,9 @@
     bluetui
     pipewire
     pavucontrol
-    pavucontrol-ctl
+    # pavucontrol-ctl
+    hyprlock
+    hypridle
   ];
 
   environment.variables.JAVA_HOME = "${pkgs.jdk17}/lib/openjdk";
@@ -244,6 +246,9 @@
   # Enable fingerprint scanner
   # `fprintd-enroll` to capture prints
   services.fprintd.enable = true;
+  services.logind.extraConfig = ''
+    HandlePowerKey=ignore
+  '';
   # Enable finger auth
   security.pam.services.sudo.fprintAuth = true;
 

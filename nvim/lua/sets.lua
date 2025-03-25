@@ -142,3 +142,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	command = "%s/\\s\\+$//e",
 })
 vim.opt_global.shortmess:remove("F")
+-- For TreeSitter to recognize hyprland config
+vim.filetype.add({
+	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})

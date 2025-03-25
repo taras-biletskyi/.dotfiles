@@ -14,3 +14,5 @@
 /home/taras/.dotfiles/nix/wofi/config|/home/taras/.config/wofi/config
 /home/taras/.dotfiles/nix/wofi/style.css|/home/taras/.config/wofi/style.css
 /home/taras/.dotfiles/nix/mako/config|/home/taras/.config/mako/config
+/home/taras/.dotfiles/nix/hyprlock.conf|/home/taras/.config/hypr/hyprlock.conf
+/home/taras/.dotfiles/nix/hypridle.conf|/home/taras/.config/hypr/hypridle.conf
