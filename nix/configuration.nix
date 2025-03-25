@@ -211,6 +211,10 @@
     clickhouse
     cacert
     hyprshot
+    bluetui
+    pipewire
+    pavucontrol
+    pavucontrol-ctl
   ];
 
   environment.variables.JAVA_HOME = "${pkgs.jdk17}/lib/openjdk";
