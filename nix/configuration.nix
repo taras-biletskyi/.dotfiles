@@ -136,6 +136,7 @@
     hyprland
     # TODO: Is only possible to install via home manager `hyprlandPlugins.hyprsplit`
     # ly   # maybe some time later once I add a lockscreen app too
+    swaylock-fancy
     kitty
     waybar
     mako
@@ -195,6 +196,7 @@
     # TODO:
     # gruvbox-plus-icons
     brightnessctl
+    hyprshot
   ];
 
   services.kmonad = {
