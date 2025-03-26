@@ -218,6 +218,13 @@
     hyprlock
     hypridle
     sqlfluff
+    nodePackages_latest.prettier
+    shfmt
+    md4c
+    luaformatter
+    black
+    # Should help with Slack screen sharing lag
+    # xdg-desktop-portal-hyprland
   ];
 
   virtualisation.docker = {
