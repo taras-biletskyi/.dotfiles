@@ -87,7 +87,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Taras Biletskyi";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     # packages = with pkgs; [
     # #  thunderbird
     # ];
@@ -136,7 +136,6 @@
     hyprland
     # TODO: Is only possible to install via home manager `hyprlandPlugins.hyprsplit`
     # ly   # maybe some time later once I add a lockscreen app too
-    swaylock-fancy
     kitty
     waybar
     mako
@@ -218,7 +217,17 @@
     pulseaudio-ctl
     hyprlock
     hypridle
+    sqlfluff
   ];
+
+  virtualisation.docker = {
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+    # enable = true;
+    enableOnBoot = true;
+  };
 
   environment.variables.JAVA_HOME = "${pkgs.jdk17}/lib/openjdk";
   programs.java = {
