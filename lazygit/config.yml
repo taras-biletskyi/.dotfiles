@@ -21,7 +21,8 @@ git:
     pager: delta --dark --syntax-theme gruvbox-dark --paging=never
 services:
   depot-ssh.1tech.dev: gitlab:depot.1tech.dev
-os:
-  # workarond for not escaping `/` properly
-  # https://github.com/jesseduffield/lazygit/issues/3064
-  openLink: open -n "$(echo {{link}} | sed 's/%2F/\//g')"
+# INFO: this is for mac fix
+# os:
+#   # workarond for not escaping `/` properly
+#   # https://github.com/jesseduffield/lazygit/issues/3064
+#   openLink: open -n "$(echo {{link}} | sed 's/%2F/\//g')"
