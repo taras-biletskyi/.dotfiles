@@ -1,104 +1,115 @@
-window {
-  margin: 0px;
-  border: 2px none #ebdbb2;
-  border-width: 2px;
-  background-color: #282828;
-  border-radius: 4px;
+@define-color purple #b16286;
+/* will use orange later */
+@define-color orange #d65d0e;
+@define-color text #ebdbb2;
+
+@keyframes fadeIn {
+    0% {}
+
+    100% {}
 }
 
-#input {
-  padding: 4px;
-  margin: 4px;
-  padding-left: 20px;
-  border: none;
-  border-width: 2px;
-  color: #ebdbb2;
-  font-family: DejaVuSansM Nerd Font Mono;
-  font-size: 16px;
-  font-weight: 800;
-  background-color: none;
-  /* background: ; */
-  outline: none;
-  border-radius: 4px;
-  margin: 10px 13px;
-  margin-bottom: 2px;
+* {
+    all: unset;
+    font-family: 'DejaVuSansM Nerd Font Mono', monospace;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    text-shadow: none;
+    background-color: transparent;
 }
-#input:focus {
-  border: 0px solid transparent;
-  margin-bottom: 0px;
+
+window {
+    all: unset;
+    padding: 20px;
+    border-radius: 0px;
+    background-color: alpha(@background, .5);
 }
 
 #inner-box {
-  margin: 4px;
-  border: 4px solid transparent;
-  color: #ebdbb2;
-  font-weight: normal;
-  background-color: transparent;
-  /* background-color: red; */
-  border-radius: 4px;
+    margin: 2px;
+    padding: 5px border: none;
 }
 
 #outer-box {
-  margin: 0px;
-  border: 0px solid #ebdbb2;
-  border-radius: 4px;
-  background-color: #282828;
+    border: none;
 }
 
 #scroll {
-  background-color: transparent;
-  margin-top: 5px;
-  border: none;
-  border-radius: 4px;
-  margin-bottom: 5px;
+    margin: 0px;
+    padding: 30px;
+    border: none;
 }
 
-#img {
-  margin-right: 10px;
+#input {
+    all: unset;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    border: none;
+    outline: none;
+    color: @text;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+    border-radius: 10;
+    background-color: alpha(@background, .2);
 }
 
-#img:selected {
-  background-color: #ebdbb2;
-  margin-right: 10px;
-  border-radius: 4px;
+#input image {
+    border: none;
+    color: @purple;
+    padding-right: 10px;
 }
 
-#img:unselected {
-  background-color: transparent;
-  margin-right: 10px;
-  border-radius: 4px;
+#input * {
+    border: none;
+    outline: none;
 }
 
-#text:selected {
-  color: #ebdbb2;
-  margin: 0px 0px;
-  border: none;
-  border-color: #ebdbb2;
-  border-width: 2px;
-  border-radius: 4px;
-  background-color: transparent;
+#input:focus {
+    outline: none;
+    border: none;
+
+    border-radius: 10;
 }
 
-#text:unselected {
-  color: #ebdbb2;
-  margin: 0px 0px;
-  border: none;
-  border-color: #ebdbb2;
-  border-width: 2px;
-  border-radius: 4px;
-  background-color: transparent;
+#text {
+    margin: 5px;
+    border: none;
+    color: @text;
+    outline: none;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: @text;
+    outline: none;
 }
 
 #entry {
-  margin: 0px 0px;
-  border: none;
-  border-radius: 4px;
-  background-color: transparent;
+    border: none;
+    margin: 5px;
+    padding: 10px;
+}
+
+#entry arrow {
+    border: none;
+    color: @orange;
+
 }
 
 #entry:selected {
-  margin: 0px 0px;
-  border: none;
-  border-radius: 4px;
-  background-color: transparent;
+    box-shadow: 1px 1px 4px rgba(235, 219, 178, .4);
+    border: none;
+    border-radius: 20px;
+    background-color: transparent;
+}
+
+#entry:selected #text {
+    color: @purple;
+}
+
+#entry:drop(active) {
+    background-color: @purple !important;
 }
