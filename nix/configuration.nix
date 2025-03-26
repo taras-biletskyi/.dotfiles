@@ -214,7 +214,8 @@
     bluetui
     pipewire
     pavucontrol
-    # pavucontrol-ctl
+    pulseaudio
+    pulseaudio-ctl
     hyprlock
     hypridle
   ];
