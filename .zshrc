@@ -5,11 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-# for M2
-# export PATH=/opt/homebrew/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -127,9 +122,6 @@ plugins=(
 ### My addition
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 # fpath+=/Users/tb_reply/.config/completion
-fpath=(/nix/store/*zsh-completions*/share/zsh/site-functions/ $fpath)
-# for brew ocmpletion
-# FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -185,8 +177,6 @@ SAVEHIST=1000000
 export VISUAL='nvim'
 export EDITOR='nvim'
 export TERM="xterm-256color"
-# export FPATH="/usr/local/opt/curl/share/zsh/site-functions:$FPATH"
-# export FPATH="/opt/homebrew/opt/curl/share/zsh/site-functions:$FPATH"
 
 # Change zsh-autosuggestions hotkey
 bindkey '^ ' autosuggest-accept
@@ -274,12 +264,6 @@ if command -v az &> /dev/null; then
 fi
 # https://minikube.sigs.k8s.io/docs/commands/completion/
 # source ~/.minikube-completion
-# for mysql CLI client
-# export PATH="/opt/homebrew/Cellar/mysql-client/8.0.32/bin:$PATH"
-# for go executables
-user=$(whoami)
-export PATH="/Users/${user}/go/bin:$PATH"
-export HOMEBREW_NO_INSTALL_FROM_API=1
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
@@ -291,21 +275,13 @@ export PATH="/Users/${user}/Library/Application Support/Coursier/bin:$PATH"
 # export PATH="${java_crib}/bin:$PATH"
 # For compilers to find openjdk@17 you may need to set:
 #   export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
+
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 
-
-# source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-# source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
-export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+export PATH="$HOME/.local/bin:$PATH"
