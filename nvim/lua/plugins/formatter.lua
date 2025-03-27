@@ -51,6 +51,7 @@ require("conform").setup({
 		markdown = { "md" },
 		yaml = { "prettier" },
 		sql = { "sqlformatter" },
+		toml = { "taplo" },
 	},
 })
 
