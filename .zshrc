@@ -167,6 +167,7 @@ alias mv="mv -iv"
 alias cp="cp -iv"
 alias lzg="lazygit"
 alias lzd="lazydocker"
+alias l="ls -lah --group-directories-first -v"
 
 HISTSIZE=1000000
 SAVEHIST=1000000
