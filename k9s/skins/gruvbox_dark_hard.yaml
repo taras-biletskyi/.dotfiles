@@ -1,6 +1,10 @@
-# K9s Gruvbox Dark Skin Contributed by [@indiebrain](https://github.com/indiebrain)
+# -----------------------------------------------------------------------------
+# K9s Gruvbox Dark Skin
+# -----------------------------------------------------------------------------
+
+# Styles...
 foreground: &foreground "#ebdbb2"
-background: &background "#272727"
+background: &background "#1d2021"
 current_line: &current_line "#ebdbb2"
 selection: &selection "#3c3735"
 comment: &comment "#bdad93"
@@ -23,6 +27,12 @@ k9s:
   info:
     fgColor: *magenta
     sectionColor: *foreground
+  help:
+    fgColor: *foreground
+    bgColor: *background
+    keyColor: *magenta
+    numKeyColor: *blue
+    sectionColor: *green
   dialog:
     fgColor: *foreground
     bgColor: *background

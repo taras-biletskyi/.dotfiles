@@ -16,3 +16,4 @@
 /home/taras/.dotfiles/nix/mako/config|/home/taras/.config/mako/config
 /home/taras/.dotfiles/nix/hyprlock.conf|/home/taras/.config/hypr/hyprlock.conf
 /home/taras/.dotfiles/nix/hypridle.conf|/home/taras/.config/hypr/hypridle.conf
+/home/taras/.dotfiles/kmonad|/home/taras/.config/kmonad

@@ -264,7 +264,7 @@ if command -v az &> /dev/null; then
     source /usr/local/etc/bash_completion.d/az
 fi
 # https://minikube.sigs.k8s.io/docs/commands/completion/
-# source ~/.minikube-completion
+source ~/.minikube-completion
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
@@ -286,3 +286,5 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 export PATH="$HOME/.local/bin:$PATH"
+# for awscli completion
+complete -C '/usr/bin/aws_completer' aws
