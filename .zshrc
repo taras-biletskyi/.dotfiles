@@ -238,7 +238,7 @@ tm() {
 }
 
 # fd - cd to selected directory
-fd() {
+fdd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
@@ -265,6 +265,8 @@ if command -v az &> /dev/null; then
 fi
 # https://minikube.sigs.k8s.io/docs/commands/completion/
 source ~/.minikube-completion
+# for minikube to place docker images you build into its own image
+eval $(minikube -p minikube docker-env)
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
