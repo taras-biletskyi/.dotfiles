@@ -55,3 +55,7 @@ sudo systemctl enable --now prochot_fix.service
 
 # Verify:
 sudo rdmsr -f 29:24 -d 0x1a2  # Should return "3" (97°C trip)
+
+### hyprpanel ###
+# to reliably track CPU temp
+ln -sfvn "$(find /sys/devices/platform/coretemp.0/hwmon/hwmon*/ -name "temp1_input")" /home/taras/.config/hyprpanel/avg_cpu_temp
