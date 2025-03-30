@@ -34,3 +34,24 @@ sudo systemctl restart kmonad
 
 ### tmux ###
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+### CPU temp throttling ###
+sudo tee /etc/systemd/system/prochot_fix.service <<'EOF'
+[Unit]
+Description=Set PROCHOT offset to 3°C (97°C trip point)
+After=multi-user.target
+
+[Service]
+Type=oneshot
+# Wait 5 seconds for EC to initialize, then apply MSR write
+ExecStart=/bin/bash -c "sleep 5 && /usr/bin/wrmsr -a 0x1a2 0x3000000"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo systemctl daemon-reload
+sudo systemctl enable --now prochot_fix.service
+
+# Verify:
+sudo rdmsr -f 29:24 -d 0x1a2  # Should return "3" (97°C trip)
