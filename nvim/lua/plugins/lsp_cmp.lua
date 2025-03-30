@@ -8,6 +8,17 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local function toggle_virtual_text()
+	local config = vim.diagnostic.config()
+	local is_enabled = config.virtual_text == false and config.virtual_lines ~= false
+
+	if is_enabled then
+		vim.diagnostic.config({ virtual_lines = false, virtual_text = true })
+	else
+		vim.diagnostic.config({ virtual_lines = true, virtual_text = false })
+	end
+end
+
 -- luasnip setup
 local luasnip = require("luasnip")
 local cmp = require("cmp")
@@ -155,6 +166,7 @@ local servers = {
 local opts = { noremap = true }
 local map = vim.keymap.set
 map("n", "<leader>ee", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<leader>ev", toggle_virtual_text, { desc = "Toggle virtual text" })
 map("n", "[d", vim.diagnostic.goto_prev, opts)
 map("n", "]d", vim.diagnostic.goto_next, opts)
 map("n", "<leader>eb", vim.diagnostic.setloclist, opts)
@@ -232,13 +244,6 @@ vim.cmd([[
 	highlight! DiagnosticSignInfo guibg=none guifg=#83a598
 	highlight! DiagnosticSignHint guibg=none guifg=#8ec07c
 ]])
--- This changes gutter signs 👇
--- { Error = " ", Warn = " ", Hint = " ", Info = " " }
-local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl }) -- numhl = hl
-end
 
 -- this is for lua lsp to work with neovim api
 require("lspconfig").lua_ls.setup({
@@ -293,5 +298,21 @@ vim.diagnostic.config({
 	},
 	float = {
 		source = "always", -- Or "if_many"
+	},
+	-- This changes gutter signs 👇
+	-- { Error = " ", Warn = " ", Hint = " ", Info = " " }
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "E",
+			[vim.diagnostic.severity.WARN] = "W",
+			[vim.diagnostic.severity.HINT] = "H",
+			[vim.diagnostic.severity.INFO] = "I",
+		},
+		linehl = {
+			[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+			[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+			[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+			[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+		},
 	},
 })
