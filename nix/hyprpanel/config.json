@@ -389,8 +389,8 @@
   "bar.workspaces.showWsIcons": true,
   "bar.workspaces.showApplicationIcons": true,
   "bar.workspaces.applicationIconOncePerWorkspace": true,
-  "bar.workspaces.numbered_active_indicator": "highlight",
-  "theme.bar.buttons.workspaces.smartHighlight": false,
+  "bar.workspaces.numbered_active_indicator": "color",
+  "theme.bar.buttons.workspaces.smartHighlight": true,
   "theme.bar.buttons.windowtitle.enableBorder": false,
   "bar.windowtitle.icon": false,
   "bar.windowtitle.truncation": true,
@@ -488,9 +488,6 @@
       ]
     }
   },
-  "slack": {
-    "icon": "X"
-  },
   "bar.customModules.ram.label": true,
   "bar.customModules.ram.labelType": "percentage",
   "bar.customModules.ram.round": true,
@@ -515,7 +512,7 @@
   "menus.dashboard.shortcuts.left.shortcut1.icon": "",
   "menus.dashboard.shortcuts.left.shortcut4.command": "GTK_THEME=\"Gruvbox-Dark\" wofi --show drun -n",
   "menus.dashboard.shortcuts.left.shortcut1.tooltip": "",
-  "menus.dashboard.shortcuts.right.shortcut3.command": "hyprshot -z -m region --clipboard-only",
+  "menus.dashboard.shortcuts.right.shortcut3.command": "grim -g \"$(slurp)\" - | wl-copy",
   "menus.dashboard.shortcuts.left.shortcut3.tooltip": "",
   "menus.dashboard.shortcuts.left.shortcut3.command": "",
   "menus.dashboard.shortcuts.left.shortcut3.icon": "",
@@ -529,5 +526,6 @@
   "notifications.active_monitor": false,
   "notifications.showActionsOnHover": false,
   "notifications.clearDelay": 50,
-  "notifications.autoDismiss": true
+  "notifications.autoDismiss": true,
+  "bar.workspaces.ignored": "-\\d+"
 }
