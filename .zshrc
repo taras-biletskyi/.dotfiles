@@ -282,11 +282,15 @@ export PATH="/Users/${user}/Library/Application Support/Coursier/bin:$PATH"
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 
 
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 export PATH="$HOME/.local/bin:$PATH"
 # for awscli completion
 complete -C '/usr/bin/aws_completer' aws
+
+# for zsh completions (dnf in particular)
+export PATH="/usr/share/zsh/5.9/functions:$PATH"
+export PATH="/usr/share/bash-completion/completions:$PATH"
