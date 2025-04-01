@@ -527,5 +527,12 @@
   "notifications.showActionsOnHover": false,
   "notifications.clearDelay": 50,
   "notifications.autoDismiss": true,
-  "bar.workspaces.ignored": "-\\d+"
+  "bar.workspaces.ignored": "-\\d+",
+  "bar.windowtitle.title_map": [],
+  "bar.windowtitle.custom_title": false,
+  "bar.workspaces.applicationIconMap": {
+    "class:gjs": "",
+    "class:MongoDB Compass": "",
+    "class:jetbrains-datagrip": ""
+  }
 }
