@@ -59,3 +59,37 @@ sudo rdmsr -f 29:24 -d 0x1a2  # Should return "3" (97°C trip)
 ### hyprpanel ###
 # to reliably track CPU temp
 ln -sfvn "$(find /sys/devices/platform/coretemp.0/hwmon/hwmon*/ -name "temp1_input")" /home/taras/.config/hyprpanel/avg_cpu_temp
+
+
+### swww ###
+mkdir -p ~/.config/systemd/user
+
+tee ~/.config/systemd/user/random-wallpaper.service > /dev/null <<EOF
+[Unit]
+Description=Random wallpaper changer
+After=graphical.target
+
+[Service]
+ExecStart=$HOME/.dotfiles/nix/random_wallpaper.sh
+Type=oneshot
+
+[Install]
+WantedBy=default.target
+EOF
+
+tee ~/.config/systemd/user/random-wallpaper.timer > /dev/null <<EOF
+[Unit]
+Description=Change wallpaper every 10 minutes
+
+[Timer]
+OnBootSec=30s
+OnUnitActiveSec=10m
+Unit=random-wallpaper.service
+
+[Install]
+WantedBy=timers.target
+EOF
+
+systemctl --user daemon-reload
+systemctl --user enable --now random-wallpaper.timer
+systemctl --user start random-wallpaper.service
