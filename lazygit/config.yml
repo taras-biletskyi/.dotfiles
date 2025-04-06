@@ -19,6 +19,7 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --syntax-theme gruvbox-dark --paging=never
+  overrideGpg: true
 services:
   depot-ssh.1tech.dev: gitlab:depot.1tech.dev
 # INFO: this is for mac fix
