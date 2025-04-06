@@ -93,3 +93,12 @@ EOF
 systemctl --user daemon-reload
 systemctl --user enable --now random-wallpaper.timer
 systemctl --user start random-wallpaper.service
+
+
+### monogdb-compass ###
+# https://www.reddit.com/r/NixOS/comments/1j9kyv1/has_anyone_successfully_got_mongodb_compass_to/
+# To make it remember passwords do this:
+    # run: mongodb-compass --password-store="gnome-libsecret" --ignore-additional-command-line-flags
+    # or
+    # add this: --password-store="gnome-libsecret" --ignore-additional-command-line-flags
+    # flag in .desktop application file
