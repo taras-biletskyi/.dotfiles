@@ -19,3 +19,4 @@
 /home/taras/.dotfiles/kmonad|/home/taras/.config/kmonad
 /home/taras/.dotfiles/nix/hyprpanel/config.json|/home/taras/.config/hyprpanel/config.json
 /home/taras/.dotfiles/.ideavimrc|/home/taras/.ideavimrc
+/home/taras/.dotfiles/fonts.conf|/home/taras/.config/fontconfig/fonts.conf
