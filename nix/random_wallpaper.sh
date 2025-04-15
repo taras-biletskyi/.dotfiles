@@ -12,4 +12,4 @@ while true; do
 done
 
 echo "Setting wallpaper to $RANDOM_WALLPAPER"
-swww img "$RANDOM_WALLPAPER" --transition-type 'center' --transition-fps 300 --transition-step 50
+swww img "$RANDOM_WALLPAPER" --transition-type 'center' --transition-fps 300 --transition-step 5
