@@ -16,7 +16,6 @@ After=suspend.target
 [Service]
 ExecStart=/usr/local/bin/kmonad /home/taras/.config/kmonad/config.kbd
 Restart=always
-User=$USER
 StandardOutput=append:/var/log/kmonad.log
 StandardError=append:/var/log/kmonad.log
 
