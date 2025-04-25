@@ -101,3 +101,7 @@ systemctl --user start random-wallpaper.service
     # or
     # add this: --password-store="gnome-libsecret" --ignore-additional-command-line-flags
     # flag in .desktop application file
+
+
+### turn off default power button behaviour ###
+# https://askubuntu.com/questions/362914/how-to-prevent-the-power-button-to-shutdown-directly-the-system
