@@ -78,11 +78,11 @@ EOF
 
 tee ~/.config/systemd/user/random-wallpaper.timer > /dev/null <<EOF
 [Unit]
-Description=Change wallpaper every 10 minutes
+Description=Change wallpaper every 30 minutes
 
 [Timer]
 OnBootSec=30s
-OnUnitActiveSec=10m
+OnUnitActiveSec=30m
 Unit=random-wallpaper.service
 
 [Install]
