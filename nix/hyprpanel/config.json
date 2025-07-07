@@ -534,5 +534,8 @@
     "class:gjs": "",
     "class:MongoDB Compass": "",
     "class:jetbrains-datagrip": ""
-  }
+  },
+  "bar.customModules.storage.paths": [
+    "/"
+  ]
 }
