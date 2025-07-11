@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WALLPAPER_DIR="$HOME/.dotfiles/nix/wallpaper"
+WALLPAPER_DIR="$HOME/.dotfiles/fedora/wallpaper"
 
 # Extract current wallpaper, assumes it is the same for all monitors
 CURRENT_WALLPAPER=$(swww query | awk -F 'image: ' '{print $2}' | head -n 1)

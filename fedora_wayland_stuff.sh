@@ -69,7 +69,7 @@ Description=Random wallpaper changer
 After=graphical.target
 
 [Service]
-ExecStart=$HOME/.dotfiles/nix/random_wallpaper.sh
+ExecStart=$HOME/.dotfiles/fedora/random_wallpaper.sh
 Type=oneshot
 
 [Install]
