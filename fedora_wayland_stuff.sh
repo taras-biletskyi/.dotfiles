@@ -82,7 +82,7 @@ Description=Change wallpaper every 30 minutes
 
 [Timer]
 OnBootSec=30s
-OnUnitActiveSec=30m
+OnUnitActiveSec=10m
 Unit=random-wallpaper.service
 
 [Install]
