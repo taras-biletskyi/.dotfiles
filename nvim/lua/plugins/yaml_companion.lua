@@ -73,6 +73,26 @@ for _, schema in ipairs(k8s_core_schemas) do
 	})
 end
 
+local prometheus_schemas = {
+	{ name = "alertmanager_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/monitoring.coreos.com/alertmanager_v1.json"},
+	{ name = "alertmanagerconfig_v1alpha1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/monitoring.coreos.com/alertmanagerconfig_v1alpha1.json"},
+	{ name = "podmonitor_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/monitoring.coreos.com/podmonitor_v1.json"},
+	{ name = "probe_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/monitoring.coreos.com/probe_v1.json"},
+	{ name = "prometheus_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/monitoring.coreos.com/prometheus_v1.json"},
+	{ name = "prometheusagent_v1alpha1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/monitoring.coreos.com/prometheusagent_v1alpha1.json"},
+	{ name = "prometheusrule_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/monitoring.coreos.com/prometheusrule_v1.json"},
+	{ name = "scrapeconfig_v1alpha1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/monitoring.coreos.com/scrapeconfig_v1alpha1.json"},
+	{ name = "servicemonitor_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/monitoring.coreos.com/servicemonitor_v1.json"},
+	{ name = "thanosruler_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/monitoring.coreos.com/thanosruler_v1.json"},
+}
+
+for _, schema in ipairs(prometheus_schemas) do
+	table.insert(schemas, {
+		name = "Prometheus - " .. schema.name,
+		uri = schema.uri,
+	})
+end
+
 local cfg = require("yaml-companion").setup({
 	schemas = schemas,
 })
