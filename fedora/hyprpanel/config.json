@@ -487,8 +487,8 @@
     }
   },
   "bar.customModules.ram.label": true,
-  "bar.customModules.ram.labelType": "percentage",
-  "bar.customModules.ram.round": true,
+  "bar.customModules.ram.labelType": "used/total",
+  "bar.customModules.ram.round": false,
   "bar.customModules.cpu.label": true,
   "bar.customModules.cpu.round": true,
   "bar.customModules.cpuTemp.unit": "metric",
