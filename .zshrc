@@ -288,3 +288,4 @@ complete -C '/usr/bin/aws_completer' aws
 export PATH="/usr/share/zsh/5.9/functions:$PATH"
 export PATH="/usr/share/bash-completion/completions:$PATH"
 source ~/.k3d
+source ~/.kustomize
