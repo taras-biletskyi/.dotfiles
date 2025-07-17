@@ -93,6 +93,17 @@ for _, schema in ipairs(prometheus_schemas) do
 	})
 end
 
+local kustomize_schemas = {
+	{ name = "kustomize_v1beta1", uri = "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/kustomization.json"},
+}
+
+for _, schema in ipairs(kustomize_schemas) do
+	table.insert(schemas, {
+		name = "Kustomize - " .. schema.name,
+		uri = schema.uri,
+	})
+end
+
 local cfg = require("yaml-companion").setup({
 	schemas = schemas,
 })
