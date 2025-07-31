@@ -104,6 +104,40 @@ for _, schema in ipairs(kustomize_schemas) do
 	})
 end
 
+local olm_schemas = {
+	{name = "catalogsource_v1alpha1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/operators.coreos.com/catalogsource_v1alpha1.json"},
+	{name = "clusterserviceversion_v1alpha1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/operators.coreos.com/clusterserviceversion_v1alpha1.json"},
+	{name = "installplan_v1alpha1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/operators.coreos.com/installplan_v1alpha1.json"},
+	{name = "olmconfig_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/operators.coreos.com/olmconfig_v1.json"},
+	{name = "operator_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/operators.coreos.com/operator_v1.json"},
+	{name = "operatorcondition_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/operators.coreos.com/operatorcondition_v1.json"},
+	{name = "operatorcondition_v2", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/operators.coreos.com/operatorcondition_v2.json"},
+	{name = "operatorgroup_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/operators.coreos.com/operatorgroup_v1.json"},
+	{name = "operatorgroup_v1alpha2", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/operators.coreos.com/operatorgroup_v1alpha2.json"},
+	{name = "subscription_v1alpha1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/operators.coreos.com/subscription_v1alpha1.json"},
+}
+
+for _, schema in ipairs(olm_schemas) do
+	table.insert(schemas, {
+		name = "OLM - " .. schema.name,
+		uri = schema.uri,
+	})
+end
+
+local cert_manager_schemas = {
+	{name = "certificate_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/cert-manager.io/certificate_v1.json"},
+	{name = "certificaterequest_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/cert-manager.io/certificaterequest_v1.json"},
+	{name = "clusterissuer_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/cert-manager.io/clusterissuer_v1.json"},
+	{name = "issuer_v1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/cert-manager.io/issuer_v1.json"},
+}
+
+for _, schema in ipairs(cert_manager_schemas) do
+	table.insert(schemas, {
+		name = "Cert-manager - " .. schema.name,
+		uri = schema.uri,
+	})
+end
+
 local cfg = require("yaml-companion").setup({
 	schemas = schemas,
 })
