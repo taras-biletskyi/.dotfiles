@@ -1,6 +1,22 @@
 local Builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 
+local action_state = require("telescope.actions.state")
+
+-- send all if there's no selected
+local send_qf_smart = function(prompt_bufnr)
+	local picker = action_state.get_current_picker(prompt_bufnr)
+	local multi = picker:get_multi_selection()
+
+	if not vim.tbl_isempty(multi) then
+		actions.send_selected_to_qflist(prompt_bufnr)
+	else
+		actions.send_to_qflist(prompt_bufnr)
+	end
+
+	actions.open_qflist(prompt_bufnr)
+end
+
 local select_one_or_multi = function(prompt_bufnr)
 	local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
 	local multi = picker:get_multi_selection()
@@ -39,7 +55,7 @@ require("telescope").setup({
 			n = {
 				["<C-q>"] = false,
 				["<M-q>"] = false,
-				["<C-q>a"] = actions.send_to_qflist + actions.open_qflist,
+				["<C-q>a"] = send_qf_smart,
 				["<C-q>q"] = actions.send_selected_to_qflist + actions.open_qflist,
 				["<CR>"] = select_one_or_multi,
 				["<M-CR>"] = actions.toggle_all,
@@ -52,7 +68,7 @@ require("telescope").setup({
 			i = {
 				["<C-q>"] = false,
 				["<M-q>"] = false,
-				["<C-q>a"] = actions.send_to_qflist + actions.open_qflist,
+				["<C-q>a"] = send_qf_smart,
 				["<C-q>q"] = actions.send_selected_to_qflist + actions.open_qflist,
 				["<CR>"] = select_one_or_multi,
 				["<M-CR>"] = actions.toggle_all,
