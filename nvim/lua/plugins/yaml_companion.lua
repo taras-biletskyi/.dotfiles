@@ -1,22 +1,17 @@
 local schemas = {}
+local base = "file:///home/taras/work/strimzi_schemas/strimzi"
 local strimzi_schemas = {
-	{ name = "Kafka", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafka_v1beta2.json"},
-	{ name = "KafkaBridge", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkabridge_v1beta2.json"},
-	{ name = "KafkaConnector", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkaconnector_v1beta2.json"},
-	{ name = "KafkaConnect_v1beta2", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkaconnect_v1beta2.json"},
-	{ name = "KafkaMirrorMaker", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkaconnector_v1beta2.json"},
-	{ name = "KafkaNodePool", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkanodepool_v1beta2.json"},
-	{ name = "KafkaMirrorMaker2", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkaconnector_v1beta2.json"},
-	{ name = "KafkaRebalance", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkarebalance_v1beta2.json"},
-	{ name = "KafkaTopic_v1alpha1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkatopic_v1alpha1.json"},
-	{ name = "KafkaTopic_v1beta1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkatopic_v1beta1.json"},
-	{ name = "KafkaTopic_v1beta2", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkatopic_v1beta2.json"},
-	{ name = "KafkaTopicControlsACLs_v1alpha1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkatopiccontrolacls_v1alpha1.json"},
-	{ name = "KafkaTopicControlsACLs_v1beta1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkatopiccontrolacls_v1beta1.json"},
-	{ name = "KafkaUser_v1alpha1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkauser_v1alpha1.json"},
-	{ name = "KafkaUser_v1beta1", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkauser_v1beta1.json"},
-	{ name = "KafkaUser_v1beta2", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/kafkauser_v1beta2.json"},
-	{ name = "StrimziPodSet", uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/kafka.strimzi.io/strimzipodset_v1beta2.json"},
+	{ name = "Kafka_v1", uri = base .. "/kafkas.kafka.strimzi.io/v1.json" },
+	{ name = "KafkaBridge_v1", uri = base .. "/kafkabridges.kafka.strimzi.io/v1.json" },
+	{ name = "KafkaConnect_v1", uri = base .. "/kafkaconnects.kafka.strimzi.io/v1.json" },
+	{ name = "KafkaConnector_v1", uri = base .. "/kafkaconnectors.kafka.strimzi.io/v1.json" },
+	{ name = "KafkaMirrorMaker_v1", uri = base .. "/kafkamirrormakers.kafka.strimzi.io/v1.json" },
+	{ name = "KafkaMirrorMaker2_v1", uri = base .. "/kafkamirrormaker2s.kafka.strimzi.io/v1.json" },
+	{ name = "KafkaNodePool_v1", uri = base .. "/kafkanodepools.kafka.strimzi.io/v1.json" },
+	{ name = "KafkaRebalance_v1", uri = base .. "/kafkarebalances.kafka.strimzi.io/v1.json" },
+	{ name = "KafkaTopic_v1", uri = base .. "/kafkatopics.kafka.strimzi.io/v1.json" },
+	{ name = "KafkaUser_v1", uri = base .. "/kafkausers.kafka.strimzi.io/v1.json" },
+	{ name = "StrimziPodSet_v1", uri = base .. "/strimzipodsets.core.strimzi.io/v1.json" },
 }
 
 for _, schema in ipairs(strimzi_schemas) do
