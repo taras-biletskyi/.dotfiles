@@ -137,7 +137,7 @@ local cfg = require("yaml-companion").setup({
 	schemas = schemas,
 })
 
-require("lspconfig")["yamlls"].setup(cfg)
+vim.lsp.config("yamlls", cfg)
 
 -- Get the schema name for the current buffer 👇
 local function get_current_yaml_schema()

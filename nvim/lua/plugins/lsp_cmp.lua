@@ -9,8 +9,11 @@ local has_words_before = function()
 end
 
 local function toggle_virtual_text()
-	local config = vim.diagnostic.config()
-	local is_enabled = config.virtual_text == false and config.virtual_lines ~= false
+	local config = vim.diagnostic.config() or {}
+	local vt = config.virtual_text
+	local vl = config.virtual_lines
+
+	local is_enabled = vt == false and vl ~= false
 
 	if is_enabled then
 		vim.diagnostic.config({ virtual_lines = false, virtual_text = true })
@@ -29,7 +32,7 @@ cmp.setup({
 	-- this is for rcarriga/cmp-dap
 	-- nvim-cmp by defaults disables autocomplete for prompt buffers
 	enabled = function()
-		return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+		return vim.bo.buftype ~= "prompt" or require("cmp_dap").is_dap_buffer()
 	end,
 
 	snippet = {
@@ -167,37 +170,31 @@ local opts = { noremap = true }
 local map = vim.keymap.set
 map("n", "<leader>ee", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "<leader>ev", toggle_virtual_text, { desc = "Toggle virtual text" })
-map("n", "[d", vim.diagnostic.goto_prev, opts)
-map("n", "]d", vim.diagnostic.goto_next, opts)
+map("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
+map("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, opts)
 map("n", "<leader>eb", vim.diagnostic.setloclist, opts)
 map("n", "<leader>ew", vim.diagnostic.setqflist, opts)
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-	-- Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	map("n", "<leader>gD", vim.lsp.buf.declaration, opts)
-	map("n", "<leader>gd", vim.lsp.buf.definition, opts)
-	map("n", "K", vim.lsp.buf.hover, opts)
-	map("n", "<leader>gi", vim.lsp.buf.implementation, opts)
-	--TODO: make these two not overlap, there should be a mode for both Normal and Insert
-	map("n", "<C-s>", vim.lsp.buf.signature_help, opts)
-	map("i", "<C-s>", vim.lsp.buf.signature_help, opts)
-	map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
-	map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
-	map("n", "<leader>wl", "<cmd> lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-	map("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-	map("n", "<leader>rn", vim.lsp.buf.rename, opts)
-	-- ka instead of ca???? wtf is wrong with me
-	map("n", "<leader>ka", vim.lsp.buf.code_action, opts)
-	map("n", "<leader>gr", vim.lsp.buf.references, opts)
-	-- vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
-	-- vim.lsp.buf.incoming_calls()
-	-- vim.lsp.buf.outgoing_calls()
-end
--- change float window back/foreground &  borders for hover and signature help
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local bufnr = args.buf
+		vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
+		map("n", "<leader>gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("n", "<leader>gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("n", "<leader>gi", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("n", "<C-s>", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("i", "<C-s>", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("n", "<leader>wl", "<cmd> lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("n", "<leader>D", vim.lsp.buf.type_definition, vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("n", "<leader>rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("n", "<leader>ka", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { buffer = bufnr }))
+		map("n", "<leader>gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { buffer = bufnr }))
+	end,
+})
+
 local border = {
 	{ "╭", "FloatBorder" },
 	{ "─", "FloatBorder" },
@@ -227,17 +224,6 @@ require("lspconfig.ui.windows").default_options = {
 }
 vim.cmd([[highlight! LspInfoBorder guifg=#ebdbb2 guibg=#1d2021]])
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-for _, lsp in pairs(servers) do
-	require("lspconfig")[lsp].setup({
-		on_attach = on_attach,
-		flags = {
-			-- This will be the default in neovim 0.7+
-			debounce_text_changes = 150,
-		},
-	})
-end
 vim.cmd([[
 	highlight! DiagnosticSignError guibg=none guifg=#fb4934
 	highlight! DiagnosticSignWarn guibg=none guifg=#fabd2f
@@ -246,7 +232,8 @@ vim.cmd([[
 ]])
 
 -- this is for lua lsp to work with neovim api
-require("lspconfig").lua_ls.setup({
+vim.lsp.config("lua_ls", {
+	capabilities = capabilities,
 	settings = {
 		Lua = {
 			runtime = {
@@ -267,9 +254,8 @@ require("lspconfig").lua_ls.setup({
 	},
 })
 
-require("lspconfig").gopls.setup({
+vim.lsp.config("gopls", {
 	cmd = { "gopls" },
-	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
 		gopls = {
@@ -291,13 +277,22 @@ require("lspconfig").gopls.setup({
 	},
 })
 
+vim.lsp.config("*", {
+	capabilities = capabilities,
+	flags = {
+		debounce_text_changes = 150,
+	},
+})
+
+vim.lsp.enable(servers)
+
 vim.diagnostic.config({
 	severity_sort = true,
 	virtual_text = {
-		source = "always", -- Or "if_many"
+		source = true,
 	},
 	float = {
-		source = "always", -- Or "if_many"
+		source = true,
 	},
 	-- This changes gutter signs 👇
 	-- { Error = " ", Warn = " ", Hint = " ", Info = " " }

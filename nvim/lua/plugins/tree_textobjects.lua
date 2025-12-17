@@ -1,4 +1,10 @@
 require("nvim-treesitter.configs").setup({
+	modules = {},
+	sync_install = false,
+	ensure_installed = {},
+	ignore_install = {},
+	auto_install = false,
+
 	textobjects = {
 		select = {
 			enable = true,
