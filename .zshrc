@@ -259,7 +259,7 @@ fi
 # https://minikube.sigs.k8s.io/docs/commands/completion/
 source ~/.minikube-completion
 # for minikube to place docker images you build into its own image
-eval $(minikube -p minikube docker-env)
+# eval $(minikube -p minikube docker-env)
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
