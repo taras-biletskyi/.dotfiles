@@ -46,6 +46,7 @@ require("plugins.tree_textobjects")
 require("plugins.okto")
 require("plugins.git_worktree")
 require("plugins.trouble")
+require("plugins.gitlab")
 
 -- Makes tmux work with vim
 -- https://github.com/tmux-plugins/vim-tmux-focus-events/issues/2#issuecomment-87863831
