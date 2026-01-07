@@ -231,6 +231,21 @@ vim.cmd([[
 	highlight! DiagnosticSignHint guibg=none guifg=#8ec07c
 ]])
 
+vim.lsp.config("pyright", {
+	capabilities = capabilities,
+	settings = {
+		python = {
+			analysis = {
+				diagnosticMode = "workspace", -- was / defaults to openFilesOnly in many setups
+				autoSearchPaths = true,
+				useLibraryCodeForTypes = true,
+				-- optional: if pyright is too noisy, you can tune here later
+				-- typeCheckingMode = "basic",
+			},
+		},
+	},
+})
+
 -- this is for lua lsp to work with neovim api
 vim.lsp.config("lua_ls", {
 	capabilities = capabilities,
