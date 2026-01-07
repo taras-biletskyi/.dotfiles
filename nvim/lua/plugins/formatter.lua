@@ -3,13 +3,11 @@ require("conform").setup({
 		clang = {
 			command = "clang-format",
 			args = { "--style={BasedOnStyle: llvm, IndentWidth: 4}", "-assume-filename", "$FILENAME" },
-			inherit = false,
 			stdin = true,
 		},
 		py = {
 			command = "black",
 			args = { "-l 80", "-" },
-			inherit = true,
 			stdin = true,
 		},
 		shfmt = {
@@ -19,7 +17,6 @@ require("conform").setup({
 		luaformat = {
 			command = "stylua",
 			args = { "--search-parent-directories", "--stdin-filepath", "$FILENAME", "-" },
-			inherit = true,
 		},
 		md = {
 			command = "prettier",
