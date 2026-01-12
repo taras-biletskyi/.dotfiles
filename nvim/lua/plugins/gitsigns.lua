@@ -1,4 +1,10 @@
 require("gitsigns").setup({
+	preview_config = {
+		border = "rounded",
+		style = "minimal",
+		row = 0,
+		col = 1
+	},
 	signs = {
 		add = { text = "+" },
 		change = { text = "~" },

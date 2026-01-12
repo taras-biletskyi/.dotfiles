@@ -22,6 +22,7 @@ local function toggle_virtual_text()
 	end
 end
 
+vim.o.winborder = "rounded"
 -- luasnip setup
 local luasnip = require("luasnip")
 local cmp = require("cmp")
