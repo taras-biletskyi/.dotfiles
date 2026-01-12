@@ -49,6 +49,10 @@ require("lazy").setup({
 		-- Plugin for commenting code
 		-- TODO: see if this is relevant in a few months. Neovim 0.10 has comments now.
 		"numToStr/Comment.nvim",
+		{
+			"nvim-telescope/telescope-ui-select.nvim",
+			dependencies = { "nvim-telescope/telescope.nvim" },
+		},
 		-- Completions to come along with neovim/nvim-lspconfig
 		"neovim/nvim-lspconfig",
 		"hrsh7th/nvim-cmp",
@@ -141,11 +145,8 @@ require("lazy").setup({
 		-- visualises '--startup' nvim arg
 		-- {'dstein64/vim-startuptime'},
 		{
-			"someone-stole-my-name/yaml-companion.nvim",
+			"mosheavni/yaml-companion.nvim",
 			ft = "yaml",
-			config = function()
-				require("telescope").load_extension("yaml_schema")
-			end,
 		},
 		"nvim-telescope/telescope-symbols.nvim",
 		{

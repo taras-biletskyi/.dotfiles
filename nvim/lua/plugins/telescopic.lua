@@ -80,7 +80,12 @@ require("telescope").setup({
 			},
 		},
 	},
+	extensions = {
+		["ui-select"] = require("telescope.themes").get_dropdown({}),
+	},
 })
+
+require("telescope").load_extension("ui-select")
 
 function _G.project_files()
 	local in_git_repo = vim.fn.systemlist("git rev-parse --is-inside-work-tree")[1] == "true"

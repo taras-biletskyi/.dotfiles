@@ -43,10 +43,10 @@ local k8s_core_schemas = {
 	{name = "Ingress (networking.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/ingress-networking-v1.json"},
 	{name = "NetworkPolicy (networking.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/networkpolicy-networking-v1.json"},
 	-- RBAC.authorization.k8s.io/v1
-	{name = "Role (rbac.authorization.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/role-rbac-authorization-k8s-io-v1.json"},
-	{name = "ClusterRole (rbac.authorization.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/clusterrole-rbac-authorization-k8s-io-v1.json"},
-	{name = "RoleBinding (rbac.authorization.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/rolebinding-rbac-authorization-k8s-io-v1.json"},
-	{name = "ClusterRoleBinding (rbac.authorization.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/clusterrolebinding-rbac-authorization-k8s-io-v1.json"},
+	{name = "Role (rbac.authorization.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/role-rbac-v1.json"},
+	{name = "ClusterRole (rbac.authorization.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/clusterrole-rbac-v1.json"},
+	{name = "RoleBinding (rbac.authorization.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/rolebinding-rbac-v1.json"},
+	{name = "ClusterRoleBinding (rbac.authorization.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/clusterrolebinding-rbac-v1.json"},
 	-- Storage.k8s.io/v1
 	{name = "StorageClass (storage.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/storageclass-storage-k8s-io-v1.json"},
 	{name = "VolumeAttachment (storage.k8s.io/v1)", uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7-standalone-strict/volumeattachment-storage-k8s-io-v1.json"},
@@ -134,19 +134,78 @@ for _, schema in ipairs(cert_manager_schemas) do
 end
 
 local cfg = require("yaml-companion").setup({
+	builtin_matchers = {
+		kubernetes = { enabled = false },
+		cloud_init = { enabled = false },
+	},
+
+	-- my custom schemas
 	schemas = schemas,
+
+	lspconfig = {
+		flags = {
+			debounce_text_changes = 150,
+		},
+		settings = {
+			redhat = { telemetry = { enabled = false } },
+			yaml = {
+				validate = true,
+				format = { enable = false },
+				hover = true,
+				schemaStore = {
+					enable = true,
+					url = "https://www.schemastore.org/api/json/catalog.json",
+				},
+				schemaDownload = { enable = true },
+				schemas = {},
+				-- trace = { server = "debug" },
+			},
+		},
+	},
 })
 
 vim.lsp.config("yamlls", cfg)
+vim.lsp.enable("yamlls")
 
--- Get the schema name for the current buffer 👇
-local function get_current_yaml_schema()
-	local schema = require("yaml-companion").get_buf_schema(0)
-	if schema then
-		return print(schema.result[1].name)
+local function get_schema_name()
+	local ok, yc = pcall(require, "yaml-companion")
+	if not ok then
+		vim.notify("yaml-companion not loaded", vim.log.levels.WARN)
+		return
 	end
-	return ""
+
+	local schema = yc.get_buf_schema(0)
+	local name = schema and schema.result and schema.result[1] and schema.result[1].name
+
+	if not name or name == "none" then
+		vim.notify("Current YAML schema: none", vim.log.levels.INFO)
+		return
+	end
+
+	vim.notify("Current YAML schema: " .. name, vim.log.levels.INFO)
 end
 
-vim.keymap.set("n", "tyc", get_current_yaml_schema, { noremap = true })
-vim.keymap.set("n", "tys", ":Telescope yaml_schema <CR>", { noremap = true })
+vim.keymap.set("n", "tyc", get_schema_name, { noremap = true, silent = true, desc = "Show current YAML schema" })
+
+-- Requires
+-- 1. `nvim-telescope/telescope-ui-select.nvim` plugin:
+-- {
+-- 	"nvim-telescope/telescope-ui-select.nvim",
+-- 	dependencies = { "nvim-telescope/telescope.nvim" },
+-- },
+-- 2. Telescope setup:
+-- require("telescope").setup({
+-- 	extensions = {
+-- 		["ui-select"] = require("telescope.themes").get_dropdown({}),
+-- 	},
+-- })
+-- require("telescope").load_extension("ui-select")
+vim.keymap.set("n", "tys", function()
+	require("yaml-companion").open_ui_select()
+end, { noremap = true, silent = true, desc = "Pick YAML schema (Telescope)" })
+
+vim.keymap.set("n", "tyq", "<cmd>YamlKeys<CR>", { noremap = true, silent = true, desc = "All YAML keys into quickfix" })
+
+vim.keymap.set("n", "tyd", function()
+	require("yaml-companion").open_datree_crd_select()
+end, { noremap = true, silent = true, desc = "Open Datree schemas" })
