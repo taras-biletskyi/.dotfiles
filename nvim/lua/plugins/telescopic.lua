@@ -36,6 +36,63 @@ local select_one_or_multi = function(prompt_bufnr)
 	end
 end
 
+-- NOTE: start buffer picker funcs
+local entry_display = require("telescope.pickers.entry_display")
+local make_entry = require("telescope.make_entry")
+local utils = require("telescope.utils")
+
+local has_devicons, devicons = pcall(require, "nvim-web-devicons")
+
+local function diag_counts(bufnr)
+	local d = vim.diagnostic.get(bufnr)
+	local c = { e = 0, w = 0, i = 0, h = 0 }
+	for _, item in ipairs(d) do
+		local s = item.severity
+		if s == vim.diagnostic.severity.ERROR then
+			c.e = c.e + 1
+		elseif s == vim.diagnostic.severity.WARN then
+			c.w = c.w + 1
+		elseif s == vim.diagnostic.severity.INFO then
+			c.i = c.i + 1
+		elseif s == vim.diagnostic.severity.HINT then
+			c.h = c.h + 1
+		end
+	end
+	return c
+end
+
+-- Roughly match :ls flags: %, #, a/h, +
+local function buf_flags(bufnr)
+	local flags = ""
+
+	if vim.api.nvim_get_current_buf() == bufnr then
+		flags = flags .. "%"
+	elseif vim.fn.bufnr("#") == bufnr then
+		flags = flags .. "#"
+	else
+		flags = flags .. " "
+	end
+
+	local loaded = vim.api.nvim_buf_is_loaded(bufnr)
+	local visible = vim.fn.bufwinnr(bufnr) ~= -1
+	if loaded and not visible then
+		flags = flags .. "h"
+	elseif loaded then
+		flags = flags .. "a"
+	else
+		flags = flags .. " "
+	end
+
+	if vim.bo[bufnr].modified then
+		flags = flags .. "+"
+	else
+		flags = flags .. " "
+	end
+
+	return flags
+end
+-- NOTE: end buffer picker funcs
+
 require("telescope").setup({
 	defaults = {
 		dynamic_preview_title = true,
@@ -82,6 +139,85 @@ require("telescope").setup({
 	},
 	extensions = {
 		["ui-select"] = require("telescope.themes").get_dropdown({}),
+	},
+	pickers = {
+		-- NOTE: the buffers picker is vibe coded but works nicely showing LSP info alongside buffers
+		buffers = {
+			sort_mru = true,
+			ignore_current_buffer = false,
+
+			entry_maker = function(entry)
+				local base = make_entry.gen_from_buffer()(entry)
+				local bufnr = base.bufnr
+
+				local filename = base.filename or "[No Name]"
+				local counts = diag_counts(bufnr)
+
+				local icon, icon_hl = " ", nil
+				if has_devicons and filename ~= "[No Name]" then
+					local tail = utils.path_tail(filename)
+					local ext = vim.fn.fnamemodify(filename, ":e")
+					icon, icon_hl = devicons.get_icon(tail, ext, { default = true })
+				end
+
+				local display_path = filename
+				if filename ~= "[No Name]" then
+					display_path = utils.transform_path({ path_display = { "smart" } }, filename)
+				end
+
+				local flags = buf_flags(bufnr)
+
+				local displayer = entry_display.create({
+					separator = " ",
+					items = {
+						{ width = 3, right_justify = true }, -- bufnr
+						{ width = 3 }, -- flags
+						{ width = 2 }, -- icon
+						{ remaining = true }, -- ABSOLUTE PATH
+						{ width = 2, right_justify = true }, -- E#
+						{ width = 2, right_justify = true }, -- W#
+						{ width = 2, right_justify = true }, -- I#
+						{ width = 2, right_justify = true }, -- H#
+					},
+				})
+
+				base.display = function(e)
+					local function dcell(label, n, hl)
+						local txt = label .. tostring(n)
+						if n == 0 then
+							return { txt, "Comment" }
+						end
+						return { txt, hl }
+					end
+					local pd
+					local w = vim.o.columns -- overall width; good enough for this
+					if w < 120 then
+						pd = { "tail" } -- filename only
+					else
+						pd = require("telescope.config").values.path_display
+					end
+
+					local display_path = (filename == "[No Name]") and filename
+						or utils.transform_path({ path_display = pd }, filename)
+
+					return displayer({
+						{ tostring(bufnr), "TelescopeResultsNumber" },
+						{ flags, "TelescopeResultsSpecialComment" },
+						{ icon, icon_hl },
+						{ display_path, "TelescopeResultsIdentifier" },
+
+						dcell("E", counts.e, "DiagnosticError"),
+						dcell("W", counts.w, "DiagnosticWarn"),
+						dcell("I", counts.i, "DiagnosticInfo"),
+						dcell("H", counts.h, "DiagnosticHint"),
+					})
+				end
+
+				-- Keep sorting/searching sane
+				base.ordinal = string.format("%s %s %s", bufnr, display_path, base.ordinal or "")
+				return base
+			end,
+		},
 	},
 })
 
