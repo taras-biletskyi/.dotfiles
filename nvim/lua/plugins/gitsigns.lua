@@ -36,7 +36,7 @@ require("gitsigns").setup({
 			if vim.wo.diff then
 				vim.cmd.normal({ "]c", bang = true })
 			else
-				gitsigns.nav_hunk("next", { target = "all" })
+				gitsigns.nav_hunk("next" )
 			end
 		end)
 
@@ -44,7 +44,7 @@ require("gitsigns").setup({
 			if vim.wo.diff then
 				vim.cmd.normal({ "[c", bang = true })
 			else
-				gitsigns.nav_hunk("prev", { target = "all" })
+				gitsigns.nav_hunk("prev" )
 			end
 		end)
 		-- Actions
