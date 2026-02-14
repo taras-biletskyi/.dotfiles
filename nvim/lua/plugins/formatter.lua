@@ -30,14 +30,14 @@ require("conform").setup({
 				"-",
 			},
 		},
-		javashittyformat = {
-			command = "google-java-format",
-			args = {"-", "--aosp"},
+		palantir = {
+			command = "palantir-java-format",
+			args = { "--palantir", "-" },
 		},
 	},
 	formatters_by_ft = {
 		c = { "clang" },
-		java = {"javashittyformat"},
+		java = {"palantir"},
 		python = { "py" },
 		go = {
 			formatters = { "gofmt", "gofumpt", "golines", "goimports" },
@@ -49,6 +49,7 @@ require("conform").setup({
 		yaml = { "prettier" },
 		sql = { "sqlformatter" },
 		toml = { "taplo" },
+		xml = { "palantir" },
 	},
 })
 
