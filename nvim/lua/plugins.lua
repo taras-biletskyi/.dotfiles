@@ -180,5 +180,8 @@ require("lazy").setup({
 				end,
 			},
 		},
+		{
+			"zbirenbaum/copilot.lua",
+		},
 	},
 })
