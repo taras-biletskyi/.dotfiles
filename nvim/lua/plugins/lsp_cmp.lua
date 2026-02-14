@@ -293,6 +293,25 @@ vim.lsp.config("gopls", {
 	},
 })
 
+vim.lsp.config("jdtls", {
+	settings = {
+		java = {
+			completion = {
+				guessMethodArguments = true, -- fill in argument placeholders/guesses
+			},
+			configuration = {
+				runtimes = {
+					{
+						name = "Java 21.0.9-tem",
+						path = "/home/taras/.sdkman/candidates/java/21.0.9-tem",
+						default = true,
+					},
+				},
+			},
+		},
+	},
+})
+
 vim.lsp.config("*", {
 	capabilities = capabilities,
 	flags = {
