@@ -4,8 +4,8 @@ set -euo pipefail
 STATE_FILE="$HOME/.config/hypr/.opacity_full"
 
 # Put your normal values here (the ones you want to restore to)
-NORMAL_ACTIVE="0.95"
-NORMAL_INACTIVE="0.85"
+NORMAL_ACTIVE="0.96"
+NORMAL_INACTIVE="0.69"
 
 if [[ -f $STATE_FILE ]]; then
     hyprctl keyword decoration:active_opacity "$NORMAL_ACTIVE" > /dev/null
