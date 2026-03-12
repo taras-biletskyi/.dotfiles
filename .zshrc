@@ -289,3 +289,7 @@ export PATH="/usr/share/zsh/5.9/functions:$PATH"
 export PATH="/usr/share/bash-completion/completions:$PATH"
 source ~/.k3d
 source ~/.kustomize
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
