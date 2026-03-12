@@ -27,7 +27,8 @@ require("plugins.status")
 require("plugins.gitsigns")
 require("plugins.comment_nvim")
 -- Setup nvim-java before lspconfig
-require('java').setup()
+-- require('java').setup()
+require("plugins.java")
 require("plugins.lsp_cmp")
 require("plugins.lightbulb")
 require("plugins.tree")
@@ -50,6 +51,7 @@ require("plugins.tree_textobjects")
 require("plugins.okto")
 require("plugins.git_worktree")
 require("plugins.gitlab")
+require("plugins.copilot")
 
 -- Makes tmux work with vim
 -- https://github.com/tmux-plugins/vim-tmux-focus-events/issues/2#issuecomment-87863831
