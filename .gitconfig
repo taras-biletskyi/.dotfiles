@@ -1,5 +1,5 @@
 [user]
-    signingkey = /home/taras/.ssh/id_rsa.pub
+	signingkey = /home/taras/.ssh/id_ed25519.pub
 	email = tarasbiletskyi@gmail.com
 	name = taras-biletskyi
 [difftool]

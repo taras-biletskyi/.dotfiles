@@ -1,5 +1,6 @@
 ## Lazygit config
 gui:
+  showRootItemInFileTree: false
   nerdFontsVersion: "3" # nerd fonts version to use ("2" or "3"); empty means don't show nerd font icons
   theme:
     # lightTheme: false # For terminals with a light background
@@ -14,12 +15,13 @@ gui:
     feature: "#98971a"
 git:
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
-  allBranchesLogCmd: "git log -p --color-words --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium"
   parseEmoji: true
-  paging:
-    colorArg: always
-    pager: delta --dark --syntax-theme gruvbox-dark --paging=never
+  pagers:
+    - colorArg: always
+      pager: delta --dark --syntax-theme gruvbox-dark --paging=never
   overrideGpg: true
+  allBranchesLogCmds:
+    - git log -p --color-words --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
 services:
   depot-ssh.1tech.dev: gitlab:depot.1tech.dev
 # INFO: this is for mac fix

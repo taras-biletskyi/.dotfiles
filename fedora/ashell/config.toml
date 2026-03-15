@@ -30,7 +30,7 @@ alert_threshold = 80
 [system_info.temperature]
 warn_threshold = 69
 alert_threshold = 80
-sensor = "coretemp Package id 0"
+sensor = "amdgpu edge"
 # ============================================================================ #
 [keyboard_layout.labels]
 "English (US)" = "en"
@@ -59,7 +59,7 @@ hibernate_cmd = "systemctl hibernate"
 reboot_cmd = "systemctl reboot"
 logout_cmd = "loginctl kill-user $(whoami)"
 remove_airplane_btn = true
-battery_format = "IconAndTime"
+battery_format = "IconAndPercentage"
 audio_indicator_format = "IconAndPercentage"
 microphone_indicator_format = "IconAndPercentage"
 network_indicator_format = "IconAndPercentage"
@@ -73,7 +73,7 @@ weather_location = { City = "Kyiv" }
 [[CustomModule]]
 name = "appLauncher"
 type = "Button"
-icon = ""
+icon = "󰮤"
 
 # Notifications:
 # ashell doesn't have a notification center module like HyprPanel.
