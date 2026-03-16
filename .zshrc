@@ -173,6 +173,7 @@ alias lzg="lazygit"
 alias lzd="lazydocker"
 alias l="ls -lah --group-directories-first -v"
 alias tree='tree -v --dirsfirst'
+alias clr="printf '\e[2J\e[3J\e[H'"
 
 HISTSIZE=1000000
 SAVEHIST=1000000
