@@ -99,6 +99,8 @@ require("lazy").setup({
 		{
 			"nvim-treesitter/nvim-treesitter",
 			build = ":TSUpdate",
+			lazy = false,
+			branch = "master",
 		},
 		-- Shows sticky context at the top of the buffer; much awesome
 		"nvim-treesitter/nvim-treesitter-context",

@@ -1,5 +1,5 @@
 -- Additionaly need to install language packs vis :TSInstall
-require("nvim-treesitter.config").setup({
+require("nvim-treesitter.configs").setup({
 	modules = {},
 	sync_install = false,
 	ensure_installed = {},
