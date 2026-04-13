@@ -1,5 +1,5 @@
 local schemas = {}
-local base = "file:///home/taras/work/strimzi_schemas/strimzi"
+local base = "file:///home/taras/schemas/strimzi"
 local strimzi_schemas = {
 	{ name = "Kafka_v1", uri = base .. "/kafkas.kafka.strimzi.io/v1.json" },
 	{ name = "KafkaBridge_v1", uri = base .. "/kafkabridges.kafka.strimzi.io/v1.json" },
