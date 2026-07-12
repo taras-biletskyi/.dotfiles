@@ -1,0 +1,23 @@
+[[sources]]
+id = "postgres_dev"
+description = "Read-only access to the application development PostgreSQL database"
+type = "postgres"
+host = "blinq-dev-db-cluster.cluster-cwbiccpopoju.eu-west-2.rds.amazonaws.com"
+port = 5430
+database = "blinq_api_server_dev"
+user = "${DEV_POSTGRES_USER}"
+password = "${DEV_POSTGRES_PASSWORD}"
+sslmode = "require"
+search_path = "public"
+connection_timeout = 15
+query_timeout = 30
+
+[[tools]]
+name = "execute_sql"
+source = "postgres_dev"
+readonly = true
+max_rows = 500
+
+[[tools]]
+name = "search_objects"
+source = "postgres_dev"

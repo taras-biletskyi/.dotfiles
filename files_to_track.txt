@@ -21,3 +21,7 @@
 /home/taras/.dotfiles/.ideavimrc|/home/taras/.ideavimrc
 /home/taras/.dotfiles/fonts.conf|/home/taras/.config/fontconfig/fonts.conf
 /home/taras/.dotfiles/fedora/ashell/config.toml|/home/taras/.config/ashell/config.toml
+/home/taras/.dotfiles/opencode/opencode.jsonc|/home/taras/.config/opencode/opencode.jsonc
+/home/taras/.dotfiles/opencode/vibeguard.config.json|/home/taras/.config/opencode/vibeguard.config.json
+/home/taras/.dotfiles/opencode/postgres-dev-dbhub.toml|/home/taras/.config/opencode/postgres-dev-dbhub.toml
+/home/taras/.dotfiles/opencode/postgres-dev-mcp.sh|/home/taras/.config/opencode/postgres-dev-mcp.sh

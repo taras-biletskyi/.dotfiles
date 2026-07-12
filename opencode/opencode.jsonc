@@ -1,0 +1,108 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "formatter": true,
+  "plugin": ["opencode-vibeguard", "opencode-claude-auth@latest"],
+  "lsp": {
+    "yaml": {
+      "command": ["yaml-language-server", "--stdio"],
+      "extensions": [".yaml", ".yml"]
+    }
+  },
+  // Reuse repo docs/rules
+  "instructions": [
+    "AGENTS.md",
+    "README.md",
+    "CONTRIBUTING.md",
+    "docs/**/*.md"
+  ],
+
+  "share": "disabled",
+  "mcp": {
+    "starrocks-dev": {
+      "type": "local",
+      "command": [
+        "bash",
+        "/home/taras/work/blinq/repos/starrocks/mcp/starrocks-mcp.sh"
+      ],
+      "enabled": true,
+      "timeout": 15000
+    },
+    "postgres-dev": {
+      "type": "local",
+      "command": [
+        "bash",
+        "/home/taras/.config/opencode/postgres-dev-mcp.sh"
+      ],
+      "enabled": true
+    }
+  },
+  "permission": {
+    // Ask by default for all tools that support a flat permission.
+    "read": "ask",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "edit": "ask",
+    "todowrite": "ask",
+    "question": "ask",
+    "webfetch": "ask",
+    "websearch": "ask",
+    "task": "ask",
+    "skill": "allow",
+    "external_directory": "ask",
+
+    "bash": {
+      // Default: ask for every shell command unless explicitly allowed/denied.
+      "*": "ask",
+
+      // Safe inspection commands
+      "pwd": "allow",
+      "ls*": "allow",
+      "cat*": "allow",
+      "rg*": "allow",
+      "grep*": "allow",
+      "find*": "ask",
+
+      // Git read-only commands
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "git show*": "allow",
+      "git branch*": "allow",
+      "git remote -v": "allow",
+
+      // Git write/destructive commands: hard block
+      "git add*": "ask",
+      "git commit*": "ask",
+      "git push*": "ask",
+      "git pull*": "ask",
+      "git fetch*": "ask",
+      "git merge*": "ask",
+      "git rebase*": "ask",
+      "git checkout*": "ask",
+      "git switch*": "ask",
+      "git reset*": "ask",
+      "git restore*": "ask",
+      "git clean*": "ask",
+      "git stash*": "ask",
+      "git tag*": "ask",
+
+      // Extra “no oopsie” shell blocks
+      "rm*": "deny",
+      "mv*": "ask",
+      "cp*": "ask",
+      "chmod*": "ask",
+      "chown*": "deny",
+
+      // Infra commands: ask/block by default
+      "kubectl*": "ask",
+      "helm*": "ask",
+      "terraform*": "ask",
+      "tofu*": "ask",
+      "aws*": "ask",
+      "docker compose down*": "ask",
+      "docker rm*": "ask",
+      "docker rmi*": "ask"
+    }
+  },
+}

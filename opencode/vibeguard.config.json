@@ -1,0 +1,80 @@
+{
+  "enabled": true,
+  "debug": false,
+  "placeholder_prefix": "__VG_",
+  "session": {
+    "ttl": "1h",
+    "max_mappings": 100000
+  },
+  "patterns": {
+    "keywords": [
+      {
+        "value": "my-api-key-123",
+        "category": "API_KEY"
+      }
+    ],
+    "regex": [
+      {
+        "pattern": "sk-[A-Za-z0-9]{48}",
+        "category": "OPENAI_KEY"
+      },
+      {
+        "pattern": "(ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]+",
+        "category": "GITHUB_TOKEN"
+      },
+      {
+        "pattern": "AKIA[0-9A-Z]{16}",
+        "category": "AWS_ACCESS_KEY"
+      },
+      {
+        "pattern": "(?<=^\\s*database\\.password\\s*:\\s)[^#\\r\\n]+",
+        "flags": "im",
+        "category": "POSTGRES_KAFKA_CONNECT_CONNECTOR_PASSWORD"
+      },
+      {
+        "pattern": "(?<=^\\s*password\\s*:\\s)[^#\\r\\n]+",
+        "flags": "im",
+        "category": "KUBERNETES_SECRET_PASSWORD"
+      },
+      {
+        "pattern": "(?<=\"STARROCKS_PASSWORD\"\\s*:\\s*\")[^\"\\r\\n]+",
+        "flags": "im",
+        "category": "STARROCKS_MCP_PASSWORD"
+      },
+      {
+        "pattern": "(?<=\"DEV_POSTGRES_DSN\"\\s*:\\s*\")[^\"\\r\\n]+",
+        "flags": "im",
+        "category": "DEV_POSTGRES_MCP_DSN"
+      },
+      {
+        "pattern": "(?<=^DEV_POSTGRES_PASSWORD=)[^\\r\\n]+",
+        "flags": "im",
+        "category": "DEV_POSTGRES_MCP_PASSWORD"
+      },
+      {
+        "pattern": "(?<=^\\s*slack_api_url\\s*:\\s)[^#\\r\\n]+",
+        "flags": "im",
+        "category": "ALERTMANAGER_SLACK_API_URL"
+      },
+      {
+        "pattern": "(?<=^\\s*export\\s+TF_VAR_tailscale_oauth_client_secret\\s*=\\s*)[\"']?[^#\\r\\n\"']+",
+        "flags": "im",
+        "category": "TF_VAR_TAILSCALE_OAUTH_CLIENT_SECRET"
+      }
+    ],
+    "builtin": [
+      "email",
+      "china_phone",
+      "china_id",
+      "uuid",
+      "ipv4",
+      "mac"
+    ],
+    "exclude": [
+      "example.com",
+      "localhost",
+      "127.0.0.1",
+      "0.0.0.0"
+    ]
+  }
+}
