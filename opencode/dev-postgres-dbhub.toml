@@ -1,5 +1,5 @@
 [[sources]]
-id = "postgres_dev"
+id = "dev_postgres"
 description = "Read-only access to the application development PostgreSQL database"
 type = "postgres"
 host = "blinq-dev-db-cluster.cluster-cwbiccpopoju.eu-west-2.rds.amazonaws.com"
@@ -14,10 +14,10 @@ query_timeout = 30
 
 [[tools]]
 name = "execute_sql"
-source = "postgres_dev"
+source = "dev_postgres"
 readonly = true
 max_rows = 500
 
 [[tools]]
 name = "search_objects"
-source = "postgres_dev"
+source = "dev_postgres"

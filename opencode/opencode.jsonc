@@ -6,6 +6,13 @@
     "yaml": {
       "command": ["yaml-language-server", "--stdio"],
       "extensions": [".yaml", ".yml"]
+    },
+    "elixir": {
+      "command": ["expert", "--stdio"],
+      "extensions": [".ex", ".exs"]
+    },
+    "elixir-ls": {
+      "disabled": true
     }
   },
   // Reuse repo docs/rules
@@ -18,22 +25,23 @@
 
   "share": "disabled",
   "mcp": {
-    "starrocks-dev": {
+    "dev-starrocks": {
       "type": "local",
       "command": [
         "bash",
         "/home/taras/work/blinq/repos/starrocks/mcp/starrocks-mcp.sh"
       ],
       "enabled": true,
-      "timeout": 15000
+      "timeout": 60000
     },
-    "postgres-dev": {
+    "dev-postgres": {
       "type": "local",
       "command": [
         "bash",
-        "/home/taras/.config/opencode/postgres-dev-mcp.sh"
+        "/home/taras/.config/opencode/dev-postgres-mcp.sh"
       ],
-      "enabled": true
+      "enabled": true,
+      "timeout": 30000
     }
   },
   "permission": {
