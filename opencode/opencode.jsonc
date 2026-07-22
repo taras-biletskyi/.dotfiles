@@ -31,7 +31,7 @@
         "bash",
         "/home/taras/work/blinq/repos/starrocks/mcp/starrocks-mcp.sh"
       ],
-      "enabled": true,
+      "enabled": false,
       "timeout": 60000
     },
     "dev-postgres": {
@@ -40,8 +40,21 @@
         "bash",
         "/home/taras/.config/opencode/dev-postgres-mcp.sh"
       ],
-      "enabled": true,
+      "enabled": false,
       "timeout": 30000
+    },
+    "dev-prometheus": {
+      "type": "local",
+      "command": [
+        "docker", "run", "--rm", "-i",
+        "--network", "host",
+        "-e", "PROMETHEUS_MCP_SERVER_PROMETHEUS_URL",
+        "ghcr.io/tjhop/prometheus-mcp-server:latest"
+      ],
+      "environment": {
+        "PROMETHEUS_MCP_SERVER_PROMETHEUS_URL": "<FILL_ME_IN>"
+      },
+      "enabled": false
     }
   },
   "permission": {
